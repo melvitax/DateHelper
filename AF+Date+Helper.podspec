@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version  = '1.0'
   s.platform = :ios
   s.license  = 'MIT'
-  s.summary  = 'Convenience extension for NSDate in Swift'
+  s.summary  = 'Convenience extension for NSDate in Swift.'
   s.homepage = 'https://github.com/melvitax/AFDateHelper'
   s.author   = { 'Melvin Rivera' => 'melvin@allforces.com' }
   s.source   = { :git => 'https://github.com/melvitax/AFDateHelper.git', :tag => s.version.to_s }
