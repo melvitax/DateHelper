@@ -104,4 +104,3 @@ date.shortMonthToString() -> String
 date.veryShortMonthToString() -> String
 ```
 
-
