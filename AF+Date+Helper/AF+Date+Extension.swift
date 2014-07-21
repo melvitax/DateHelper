@@ -1,9 +1,10 @@
 //
 //  AF+Date+Extension.swift
-//  NewsLabs
+//
+//  Version 1.01
 //
 //  Created by Melvin Rivera on 7/15/14.
-//  Copyright (c) 2014 NBC News Digital. All rights reserved.
+//  Copyright (c) 2014. All rights reserved.
 //
 
 import Foundation
@@ -64,9 +65,9 @@ extension NSDate {
                 
                 var s  = string
                 if string.hasSuffix(" 00:00") {
-                    s = s.substringToIndex(countElements(s)-6) + "GMT"
+                    s = s.bridgeToObjectiveC().substringToIndex(countElements(s)-6) + "GMT"
                 } else if string.hasSuffix("Z") {
-                    s = s.substringToIndex(countElements(s)-1) + "GMT"
+                    s = s.bridgeToObjectiveC().substringToIndex(countElements(s)-1) + "GMT"
                 }
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZ"
@@ -77,7 +78,7 @@ extension NSDate {
                 
                 var s  = string
                 if string.hasSuffix("Z") {
-                    s = s.substringToIndex(countElements(s)-1) + "GMT"
+                    s = s.bridgeToObjectiveC().substringToIndex(countElements(s)-1) + "GMT"
                 }
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "EEE, d MMM yyyy HH:mm:ss ZZZ"
@@ -88,7 +89,7 @@ extension NSDate {
                 
                 var s  = string
                 if string.hasSuffix("Z") {
-                    s = s.substringToIndex(countElements(s)-1) + "GMT"
+                    s = s.bridgeToObjectiveC().substringToIndex(countElements(s)-1) + "GMT"
                 }
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "d MMM yyyy HH:mm:ss ZZZ"

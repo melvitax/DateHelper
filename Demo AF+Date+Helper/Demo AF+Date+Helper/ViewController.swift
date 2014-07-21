@@ -1,9 +1,8 @@
 //
 //  ViewController.swift
-//  Swift Demo UIView+AF+Additions
 //
 //  Created by Melvin Rivera on 7/2/14.
-//  Copyright (c) 2014 All Forces. All rights reserved.
+//  Copyright (c) All rights reserved.
 //
 
 import Foundation
