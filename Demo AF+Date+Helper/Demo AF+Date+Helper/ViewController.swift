@@ -180,8 +180,8 @@ class ViewController: UITableViewController {
         sectionItems.append(TableItem(title: "Month Days", description: "\(now.monthDays)"))
         sectionItems.append(TableItem(title: "First Day Of Week", description: "\(now.firstDayOfWeek)"))
         sectionItems.append(TableItem(title: "Last Day Of Week", description: "\(now.lastDayOfWeek)"))
-        sectionItems.append(TableItem(title: "Is Weekday", description: "\(now.isWeekday)"))
-        sectionItems.append(TableItem(title: "Is Weekend", description: "\(now.isWeekend)"))
+        sectionItems.append(TableItem(title: "Is Weekday", description: "\(now.isWeekday())"))
+        sectionItems.append(TableItem(title: "Is Weekend", description: "\(now.isWeekend())"))
         
         items.append(sectionItems)
         

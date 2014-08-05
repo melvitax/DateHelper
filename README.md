@@ -3,7 +3,6 @@ AF+Date+Helper
 
 Convenience extension for NSDate in Swift
 
-
 ### Date from String
 ```Swift
 // Date from String with custom format

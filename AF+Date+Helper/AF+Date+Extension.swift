@@ -348,10 +348,10 @@ extension NSDate {
         let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate - distanceToStartOfWeek + distanceToEndOfWeek
         return NSDate(timeIntervalSinceReferenceDate: interval).day
     }
-    var isWeekday: Bool {
-        return !self.isWeekend
+    func isWeekday() -> Bool {
+        return !self.isWeekend()
     }
-    var isWeekend: Bool {
+    func isWeekend() -> Bool {
         let range = NSCalendar.currentCalendar().maximumRangeOfUnit(.WeekdayCalendarUnit)
         return (self.weekday == range.location || self.weekday == range.length)
     }
