@@ -8,224 +8,258 @@
 import Foundation
 import UIKit
 
+struct TableItem {
+    let title: String
+    let description: String
+}
 
-
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
     
-    override func viewWillAppear(animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        let now = NSDate()
-        var date = NSDate()
+    let now = NSDate()
+    var date = NSDate()
+    
+    var sections:[String] = []
+    var items:[[TableItem]] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         
         /* DATE FROM STRING */
-        
-        println("\nDate From String")
+        sections.append("Date From String")
+        var sectionItems = [TableItem]()
         
         // Date from string with custom format
         date = NSDate(fromString: "16 July 1972 6:12:00 ", format: .Custom("dd MMM yyyy HH:mm:ss"))
-        println("Custom: \(date)")
+        sectionItems.append(TableItem(title: "Custom Format", description: "dd MMM yyyy HH:mm:ss = \(date.toString())"))
         
         // Date from ISO8601 String
         date = NSDate(fromString: "1972-07-16T08:15:30-05:00", format: .ISO8601)
-        println("ISO8601: \(date)")
+        sectionItems.append(TableItem(title: "ISO8601", description: "1972-07-16T08:15:30-05:00 = \(date.toString())"))
         
         // Date from DotNetJSON String
         date = NSDate(fromString: "/Date(1260123281843)/", format: .DotNet)
-        println("DotNetJSON: \(date)")
+        sectionItems.append(TableItem(title: "DotNetJSON", description: "Date(1260123281843) = \(date.toString())"))
         
         // Date from RSS String
         date = NSDate(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .RSS)
         println("RSS: \(date)")
+        sectionItems.append(TableItem(title: "RSS", description:"Fri, 09 Sep 2011 15:26:08 +0200 = \(date.toString())"))
         
         // Date from AltRSS String
         date = NSDate(fromString: "09 Sep 2011 15:26:08 +0200", format: .AltRSS)
-        println("Alt RSS: \(date)")
+        sectionItems.append(TableItem(title: "Alt RSS", description: "09 Sep 2011 15:26:08 +0200 = \(date.toString())"))
         
-                
+        items.append(sectionItems)
+        
         /* COMPARING DATES */
-        println("\nComparing Dates: \(now) and \(date)")
-        var equality = now.isEqualToDate(date) ? "is equal" : "is not equal"
-        println(equality)
+        sections.append("Comparing Dates")
+        sectionItems = [TableItem]()
+        
+        var equality = now.isEqualToDate(date) ? "is equal to" : "is not equal to"
+        sectionItems.append(TableItem(title: "Is Equal", description: "\(now.toString()) \(equality) \(date.toString())"))
         
         equality = now.isToday() ? "is today" : "is not today"
-        println(equality)
+        sectionItems.append(TableItem(title: "Today", description: "\(now.toString()) \(equality)"))
         
-        equality = now.isTomorrow() ? "is tomorrow" : "is not tomorrow"
-        println(equality)
+        date = now.dateByAddingDays(1)
+        equality = date.isTomorrow() ? "is tomorrow" : "is not tomorrow"
+        sectionItems.append(TableItem(title: "Tomorrow", description: "\(date.toString()) \(equality)"))
         
-        equality = now.isYesterday() ? "is yesterday" : "is not yesterday"
-        println(equality)
+        date = now.dateBySubtractingDays(1)
+        equality = date.isYesterday() ? "is yesterday" : "is not yesterday"
+        sectionItems.append(TableItem(title: "Yesterday", description: "\(date.toString()) \(equality)"))
         
         equality = now.isSameWeekAsDate(date) ? "is same week as" : "is not same week as"
-        println(equality)
+        sectionItems.append(TableItem(title: "Same Week", description: "\(date.toString()) \(equality) \(date.toString())"))
         
-        equality = now.isThisWeek() ? "is this week" : "is not this week"
-        println(equality)
+        equality = date.isThisWeek() ? "is this week" : "is not this week"
+        sectionItems.append(TableItem(title: "This Week", description: "\(date.toString()) \(equality)"))
         
-        equality = now.isNextWeek() ? "is next week" : "is not next week"
-        println(equality)
+        date = now.dateByAddingDays(7)
+        equality = date.isNextWeek() ? "is next week" : "is not next week"
+        sectionItems.append(TableItem(title: "Next Week", description: "\(date.toString()) \(equality)"))
         
-        equality = now.isLasttWeek() ? "is last week" : "is not last week"
-        println(equality)
+        date = now.dateBySubtractingDays(7)
+        equality = date.isLastWeek() ? "is last week" : "is not last week"
+        sectionItems.append(TableItem(title: "Last Week", description: "\(date.toString()) \(equality)"))
         
         equality = now.isSameYearAsDate(date) ? "is same year as" : "is not same year as"
-        println(equality)
+        sectionItems.append(TableItem(title: "Same Year", description: "\(now.toString()) \(equality) \(date.toString())"))
         
-        equality = now.isThisYear() ? "is this year" : "is not this year"
-        println(equality)
+        equality = date.isThisYear() ? "is this year" : "is not this year"
+        sectionItems.append(TableItem(title: "This Year", description: "\(date.toString()) \(equality)"))
         
-        equality = now.isNextYear() ? "is next year" : "is not next year"
-        println(equality)
+        date = now.dateByAddingDays(365)
+        equality = date.isNextYear() ? "is next year" : "is not next year"
+        sectionItems.append(TableItem(title: "Next Year", description: "\(date.toString()) \(equality)"))
         
-        equality = now.isLastYear() ? "is last year" : "is not last year"
-        println(equality)
+        date = now.dateBySubtractingDays(365)
+        equality = date.isLastYear() ? "is last year" : "is not last year"
+        sectionItems.append(TableItem(title: "Last Year", description: "\(date.toString()) \(equality)"))
         
+        items.append(sectionItems)
         
         /* ADJUSTING DATES */
-        
-        println("\nAdjusting Dates")
+        sections.append("Adjusting Dates")
+        sectionItems = [TableItem]()
         
         date = now.dateByAddingDays(2)
-        println("Adding 2 days: \(date)")
+        sectionItems.append(TableItem(title: "Adding Days", description: "+ 2 Days: \(date.toString())"))
         
         date = now.dateBySubtractingDays(4)
-        println("Subtracting 4 days: \(date)")
+        sectionItems.append(TableItem(title: "Substracting Days", description: "- 4 Days: \(date.toString())"))
         
         date = now.dateByAddingHours(2)
-        println("Adding 2 hours: \(date)")
+        sectionItems.append(TableItem(title: "Adding Hours", description: "+ 2 Hours: \(date.toString())"))
         
         date = now.dateBySubtractingHours(4)
-        println("Subtracting 4 hours: \(date)")
+        sectionItems.append(TableItem(title: "Substracting Hours", description: "- 4 Hours: \(date.toString())"))
         
         date = now.dateByAddingMinutes(2)
-        println("Adding 2 minutes: \(date)")
+        sectionItems.append(TableItem(title: "Adding Minutes", description: "+ 2 Minutes: \(date.toString())"))
         
         date = now.dateBySubtractingMinutes(4)
-        println("Subtracting 4 minutes: \(date)")
+        sectionItems.append(TableItem(title: "Substracting Minutes", description: "- 4 Minutes: \(date.toString())"))
         
         date = now.dateAtStartOfDay()
-        println("Start of day: \(date)")
+        sectionItems.append(TableItem(title: "Start of Day", description: "\(date.toString())"))
         
         date = now.dateAtEndOfDay()
-        println("End of day: \(date)")
+        sectionItems.append(TableItem(title: "End of Day", description: "\(date.toString())"))
         
         date = now.dateAtStartOfWeek()
-        println("Start of week: \(date)")
+        sectionItems.append(TableItem(title: "Start of Week", description: "\(date.toString())"))
         
         date = now.dateAtEndOfWeek()
-        println("End of week: \(date)")
+        sectionItems.append(TableItem(title: "End of Week", description: "\(date.toString())"))
+        
+        items.append(sectionItems)
         
         
         /* TIME INTERVAL BETWEEN DATES */
-        
-        println("\nTime Interval between: \(date) and Now")
+        sections.append("Time Intervals")
+        sectionItems = [TableItem]()
         
         var num = date.minutesAfterDate(now)
-        println("Minutes after: \(num)")
+        sectionItems.append(TableItem(title: "Minutes After", description: "Interval from \(date.toString()): \(num)"))
         
         num = date.minutesBeforeDate(now)
-        println("Minutes before: \(num)")
+        sectionItems.append(TableItem(title: "Minutes Before", description: "Interval from \(date.toString()): \(num)"))
         
         num = date.hoursAfterDate(now)
-        println("Hours after: \(num)")
+        sectionItems.append(TableItem(title: "Hours After", description: "Interval from \(date.toString()): \(num)"))
         
         num = date.hoursBeforeDate(now)
-        println("Hours before: \(num)")
+        sectionItems.append(TableItem(title: "Hours Before", description: "Interval from \(date.toString()): \(num)"))
         
         num = date.daysAfterDate(now)
-        println("Days after: \(num)")
+        sectionItems.append(TableItem(title: "Days After", description: "Interval from \(date.toString()): \(num)"))
         
         num = date.daysBeforeDate(now)
-        println("Days before: \(num)")
+        sectionItems.append(TableItem(title: "Days Before", description: "Interval from \(date.toString()): \(num)"))
+        
+        items.append(sectionItems)
         
         
         /* DECOMPOSING DATES */
+        sections.append("Decomposing Dates")
+        sectionItems = [TableItem]()
         
-        println("\nDecomposing Date: \(now.toString())")
-        println("nearest hour \(now.nearestHour())")
-        println("year \(now.year())")
-        println("month \(now.month())")
-        println("week \(now.week())")
-        println("day \(now.day())")
-        println("hour \(now.hour())")
-        println("minute \(now.minute())")
-        println("seconds \(now.seconds())")
-        println("weekday \(now.weekday())")
-        println("nthWeekday \(now.nthWeekday())")
-        println("monthDays \(now.monthDays())")
-        println("firstDayOfWeek \(now.firstDayOfWeek())")
-        println("lastDayOfWeek \(now.lastDayOfWeek())")
-        println("isWeekday \(now.isWeekday())")
-        println("isWeekend \(now.isWeekend())")
+        sectionItems.append(TableItem(title: "Nearest Hour", description: "\(now.nearestHour)"))
+        sectionItems.append(TableItem(title: "Year", description: "\(now.year)"))
+        sectionItems.append(TableItem(title: "Month", description: "\(now.month)"))
+        sectionItems.append(TableItem(title: "Week", description: "\(now.week)"))
+        sectionItems.append(TableItem(title: "Day", description: "\(now.day)"))
+        sectionItems.append(TableItem(title: "Hour", description: "\(now.hour)"))
+        sectionItems.append(TableItem(title: "Minute", description: "\(now.minute)"))
         
+        sectionItems.append(TableItem(title: "Seconds", description: "\(now.seconds)"))
+        sectionItems.append(TableItem(title: "Weekday", description: "\(now.weekday)"))
+        sectionItems.append(TableItem(title: "Nth Weekday", description: "\(now.nthWeekday)"))
+        sectionItems.append(TableItem(title: "Month Days", description: "\(now.monthDays)"))
+        sectionItems.append(TableItem(title: "First Day Of Week", description: "\(now.firstDayOfWeek)"))
+        sectionItems.append(TableItem(title: "Last Day Of Week", description: "\(now.lastDayOfWeek)"))
+        sectionItems.append(TableItem(title: "Is Weekday", description: "\(now.isWeekday)"))
+        sectionItems.append(TableItem(title: "Is Weekend", description: "\(now.isWeekend)"))
+        
+        items.append(sectionItems)
         
         /* DATE TO STRING */
-        println("\nDate To String")
+        sections.append("Date To String")
+        sectionItems = [TableItem]()
         
-        var string = now.toString()
-        println("Default: \(string)")
+        sectionItems.append(TableItem(title: "toString()", description: now.toString()))
         
-        string = now.toString(format: .Custom("dd MMM yyyy HH:mm:ss"))
-        println("Custom format: \(string)")
+        sectionItems.append(TableItem(title: "Custom: dd MMM yyyy HH:mm:ss", description: now.toString(format: .Custom("dd MMM yyyy HH:mm:ss"))))
         
-        string = now.toString(format: .ISO8601)
-        println("ISO8601: \(string)")
-
+        sectionItems.append(TableItem(title: "ISO8601", description: now.toString(format: .ISO8601)))
         
-        string = now.toString(format: .DotNet)
-        println("DotNet JSON: \(string)")
+        sectionItems.append(TableItem(title: "DotNet JSON", description: now.toString(format: .DotNet)))
         
-        string = now.toString(format: .RSS)
-        println("RSS: \(string)")
+        sectionItems.append(TableItem(title: "RSS", description: now.toString(format: .RSS)))
         
-        string = now.toString(format: .AltRSS)
-        println("AltRSS: \(string)")
+        sectionItems.append(TableItem(title: "AltRSS", description: now.toString(format: .AltRSS)))
         
-        string = now.toString(dateStyle: .ShortStyle, timeStyle: .NoStyle, doesRelativeDateFormatting: true)
-        println("Short Date, No Time format plus relative: \(string)")
+        sectionItems.append(TableItem(title: "Short Date, No Time, Relative", description: now.toString(dateStyle: .ShortStyle, timeStyle: .NoStyle, doesRelativeDateFormatting: true)))
         
-        string = now.toString(dateStyle: .ShortStyle, timeStyle: .NoStyle, doesRelativeDateFormatting: false)
-        println("Short Date And No Time: \(string)")
+        sectionItems.append(TableItem(title: "Short Date, Short Time, Not Relative", description: now.toString(dateStyle: .ShortStyle, timeStyle: .ShortStyle, doesRelativeDateFormatting: false)))
         
-        string = now.toString(dateStyle: .MediumStyle, timeStyle: .ShortStyle, doesRelativeDateFormatting: false)
-        println("Medium Date And Short Time: \(string)")
+        sectionItems.append(TableItem(title: "Medium Date, Medium Time, Not Relative", description: now.toString(dateStyle: .MediumStyle, timeStyle: .MediumStyle, doesRelativeDateFormatting: false)))
         
-        string = now.toString(dateStyle: .LongStyle, timeStyle: .LongStyle, doesRelativeDateFormatting: false)
-        println("Long Date And Short Time: \(string)")
+        sectionItems.append(TableItem(title: "Long Date, Long Time, Not Relative", description: now.toString(dateStyle: .LongStyle, timeStyle: .LongStyle, doesRelativeDateFormatting: false)))
         
-        string = now.toString(dateStyle: .FullStyle, timeStyle: .FullStyle, doesRelativeDateFormatting: false)
-        println("Full Date And Full Time: \(string)")
+        sectionItems.append(TableItem(title: "Full Date, Full Time, Not Relative", description: now.toString(dateStyle: .FullStyle, timeStyle: .FullStyle, doesRelativeDateFormatting: false)))
         
-        string = now.relativeTimeToString()
-        println("Relative time to string: \(string)")
+        sectionItems.append(TableItem(title: "Relative Time", description: now.relativeTimeToString()))
+        
+        items.append(sectionItems)
         
         /* DATE COMPONENTS TO STRING */
         
-        println("\nDate Components To String Fromm Date: \(now.toString())")
+        sections.append("Date Components")
+        sectionItems = [TableItem]()
         
-        string = now.weekdayToString()
-        println("Weekday: \(string)")
+        sectionItems.append(TableItem(title: "Weekday", description: now.weekdayToString()))
         
-        string = now.shortWeekdayToString()
-        println("Short Weekday: \(string)")
+        sectionItems.append(TableItem(title: "Short Weekday", description: now.shortWeekdayToString()))
         
-        string = now.veryShortWeekdayToString()
-        println("Very Short Weekday: \(string)")
+        sectionItems.append(TableItem(title: "Very Short Weekday", description: now.veryShortWeekdayToString()))
         
-        string = now.monthToString()
-        println("Month: \(string)")
+        sectionItems.append(TableItem(title: "Month", description: now.monthToString()))
         
-        string = now.shortMonthToString()
-        println("Short Month: \(string)")
+        sectionItems.append(TableItem(title: "Short Month", description: now.shortMonthToString()))
         
-        string = now.veryShortMonthToString()
-        println("Very Short Month: \(string)")
+        sectionItems.append(TableItem(title: "Very Short Month", description: now.veryShortMonthToString()))
         
+        
+        items.append(sectionItems)
         
     }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+        return items.count
+    }
+    
+    override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+        return sections[section]
+    }
+    
+    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return items[section].count
+    }
+    
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell!
+        let item = items[indexPath.section][indexPath.row]
+        
+        cell.textLabel.text = item.title
+        cell.detailTextLabel.text = item.description
+        return cell
+    }
+    
+    
+    
 
 
 }
