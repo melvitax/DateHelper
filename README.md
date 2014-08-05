@@ -2,6 +2,9 @@ AF+Date+Helper
 =============================
 
 Convenience extension for NSDate in Swift
+Tested with IOS 8 Beta 5
+
+![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
 
 ### Date from String
 ```Swift
