@@ -166,25 +166,24 @@ class ViewController: UITableViewController {
         sections.append("Decomposing Dates")
         sectionItems = [TableItem]()
         
-        sectionItems.append(TableItem(title: "Nearest Hour", description: "\(now.nearestHour)"))
-        sectionItems.append(TableItem(title: "Year", description: "\(now.year)"))
-        sectionItems.append(TableItem(title: "Month", description: "\(now.month)"))
-        sectionItems.append(TableItem(title: "Week", description: "\(now.week)"))
-        sectionItems.append(TableItem(title: "Day", description: "\(now.day)"))
-        sectionItems.append(TableItem(title: "Hour", description: "\(now.hour)"))
-        sectionItems.append(TableItem(title: "Minute", description: "\(now.minute)"))
-        
-        sectionItems.append(TableItem(title: "Seconds", description: "\(now.seconds)"))
-        sectionItems.append(TableItem(title: "Weekday", description: "\(now.weekday)"))
-        sectionItems.append(TableItem(title: "Nth Weekday", description: "\(now.nthWeekday)"))
-        sectionItems.append(TableItem(title: "Month Days", description: "\(now.monthDays)"))
-        sectionItems.append(TableItem(title: "First Day Of Week", description: "\(now.firstDayOfWeek)"))
-        sectionItems.append(TableItem(title: "Last Day Of Week", description: "\(now.lastDayOfWeek)"))
+        sectionItems.append(TableItem(title: "Nearest Hour", description: "\(now.nearestHour())"))
+        sectionItems.append(TableItem(title: "Year", description: "\(now.year())"))
+        sectionItems.append(TableItem(title: "Month", description: "\(now.month())"))
+        sectionItems.append(TableItem(title: "Week", description: "\(now.week())"))
+        sectionItems.append(TableItem(title: "Day", description: "\(now.day())"))
+        sectionItems.append(TableItem(title: "Hour", description: "\(now.hour())"))
+        sectionItems.append(TableItem(title: "Minute", description: "\(now.minute())"))
+
+        sectionItems.append(TableItem(title: "Seconds", description: "\(now.seconds())"))
+        sectionItems.append(TableItem(title: "Weekday", description: "\(now.weekday())"))
+        sectionItems.append(TableItem(title: "Nth Weekday", description: "\(now.nthWeekday())"))
+        sectionItems.append(TableItem(title: "Month Days", description: "\(now.monthDays())"))
+        sectionItems.append(TableItem(title: "First Day Of Week", description: "\(now.firstDayOfWeek())"))
+        sectionItems.append(TableItem(title: "Last Day Of Week", description: "\(now.lastDayOfWeek())"))
         sectionItems.append(TableItem(title: "Is Weekday", description: "\(now.isWeekday())"))
         sectionItems.append(TableItem(title: "Is Weekend", description: "\(now.isWeekend())"))
-        
         items.append(sectionItems)
-        
+
         /* DATE TO STRING */
         sections.append("Date To String")
         sectionItems = [TableItem]()
