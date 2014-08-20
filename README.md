@@ -1,4 +1,4 @@
-AF+Date+Helper
+AF+Date+Helper 1.06
 =============================
 
 Convenience extension for NSDate in Swift
@@ -62,22 +62,21 @@ date.daysBeforeDate(now) -> Int
 
 ### Decomposing Dates
 ```Swift
-date.toString -> Int
-date.nearestHour -> Int
-date.year -> Int
-date.month -> Int
-date.week -> Int
-date.day -> Int
-date.hour -> Int
-date.minute -> Int
-date.seconds -> Int
-date.weekday -> Int
-date.nthWeekday -> Int
-date.monthDays -> Int
-date.firstDayOfWeek -> Int
-date.lastDayOfWeek -> Int
-date.isWeekday -> Int
-date.isWeekend -> Int
+date.nearestHour() -> Int
+date.year() -> Int
+date.month() -> Int
+date.week() -> Int
+date.day() -> Int
+date.hour() -> Int
+date.minute() -> Int
+date.seconds() -> Int
+date.weekday() -> Int
+date.nthWeekday() -> Int
+date.monthDays() -> Int
+date.firstDayOfWeek() -> Int
+date.lastDayOfWeek() -> Int
+date.isWeekday() -> Int
+date.isWeekend() -> Int
 ```
 
 ### To String
