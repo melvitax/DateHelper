@@ -1,7 +1,7 @@
 //
 //  AF+Date+Extension.swift
 //
-//  Version 1.06
+//  Version 1.07
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -15,15 +15,15 @@ enum DateFormat {
 }
 
 extension NSDate {
-    
-    // For private use
+
+    // MARK: Intervals In Seconds
     private class func minuteInSeconds() -> Double { return 60 }
     private class func hourInSeconds() -> Double { return 3600 }
     private class func dayInSeconds() -> Double { return 86400 }
     private class func weekInSeconds() -> Double { return 604800 }
     private class func yearInSeconds() -> Double { return 31556926 }
     
-    // #pragma mark - Components
+    // MARK: Components
     private class func componentFlags() -> NSCalendarUnit { return .YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit | .WeekCalendarUnit | .HourCalendarUnit | .MinuteCalendarUnit | .SecondCalendarUnit | .WeekdayCalendarUnit | .WeekdayOrdinalCalendarUnit | .CalendarUnitWeekOfYear }
     
     private class func components(#fromDate: NSDate) -> NSDateComponents! {
@@ -34,7 +34,7 @@ extension NSDate {
         return NSDate.components(fromDate: self)!
     }
     
-    //#pragma mark - Date from String
+    // MARK: Date From String
     
     convenience init(fromString string: String, format:DateFormat)
     {
@@ -115,7 +115,7 @@ extension NSDate {
      
     
     
-    //#pragma mark - Comparing Dates
+    // MARK: Comparing Dates
     
     func isEqualToDateIgnoringTime(date: NSDate) -> Bool
     {
@@ -207,7 +207,7 @@ extension NSDate {
     }
     
   
-    //#pragma mark Adjusting Dates
+    // MARK: Adjusting Dates
     
     func dateByAddingDays(days: Int) -> NSDate
     {
@@ -286,7 +286,7 @@ extension NSDate {
     }
     
     
-    //#pragma mark Retrieving Intervals
+    // MARK: Retrieving Intervals
     
     func minutesAfterDate(date: NSDate) -> Int
     {
@@ -325,7 +325,7 @@ extension NSDate {
     }
     
     
-    //#pragma mark - Decomposing Dates
+    // MARK: Decomposing Dates
     
     func nearestHour () -> Int {
         let halfHour = NSDate.minuteInSeconds() * 30
@@ -369,7 +369,7 @@ extension NSDate {
     }
     
 
-    //#pragma mark - Date to string
+    // MARK: To String
     
     func toString() -> String {
         return self.toString(dateStyle: .ShortStyle, timeStyle: .ShortStyle, doesRelativeDateFormatting: false)

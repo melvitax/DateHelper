@@ -13,7 +13,7 @@ struct TableItem {
     let description: String
 }
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     let now = NSDate()
     var date = NSDate()
@@ -236,24 +236,28 @@ class ViewController: UITableViewController {
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return items.count
     }
     
-    override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+
+    
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items[section].count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell!
-        let item = items[indexPath.section][indexPath.row]
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        cell.textLabel.text = item.title
-        cell.detailTextLabel.text = item.description
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let item = items[indexPath.section][indexPath.row]
+        cell.textLabel?.text = item.title
+        cell.detailTextLabel?.text = item.description
+        
         return cell
     }
     
