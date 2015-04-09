@@ -24,7 +24,7 @@ extension NSDate {
     private class func yearInSeconds() -> Double { return 31556926 }
     
     // MARK: Components
-    private class func componentFlags() -> NSCalendarUnit { return .YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit | .WeekCalendarUnit | .HourCalendarUnit | .MinuteCalendarUnit | .SecondCalendarUnit | .WeekdayCalendarUnit | .WeekdayOrdinalCalendarUnit | .CalendarUnitWeekOfYear }
+    private class func componentFlags() -> NSCalendarUnit { return .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitWeekOfMonth | .CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitSecond | .CalendarUnitWeekday | .CalendarUnitWeekdayOrdinal | .CalendarUnitWeekOfYear }
     
     private class func components(#fromDate: NSDate) -> NSDateComponents! {
         return NSCalendar.currentCalendar().components(NSDate.componentFlags(), fromDate: fromDate)
@@ -265,7 +265,7 @@ extension NSDate {
     
     func dateAtStartOfWeek() -> NSDate
     {
-        let flags :NSCalendarUnit = .YearCalendarUnit | .MonthCalendarUnit | .WeekCalendarUnit | .WeekdayCalendarUnit
+        let flags: NSCalendarUnit = .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitWeekOfMonth | .CalendarUnitWeekday
         var components = NSCalendar.currentCalendar().components(flags, fromDate: self)
         components.weekday = 1 // Sunday
         components.hour = 0
@@ -276,7 +276,7 @@ extension NSDate {
     
     func dateAtEndOfWeek() -> NSDate
     {
-        let flags :NSCalendarUnit = .YearCalendarUnit | .MonthCalendarUnit | .WeekCalendarUnit | .WeekdayCalendarUnit
+        let flags: NSCalendarUnit = .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitWeekOfMonth | .CalendarUnitWeekday
         var components = NSCalendar.currentCalendar().components(flags, fromDate: self)
         components.weekday = 7 // Sunday
         components.hour = 0
@@ -348,7 +348,7 @@ extension NSDate {
     func seconds () -> Int { return self.components().second }
     func weekday () -> Int { return self.components().weekday }
     func nthWeekday () -> Int { return self.components().weekdayOrdinal } //// e.g. 2nd Tuesday of the month is 2
-    func monthDays () -> Int { return NSCalendar.currentCalendar().rangeOfUnit(.DayCalendarUnit, inUnit: .MonthCalendarUnit, forDate: self).length }
+    func monthDays () -> Int { return NSCalendar.currentCalendar().rangeOfUnit(.CalendarUnitDay, inUnit: .CalendarUnitMonth, forDate: self).length }
     func firstDayOfWeek () -> Int {
         let distanceToStartOfWeek = NSDate.dayInSeconds() * Double(self.components().weekday - 1)
         let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate - distanceToStartOfWeek
@@ -364,7 +364,7 @@ extension NSDate {
         return !self.isWeekend()
     }
     func isWeekend() -> Bool {
-        let range = NSCalendar.currentCalendar().maximumRangeOfUnit(.WeekdayCalendarUnit)
+        let range = NSCalendar.currentCalendar().maximumRangeOfUnit(.CalendarUnitWeekday)
         return (self.weekday() == range.location || self.weekday() == range.length)
     }
     
