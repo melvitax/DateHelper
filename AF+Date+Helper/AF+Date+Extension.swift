@@ -420,14 +420,14 @@ extension NSDate {
         if seconds < 10 {
             return NSLocalizedString("just now", comment: "relative time")
         } else if seconds < 60 {
-            return NSLocalizedString("\(seconds) seconds ago", comment: "relative time")
+            return NSLocalizedString("\(Int(seconds)) seconds ago", comment: "relative time")
         }
         
         if minutes < 60 {
             if minutes == 1 {
                 return NSLocalizedString("1 minute ago", comment: "relative time")
             } else {
-                return NSLocalizedString("\(minutes) minutes ago", comment: "relative time")
+                return NSLocalizedString("\(Int(minutes)) minutes ago", comment: "relative time")
             }
         }
         
@@ -435,7 +435,7 @@ extension NSDate {
             if hours == 1 {
                 return NSLocalizedString("1 hour ago", comment: "relative time")
             } else {
-                return NSLocalizedString("\(hours) hours ago", comment: "relative time")
+                return NSLocalizedString("\(Int(hours)) hours ago", comment: "relative time")
             }
         }
         
@@ -443,7 +443,7 @@ extension NSDate {
             if days == 1 {
                 return NSLocalizedString("1 day ago", comment: "relative time")
             } else {
-                return NSLocalizedString("\(days) days ago", comment: "relative time")
+                return NSLocalizedString("\(Int(days)) days ago", comment: "relative time")
             }
         }
         
