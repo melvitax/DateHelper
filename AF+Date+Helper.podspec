@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'AF+Date+Helper'
-  s.version  = '1.07'
+  s.version  = '1.08'
   s.platform = :ios
   s.license  = 'MIT'
   s.summary  = 'Convenience extension for NSDate in Swift.'
@@ -9,6 +9,5 @@ Pod::Spec.new do |s|
   s.source   = { :git => 'https://github.com/melvitax/AFDateHelper.git', :tag => s.version.to_s }
   s.description = 'Convenience extension for NSDate in Swift for creating, modifying or comparing dates.'
   s.source_files = 'AF+Date+Helper/*'
-  s.framework    = 'QuartzCore'
   s.requires_arc = true
 end
