@@ -418,32 +418,36 @@ extension NSDate {
         let days = round(hours/24)
         
         if seconds < 10 {
-            return NSLocalizedString("just now", comment: "relative time")
+            return NSLocalizedString("just now", comment: "Show the relative time from a date")
         } else if seconds < 60 {
-            return NSLocalizedString("\(Int(seconds)) seconds ago", comment: "relative time")
+            let relativeTime = NSLocalizedString("%.f seconds ago", comment: "Show the relative time from a date")
+            return String(format: relativeTime, seconds)
         }
         
         if minutes < 60 {
             if minutes == 1 {
-                return NSLocalizedString("1 minute ago", comment: "relative time")
+                return NSLocalizedString("1 minute ago", comment: "Show the relative time from a date")
             } else {
-                return NSLocalizedString("\(Int(minutes)) minutes ago", comment: "relative time")
+                let relativeTime = NSLocalizedString("%.f minutes ago", comment: "Show the relative time from a date")
+                return String(format: relativeTime, minutes)
             }
         }
         
         if hours < 24 {
             if hours == 1 {
-                return NSLocalizedString("1 hour ago", comment: "relative time")
+                return NSLocalizedString("1 hour ago", comment: "Show the relative time from a date")
             } else {
-                return NSLocalizedString("\(Int(hours)) hours ago", comment: "relative time")
+                let relativeTime = NSLocalizedString("%.f hours ago", comment: "Show the relative time from a date")
+                return String(format: relativeTime, hours)
             }
         }
         
         if days < 7 {
             if days == 1 {
-                return NSLocalizedString("1 day ago", comment: "relative time")
+                return NSLocalizedString("1 day ago", comment: "Show the relative time from a date")
             } else {
-                return NSLocalizedString("\(Int(days)) days ago", comment: "relative time")
+                let relativeTime = NSLocalizedString("%.f days ago", comment: "Show the relative time from a date")
+                return String(format: relativeTime, days)
             }
         }
         
