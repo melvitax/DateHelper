@@ -65,9 +65,16 @@ extension NSDate {
                 } else if string.hasSuffix("Z") {
                     s = s.substringToIndex(s.length-1) + "GMT"
                 }
-                let formatter = NSDateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZ"
-                if let date = formatter.dateFromString(string as String) {
+                
+                struct Static  {
+                    static var formatter: NSDateFormatter? = nil
+                    static var token: dispatch_once_t = 0;
+                }
+                dispatch_once(&Static.token) {
+                    Static.formatter = NSDateFormatter();
+                    Static.formatter?.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZ"
+                }
+                if let date = Static.formatter!.dateFromString(string as String) {
                     self.init(timeInterval:0, sinceDate:date)
                 } else {
                     self.init()
@@ -79,9 +86,15 @@ extension NSDate {
                 if string.hasSuffix("Z") {
                     s = s.substringToIndex(s.length-1) + "GMT"
                 }
-                let formatter = NSDateFormatter()
-                formatter.dateFormat = "EEE, d MMM yyyy HH:mm:ss ZZZ"
-                if let date = formatter.dateFromString(string as String) {
+                struct Static  {
+                    static var formatter: NSDateFormatter? = nil
+                    static var token: dispatch_once_t = 0;
+                }
+                dispatch_once(&Static.token) {
+                    Static.formatter = NSDateFormatter();
+                    Static.formatter?.dateFormat = "EEE, d MMM yyyy HH:mm:ss ZZZ"
+                }
+                if let date = Static.formatter!.dateFromString(string as String) {
                     self.init(timeInterval:0, sinceDate:date)
                 } else {
                     self.init()
@@ -93,9 +106,15 @@ extension NSDate {
                 if string.hasSuffix("Z") {
                     s = s.substringToIndex(s.length-1) + "GMT"
                 }
-                let formatter = NSDateFormatter()
-                formatter.dateFormat = "d MMM yyyy HH:mm:ss ZZZ"
-                if let date = formatter.dateFromString(string as String) {
+                struct Static  {
+                    static var formatter: NSDateFormatter? = nil
+                    static var token: dispatch_once_t = 0;
+                }
+                dispatch_once(&Static.token) {
+                    Static.formatter = NSDateFormatter();
+                    Static.formatter?.dateFormat = "d MMM yyyy HH:mm:ss ZZZ"
+                }
+                if let date = Static.formatter!.dateFromString(string as String) {
                     self.init(timeInterval:0, sinceDate:date)
                 } else {
                     self.init()
@@ -103,9 +122,15 @@ extension NSDate {
             
             case .Custom(let dateFormat):
                 
-                let formatter = NSDateFormatter()
-                formatter.dateFormat = dateFormat
-                if let date = formatter.dateFromString(string as String) {
+                struct Static  {
+                    static var formatter: NSDateFormatter? = nil
+                    static var token: dispatch_once_t = 0;
+                }
+                dispatch_once(&Static.token) {
+                    Static.formatter = NSDateFormatter();
+                    Static.formatter?.dateFormat = dateFormat
+                }
+                if let date = Static.formatter!.dateFromString(string as String) {
                     self.init(timeInterval:0, sinceDate:date)
                 } else {
                     self.init()

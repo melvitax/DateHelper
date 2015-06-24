@@ -30,7 +30,7 @@ class ViewController: UITableViewController, UITableViewDataSource, UITableViewD
         var sectionItems = [TableItem]()
         
         // Date from string with custom format
-        date = NSDate(fromString: "16 July 1972 6:12:00 ", format: .Custom("dd MMM yyyy HH:mm:ss"))
+        date = NSDate(fromString: "16 July 1972 6:12:00", format: .Custom("dd MMM yyyy HH:mm:ss"))
         sectionItems.append(TableItem(title: "Custom Format", description: "dd MMM yyyy HH:mm:ss = \(date.toString())"))
         
         // Date from ISO8601 String
@@ -43,7 +43,6 @@ class ViewController: UITableViewController, UITableViewDataSource, UITableViewD
         
         // Date from RSS String
         date = NSDate(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .RSS)
-        println("RSS: \(date)")
         sectionItems.append(TableItem(title: "RSS", description:"Fri, 09 Sep 2011 15:26:08 +0200 = \(date.toString())"))
         
         // Date from AltRSS String
