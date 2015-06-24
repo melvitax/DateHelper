@@ -1,8 +1,8 @@
-AF+Date+Helper 1.08
+AF+Date+Helper 1.09
 =============================
 
 Convenience extension for NSDate in Swift
-COmpatible with Swift 1.2
+Compatible with Swift 1.2
 
 ![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
 

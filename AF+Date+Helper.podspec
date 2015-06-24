@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'AF+Date+Helper'
-  s.version  = '1.08'
+  s.version  = '1.09'
   s.platform = :ios
   s.license  = 'MIT'
   s.summary  = 'Convenience extension for NSDate in Swift.'
