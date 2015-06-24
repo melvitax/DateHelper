@@ -185,14 +185,14 @@ extension NSDate {
     {
         let interval: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate + NSDate.weekInSeconds()
         let date = NSDate(timeIntervalSinceReferenceDate: interval)
-        return self.isSameYearAsDate(date)
+        return self.isSameWeekAsDate(date)
     }
     
     func isLastWeek() -> Bool
     {
         let interval: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate - NSDate.weekInSeconds()
         let date = NSDate(timeIntervalSinceReferenceDate: interval)
-        return self.isSameYearAsDate(date)
+        return self.isSameWeekAsDate(date)
     }
     
     func isSameYearAsDate(date: NSDate) -> Bool
