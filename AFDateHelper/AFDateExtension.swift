@@ -1,7 +1,7 @@
 //
-//  AF+Date+Extension.swift
+//  AFDateExtension.swift
 //
-//  Version 1.09
+//  Version 2.0.0
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.

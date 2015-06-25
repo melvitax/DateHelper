@@ -13,7 +13,7 @@ struct TableItem {
     let description: String
 }
 
-class ViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UITableViewController {
     
     let now = NSDate()
     var date = NSDate()

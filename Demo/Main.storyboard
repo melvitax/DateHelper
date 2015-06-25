@@ -23,7 +23,7 @@
         <!--AF Date Helper-->
         <scene sceneID="Jhf-fe-Yk7">
             <objects>
-                <tableViewController id="sgH-7a-lds" customClass="ViewController" customModule="Swift_Demo_AF_Date_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sgH-7a-lds" customClass="ViewController" customModule="AFDateHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="hdY-Qh-42s">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

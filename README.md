@@ -1,10 +1,17 @@
-AF+Date+Helper 1.09
-=============================
+# AFDateHelper
 
-Convenience extension for NSDate in Swift
-Compatible with Swift 1.2
+[![Version](https://img.shields.io/cocoapods/v/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
+[![License](https://img.shields.io/cocoapods/l/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
+[![Platform](https://img.shields.io/cocoapods/p/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
+
+A convenience extension for NSDate in Swift 1.2
 
 ![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
+
+
+## Usage
+
+To run the example project, clone or download the repo, and run.
 
 ### Date from String
 ```Swift
@@ -105,3 +112,24 @@ date.shortMonthToString() -> String
 date.veryShortMonthToString() -> String
 ```
 
+
+## Requirements
+
+Swift 1.2
+
+## Installation
+
+AFDateHelper is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "AFDateHelper"
+```
+
+## Author
+
+Melvin Rivera, melvin@allforces.com
+
+## License
+
+AFDateHelper is available under the MIT license. See the LICENSE file for more info.

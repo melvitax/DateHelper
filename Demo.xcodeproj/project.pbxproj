@@ -11,7 +11,7 @@
 		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
 		65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B75F2C19744D6D000AEFD4 /* Main.storyboard */; };
-		65D016A119771E80005220FB /* AF+Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AF+Date+Extension.swift */; };
+		65D016A119771E80005220FB /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AFDateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,15 +19,15 @@
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		655AEB46192D42990053AD6C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		655AEB64192D429A0053AD6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		65889B6C1965051C0049740E /* Swift Demo AF+Date+Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Demo AF+Date+Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		65889B6F1965051C0049740E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Demo AF+Date+Helper/Info.plist"; sourceTree = "<group>"; };
-		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Demo AF+Date+Helper/AppDelegate.swift"; sourceTree = "<group>"; };
-		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Demo AF+Date+Helper/ViewController.swift"; sourceTree = "<group>"; };
-		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Demo AF+Date+Helper/Images.xcassets"; sourceTree = "<group>"; };
-		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "Demo AF+Date+Helper/Main.storyboard"; sourceTree = "<group>"; };
-		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		65D016A019771E80005220FB /* AF+Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AF+Date+Extension.swift"; sourceTree = "<group>"; };
-		65D016A219771E9D005220FB /* AF+Date+Helper.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "AF+Date+Helper.podspec"; path = "../AF+Date+Helper.podspec"; sourceTree = "<group>"; };
+		65889B6C1965051C0049740E /* AFDateHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFDateHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65889B6F1965051C0049740E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demo/Info.plist; sourceTree = "<group>"; };
+		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = "<group>"; };
+		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demo/ViewController.swift; sourceTree = "<group>"; };
+		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Demo/Images.xcassets; sourceTree = "<group>"; };
+		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Demo/Main.storyboard; sourceTree = "<group>"; };
+		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65D016A019771E80005220FB /* AFDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDateExtension.swift; sourceTree = "<group>"; };
+		65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFDateHelper.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,14 +44,14 @@
 		655AEB36192D42990053AD6C = {
 			isa = PBXGroup;
 			children = (
-				65D0169F19771E80005220FB /* AF+Date+Helper */,
+				65D0169F19771E80005220FB /* AFDateHelper */,
 				65889B701965051C0049740E /* AppDelegate.swift */,
 				65889B721965051C0049740E /* ViewController.swift */,
 				65889B771965051C0049740E /* Images.xcassets */,
 				65B75F2C19744D6D000AEFD4 /* Main.storyboard */,
 				65889B6F1965051C0049740E /* Info.plist */,
+				65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */,
 				65B7EA75197082AA0097E598 /* README.md */,
-				65D016A219771E9D005220FB /* AF+Date+Helper.podspec */,
 				655AEB41192D42990053AD6C /* Frameworks */,
 				655AEB40192D42990053AD6C /* Products */,
 			);
@@ -60,7 +60,7 @@
 		655AEB40192D42990053AD6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65889B6C1965051C0049740E /* Swift Demo AF+Date+Helper.app */,
+				65889B6C1965051C0049740E /* AFDateHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,21 +76,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		65D0169F19771E80005220FB /* AF+Date+Helper */ = {
+		65D0169F19771E80005220FB /* AFDateHelper */ = {
 			isa = PBXGroup;
 			children = (
-				65D016A019771E80005220FB /* AF+Date+Extension.swift */,
+				65D016A019771E80005220FB /* AFDateExtension.swift */,
 			);
-			name = "AF+Date+Helper";
-			path = "../AF+Date+Helper";
+			path = AFDateHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65889B6B1965051C0049740E /* Demo AF+Date+Helper */ = {
+		65889B6B1965051C0049740E /* AFDateHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "Demo AF+Date+Helper" */;
+			buildConfigurationList = 65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AFDateHelper" */;
 			buildPhases = (
 				65889B681965051C0049740E /* Sources */,
 				65889B691965051C0049740E /* Frameworks */,
@@ -100,9 +99,9 @@
 			);
 			dependencies = (
 			);
-			name = "Demo AF+Date+Helper";
+			name = AFDateHelper;
 			productName = "Swift Demo UIView+AF+Additions";
-			productReference = 65889B6C1965051C0049740E /* Swift Demo AF+Date+Helper.app */;
+			productReference = 65889B6C1965051C0049740E /* AFDateHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -111,6 +110,7 @@
 		655AEB37192D42990053AD6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "All Forces";
 				TargetAttributes = {
@@ -120,7 +120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "Demo AF+Date+Helper" */;
+			buildConfigurationList = 655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -133,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65889B6B1965051C0049740E /* Demo AF+Date+Helper */,
+				65889B6B1965051C0049740E /* AFDateHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -156,7 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65889B731965051C0049740E /* ViewController.swift in Sources */,
-				65D016A119771E80005220FB /* AF+Date+Extension.swift in Sources */,
+				65D016A119771E80005220FB /* AFDateExtension.swift in Sources */,
 				65889B711965051C0049740E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,11 +248,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Demo AF+Date+Helper/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "Swift Demo AF+Date+Helper";
+				PRODUCT_NAME = AFDateHelper;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -266,11 +266,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Demo AF+Date+Helper/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "Swift Demo AF+Date+Helper";
+				PRODUCT_NAME = AFDateHelper;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -278,7 +278,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "Demo AF+Date+Helper" */ = {
+		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				655AEB72192D429A0053AD6C /* Debug */,
@@ -287,7 +287,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "Demo AF+Date+Helper" */ = {
+		65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AFDateHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65889B851965051C0049740E /* Debug */,
