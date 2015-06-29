@@ -57,7 +57,7 @@ date.dateAtStartOfWeek() -> NSDate
 date.dateAtEndOfWeek() -> NSDate
 ```
 
-### Time Interval Between Dates */
+### Time Interval Between Dates
 ```Swift
 date.minutesAfterDate(now) -> Int
 date.minutesBeforeDate(now) -> Int
