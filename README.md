@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![Platform](https://img.shields.io/cocoapods/p/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 
-A convenience extension for NSDate in Swift 1.2
+A convenience extension for NSDate in Swift 2
 
 ![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
 
@@ -115,7 +115,7 @@ date.veryShortMonthToString() -> String
 
 ## Requirements
 
-Swift 1.2
+Swift 2
 
 ## Installation
 

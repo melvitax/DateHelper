@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6504ACE21B41E15700FB0CBF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6504ACE11B41E15700FB0CBF /* Launch Screen.storyboard */; };
 		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
 		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6504ACE11B41E15700FB0CBF /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Demo/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		655AEB46192D42990053AD6C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -49,6 +51,7 @@
 				65889B721965051C0049740E /* ViewController.swift */,
 				65889B771965051C0049740E /* Images.xcassets */,
 				65B75F2C19744D6D000AEFD4 /* Main.storyboard */,
+				6504ACE11B41E15700FB0CBF /* Launch Screen.storyboard */,
 				65889B6F1965051C0049740E /* Info.plist */,
 				65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */,
 				65B7EA75197082AA0097E598 /* README.md */,
@@ -111,7 +114,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "All Forces";
 				TargetAttributes = {
 					65889B6B1965051C0049740E = {
@@ -143,6 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6504ACE21B41E15700FB0CBF /* Launch Screen.storyboard in Resources */,
 				65889B781965051C0049740E /* Images.xcassets in Resources */,
 				65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */,
 			);
@@ -182,6 +186,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -252,9 +257,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.allforces.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AFDateHelper;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -270,8 +276,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.allforces.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AFDateHelper;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
