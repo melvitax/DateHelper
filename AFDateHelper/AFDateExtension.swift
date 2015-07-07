@@ -1,7 +1,7 @@
 //
 //  AFDateExtension.swift
 //
-//  Version 2.0.0
+//  Version 2.0.1
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -236,38 +236,44 @@ extension NSDate {
     
     func dateByAddingDays(days: Int) -> NSDate
     {
-        let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate + NSDate.dayInSeconds() * Double(days)
-        return NSDate(timeIntervalSinceReferenceDate: interval)
+        let dateComp = NSDateComponents()
+        dateComp.day = days
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(0))!
     }
     
     func dateBySubtractingDays(days: Int) -> NSDate
     {
-        let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate - NSDate.dayInSeconds() * Double(days)
-        return NSDate(timeIntervalSinceReferenceDate: interval)
+        let dateComp = NSDateComponents()
+        dateComp.day = (days * -1)
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(0))!
     }
     
     func dateByAddingHours(hours: Int) -> NSDate
     {
-        let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate + NSDate.hourInSeconds() * Double(hours)
-        return NSDate(timeIntervalSinceReferenceDate: interval)
+        let dateComp = NSDateComponents()
+        dateComp.hour = hours
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(0))!
     }
     
     func dateBySubtractingHours(hours: Int) -> NSDate
     {
-        let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate - NSDate.hourInSeconds() * Double(hours)
-        return NSDate(timeIntervalSinceReferenceDate: interval)
+        let dateComp = NSDateComponents()
+        dateComp.hour = (hours * -1)
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(0))!
     }
     
     func dateByAddingMinutes(minutes: Int) -> NSDate
     {
-        let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate + NSDate.minuteInSeconds() * Double(minutes)
-        return NSDate(timeIntervalSinceReferenceDate: interval)
+        let dateComp = NSDateComponents()
+        dateComp.minute = minutes
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(0))!
     }
     
     func dateBySubtractingMinutes(minutes: Int) -> NSDate
     {
-        let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate - NSDate.minuteInSeconds() * Double(minutes)
-        return NSDate(timeIntervalSinceReferenceDate: interval)
+        let dateComp = NSDateComponents()
+        dateComp.minute = (minutes * -1)
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(0))!
     }
     
     func dateAtStartOfDay() -> NSDate
