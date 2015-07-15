@@ -6,7 +6,7 @@
 
 A convenience extension for NSDate in Swift 1.2
 
-![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
+![Sample Project Screenshot](https://raw.github.com/melvitax/AFDateHelper/2.0.1/Screenshot.png "Sample Project Screenshot")
 
 
 ## Usage
@@ -57,7 +57,7 @@ date.dateAtStartOfWeek() -> NSDate
 date.dateAtEndOfWeek() -> NSDate
 ```
 
-### Time Interval Between Dates */
+### Time Interval Between Dates
 ```Swift
 date.minutesAfterDate(now) -> Int
 date.minutesBeforeDate(now) -> Int

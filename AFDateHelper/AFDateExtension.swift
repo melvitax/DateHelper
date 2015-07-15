@@ -1,7 +1,7 @@
 //
 //  AFDateExtension.swift
 //
-//  Version 2.0.1
+//  Version 2.0.2
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -14,7 +14,7 @@ enum DateFormat {
     case Custom(String)
 }
 
-extension NSDate {
+public extension NSDate {
 
     // MARK: Intervals In Seconds
     private class func minuteInSeconds() -> Double { return 60 }
