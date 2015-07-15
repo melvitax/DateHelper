@@ -6,7 +6,7 @@
 
 A convenience extension for NSDate in Swift 2
 
-![Sample Project Screenshot](Screenshot.png?raw=true "Sample Project Screenshot")
+![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFDateHelper/master/Screenshot.png "Sample Project Screenshot")
 
 
 ## Usage
