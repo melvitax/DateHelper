@@ -1,7 +1,7 @@
 //
 //  AFDateExtension.swift
 //
-//  Version 2.0.2
+//  Version 2.0.3
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -9,7 +9,7 @@
 
 import Foundation
 
-enum DateFormat {
+public enum DateFormat {
     case ISO8601, DotNet, RSS, AltRSS
     case Custom(String)
 }
