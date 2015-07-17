@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "AFDateHelper"
-  s.version          = "2.0.3"
+  s.version          = "2.0.4"
   s.summary          = "Extension for NSDate in Swift."
   s.description      = <<-DESC
                        Extension for NSDate in Swift for creating, modifying or comparing dates.
