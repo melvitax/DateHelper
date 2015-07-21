@@ -289,7 +289,27 @@ public extension NSDate {
     {
         return self.laterDate(date) == self
     }
+
+    /**
+    Checks if date is in future.
     
+    :returns: :Bool Returns true if date is in future.
+    */
+    func isInFuture() -> Bool
+    {
+        return self.isLaterThanDate(NSDate())
+    }
+
+    /**
+    Checks if date is in past.
+    
+    :returns: :Bool Returns true if date is in past.
+    */
+    func isInPast() -> Bool
+    {
+        return self.isEarlierThanDate(NSDate())
+    }
+
   
     // MARK: Adjusting Dates
     
