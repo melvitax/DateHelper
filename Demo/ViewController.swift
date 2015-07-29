@@ -133,6 +133,14 @@ class ViewController: UITableViewController {
         date = now.dateAtEndOfWeek()
         sectionItems.append(TableItem(title: "End of Week", description: "\(date.toString())"))
         
+        
+        date = now.dateAtTheStartOfMonth()
+        sectionItems.append(TableItem(title: "Start of Month", description: "\(date.toString())"))
+        
+        date = now.dateAtTheEndOfMonth()
+        sectionItems.append(TableItem(title: "End of Month", description: "\(date.toString())"))
+
+        
         items.append(sectionItems)
         
         
