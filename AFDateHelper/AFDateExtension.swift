@@ -430,6 +430,44 @@ public extension NSDate {
     }
     
     
+    /**
+    Return a new NSDate object of the first day of the month
+    
+    :returns: NSDate
+    */
+    func dateAtTheStartOfMonth() -> NSDate
+    {
+        //Create the date components
+        var components = self.components()
+        components.day = 1
+        //Builds the first day of the month
+        let firstDayOfMonthDate :NSDate = NSCalendar.currentCalendar().dateFromComponents(components)!
+        
+        return firstDayOfMonthDate
+        
+    }
+    
+    /**
+     Return a new NSDate object of the last day of the month
+    
+    :returns: NSDate
+    */
+    func dateAtTheEndOfMonth() -> NSDate {
+        
+        //Create the date components
+        var components = self.components()
+        //Set the last day of this month
+        components.month += 1
+        components.day = 0
+        
+        //Builds the first day of the month
+        let lastDayOfMonth :NSDate = NSCalendar.currentCalendar().dateFromComponents(components)!
+        
+        return lastDayOfMonth
+        
+    }
+    
+    
     // MARK: Retrieving Intervals
     
     /**
@@ -594,6 +632,7 @@ public extension NSDate {
         let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate - distanceToStartOfWeek
         return NSDate(timeIntervalSinceReferenceDate: interval).day()
     }
+    
     /**
     Returns the last day of the week.
     
@@ -605,6 +644,7 @@ public extension NSDate {
         let interval: NSTimeInterval = self.timeIntervalSinceReferenceDate - distanceToStartOfWeek + distanceToEndOfWeek
         return NSDate(timeIntervalSinceReferenceDate: interval).day()
     }
+    
     /**
     Checks to see if the date is a weekdday.
     
