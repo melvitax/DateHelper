@@ -422,7 +422,7 @@ public extension NSDate {
     {
         let flags :NSCalendarUnit = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitWeekOfYear | NSCalendarUnit.CalendarUnitWeekday
         var components = NSCalendar.currentCalendar().components(flags, fromDate: self)
-        components.weekday = NSCalendar.currentCalendar().firstWeekday + 7
+        components.weekday = NSCalendar.currentCalendar().firstWeekday + 6
         components.hour = 0
         components.minute = 0
         components.second = 0
