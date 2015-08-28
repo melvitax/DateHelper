@@ -17,8 +17,25 @@ To run the example project, clone or download the repo, and run.
 ```Swift
 // Date from String with custom format
 NSDate(fromString: "16 July 1972 6:12:00 ", format: .Custom("dd MMM yyyy HH:mm:ss")) -> NSDate
-// Date from ISO8601 String
-NSDate(fromString: "1972-07-16T08:15:30-05:00", format: .ISO8601) -> NSDate
+
+// Date from ISO8601(Year) String
+NSDate(fromString:  "2009", format: .ISO8601(nil))
+
+// Date from ISO8601(Year & Month) String
+NSDate(fromString:  "2009-08", format: .ISO8601(nil))
+
+// Date from ISO8601(Date) String
+NSDate(fromString:  "2009-08-11", format: .ISO8601(nil))
+
+// Date from ISO8601(Date & Time) String
+NSDate(fromString:  "2009-08-11T06:00-07:00", format: .ISO8601(nil))
+
+// Date from ISO8601(Date & Time & Sec) String
+NSDate(fromString:  "2009-08-11T06:00:00-07:00", format: .ISO8601(nil))
+
+// Date from ISO8601(Date & Time & MilliSec) String
+NSDate(fromString: "2009-08-11T06:00:00.000-07:00", format: .ISO8601(nil))
+
 // Date from DotNetJSON String
 NSDate(fromString: "/Date(1260123281843)/", format: .DotNet) -> NSDate
 // Date from RSS String
@@ -90,7 +107,12 @@ date.isWeekend() -> Int
 ```Swift
 date.toString() -> String
 date.toString(format: .Custom("dd MMM yyyy HH:mm:ss")) -> String
-date.toString(format: .ISO8601) -> String
+date.toString(format: .ISO8601(ISO8601Format.Year))
+date.toString(format: .ISO8601(ISO8601Format.YearMonth))
+date.toString(format: .ISO8601(ISO8601Format.Date))
+date.toString(format: .ISO8601(ISO8601Format.DateTime))
+date.toString(format: .ISO8601(ISO8601Format.DateTimeSec))
+date.toString(format: .ISO8601(ISO8601Format.DateTimeMilliSec))
 date.toString(format: .DotNet) -> String
 date.toString(format: .RSS) -> String
 date.toString(format: .AltRSS) -> String
