@@ -1,7 +1,7 @@
 //
 //  AFDateExtension.swift
 //
-//  Version 2.0.4
+//  Version 3.0.0
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -9,14 +9,40 @@
 
 import Foundation
 
+// DotNet: "/Date(1268123281843)/"
 let DefaultFormat = "EEE MMM dd HH:mm:ss Z yyyy"
-let ISO8601Format = "yyyy-MM-dd'T'HH:mm:ssZZZ"
-let RSSFormat = "EEE, d MMM yyyy HH:mm:ss ZZZ"
-let AltRSSFormat = "d MMM yyyy HH:mm:ss ZZZ"
+let RSSFormat = "EEE, d MMM yyyy HH:mm:ss ZZZ" // "Fri, 09 Sep 2011 15:26:08 +0200"
+let AltRSSFormat = "d MMM yyyy HH:mm:ss ZZZ" // "09 Sep 2011 15:26:08 +0200"
+
+public enum ISO8601Format: String {
+    
+    case Year = "yyyy" // 1997
+    case YearMonth = "yyyy-MM" // 1997-07
+    case Date = "yyyy-MM-dd" // 1997-07-16
+    case DateTime = "yyyy-MM-dd'T'HH:mmZ" // 1997-07-16T19:20+01:00
+    case DateTimeSec = "yyyy-MM-dd'T'HH:mm:ssZ" // 1997-07-16T19:20:30+01:00
+    case DateTimeMilliSec = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // 1997-07-16T19:20:30.45+01:00
+    
+    init(dateString:String) {
+        switch count(dateString) {
+            case 4:
+                self = ISO8601Format(rawValue: ISO8601Format.Year.rawValue)!
+            case 7:
+                self = ISO8601Format(rawValue: ISO8601Format.YearMonth.rawValue)!
+            case 10:
+                self = ISO8601Format(rawValue: ISO8601Format.Date.rawValue)!
+            case 22:
+                self = ISO8601Format(rawValue: ISO8601Format.DateTime.rawValue)!
+            case 25:
+                self = ISO8601Format(rawValue: ISO8601Format.DateTimeSec.rawValue)!
+            default:// 28:
+                self = ISO8601Format(rawValue: ISO8601Format.DateTimeMilliSec.rawValue)!
+        }
+    }
+}
 
 public enum DateFormat {
-    case ISO8601, DotNet, RSS, AltRSS
-    case Custom(String)
+    case ISO8601(ISO8601Format?), DotNet, RSS, AltRSS, Custom(String)
 }
 
 public extension NSDate {
@@ -42,11 +68,13 @@ public extension NSDate {
     // MARK: Date From String
     
     /**
-    Returns a new NSDate object based on a date string and a specified format.
+    Returns a new NSDate object based on a date string and a formatter type.
     
     :param: fromString :String Date string i.e. "16 July 1972 6:12:00".
-    :param: format :DateFormat Format of date. Can be .ISO8601("1972-07-16T08:15:30-05:00"), DotNet("/Date(1268123281843)/"), RSS("Fri, 09 Sep 2011 15:26:08 +0200"), AltRSS("09 Sep 2011 15:26:08 +0200") or Custom("16 July 1972 6:12:00").
+    :param: format :DateFormat Formatter type can be .ISO8601(ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(String).
+    
     :returns: NSDate
+    :discussion: Use .ISO8601(nil) to generate an automatic ISO8601Format based on the date string.
     */
     convenience init(fromString string: String, format:DateFormat)
     {
@@ -68,21 +96,19 @@ public extension NSDate {
                 let interval = NSTimeInterval(milliseconds / 1000)
                 self.init(timeIntervalSince1970: interval)
             
-            case .ISO8601:
+            case .ISO8601(let isoFormat):
                 
-                var s = string
-                if string.hasSuffix(" 00:00") {
-                    s = s.substringToIndex(s.length-6) + "GMT"
-                } else if string.hasSuffix("Z") {
-                    s = s.substringToIndex(s.length-1) + "GMT"
-                }
-                var formatter = NSDate.formatter(format: ISO8601Format)
+                let dateFormat = (isoFormat != nil) ? isoFormat! : ISO8601Format(dateString: string as String)
+                var formatter = NSDate.formatter(format: dateFormat.rawValue)
+                formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                formatter.timeZone = NSTimeZone.localTimeZone()
+                formatter.dateFormat = dateFormat.rawValue
                 if let date = formatter.dateFromString(string as String) {
                     self.init(timeInterval:0, sinceDate:date)
                 } else {
                     self.init()
                 }
-                
+            
             case .RSS:
                 
                 var s  = string
@@ -128,6 +154,7 @@ public extension NSDate {
     Compares dates without while ignoring time.
     
     :param: date :NSDate Date to compare.
+    
     :returns: :Bool Returns true if dates are equal.
     */
     func isEqualToDateIgnoringTime(date: NSDate) -> Bool
@@ -676,9 +703,9 @@ public extension NSDate {
     }
     
     /**
-    Returns a new String object based on a specified date format.
+    Returns a new String object based on a  date format.
     
-    :param: format :DateFormat Format of date. Can be .ISO8601("1972-07-16T08:15:30-05:00"), DotNet("/Date(1268123281843)/"), RSS("Fri, 09 Sep 2011 15:26:08 +0200"), AltRSS("09 Sep 2011 15:26:08 +0200") or Custom("16 July 1972 6:12:00").
+    :param: format :DateFormat Format of date. Can be .ISO8601(.ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(FormatString).
     :returns: String
     */
     func toString(#format: DateFormat) -> String
@@ -689,8 +716,8 @@ public extension NSDate {
                 let offset = NSTimeZone.defaultTimeZone().secondsFromGMT / 3600
                 let nowMillis = 1000 * self.timeIntervalSince1970
                 return  "/Date(\(nowMillis)\(offset))/"
-            case .ISO8601:
-                dateFormat = ISO8601Format
+            case .ISO8601(let isoFormat):
+                dateFormat = (isoFormat != nil) ? isoFormat!.rawValue : ISO8601Format.DateTimeMilliSec.rawValue
             case .RSS:
                 dateFormat = RSSFormat
             case .AltRSS:
