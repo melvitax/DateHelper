@@ -4,9 +4,9 @@
 [![License](https://img.shields.io/cocoapods/l/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![Platform](https://img.shields.io/cocoapods/p/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 
-A convenience extension for NSDate in Swift 1.2
+An NSDate Extension for Swift 2.0
 
-![Sample Project Screenshot](https://raw.github.com/melvitax/AFDateHelper/2.0.1/Screenshot.png "Sample Project Screenshot")
+![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFDateHelper/master/Screenshot.png "Sample Project Screenshot")
 
 
 ## Usage
@@ -17,25 +17,18 @@ To run the example project, clone or download the repo, and run.
 ```Swift
 // Date from String with custom format
 NSDate(fromString: "16 July 1972 6:12:00 ", format: .Custom("dd MMM yyyy HH:mm:ss")) -> NSDate
-
 // Date from ISO8601(Year) String
-NSDate(fromString:  "2009", format: .ISO8601(nil))
-
+NSDate(fromString:  "2009", format: .ISO8601(nil)) -> NSDate
 // Date from ISO8601(Year & Month) String
-NSDate(fromString:  "2009-08", format: .ISO8601(nil))
-
+NSDate(fromString:  "2009-08", format: .ISO8601(nil)) -> NSDate
 // Date from ISO8601(Date) String
-NSDate(fromString:  "2009-08-11", format: .ISO8601(nil))
-
+NSDate(fromString:  "2009-08-11", format: .ISO8601(nil)) -> NSDate
 // Date from ISO8601(Date & Time) String
-NSDate(fromString:  "2009-08-11T06:00-07:00", format: .ISO8601(nil))
-
+NSDate(fromString:  "2009-08-11T06:00-07:00", format: .ISO8601(nil)) -> NSDate
 // Date from ISO8601(Date & Time & Sec) String
-NSDate(fromString:  "2009-08-11T06:00:00-07:00", format: .ISO8601(nil))
-
+NSDate(fromString:  "2009-08-11T06:00:00-07:00", format: .ISO8601(nil)) -> NSDate
 // Date from ISO8601(Date & Time & MilliSec) String
-NSDate(fromString: "2009-08-11T06:00:00.000-07:00", format: .ISO8601(nil))
-
+NSDate(fromString: "2009-08-11T06:00:00.000-07:00", format: .ISO8601(nil)) -> NSDate
 // Date from DotNetJSON String
 NSDate(fromString: "/Date(1260123281843)/", format: .DotNet) -> NSDate
 // Date from RSS String
@@ -107,12 +100,12 @@ date.isWeekend() -> Int
 ```Swift
 date.toString() -> String
 date.toString(format: .Custom("dd MMM yyyy HH:mm:ss")) -> String
-date.toString(format: .ISO8601(ISO8601Format.Year))
-date.toString(format: .ISO8601(ISO8601Format.YearMonth))
-date.toString(format: .ISO8601(ISO8601Format.Date))
-date.toString(format: .ISO8601(ISO8601Format.DateTime))
-date.toString(format: .ISO8601(ISO8601Format.DateTimeSec))
-date.toString(format: .ISO8601(ISO8601Format.DateTimeMilliSec))
+date.toString(format: .ISO8601(ISO8601Format.Year)) -> String
+date.toString(format: .ISO8601(ISO8601Format.YearMonth)) -> String
+date.toString(format: .ISO8601(ISO8601Format.Date)) -> String
+date.toString(format: .ISO8601(ISO8601Format.DateTime)) -> String
+date.toString(format: .ISO8601(ISO8601Format.DateTimeSec)) -> String
+date.toString(format: .ISO8601(ISO8601Format.DateTimeMilliSec)) -> String
 date.toString(format: .DotNet) -> String
 date.toString(format: .RSS) -> String
 date.toString(format: .AltRSS) -> String
@@ -137,7 +130,7 @@ date.veryShortMonthToString() -> String
 
 ## Requirements
 
-Swift 1.2
+Swift 2.0
 
 ## Installation
 

@@ -71,13 +71,15 @@ class ViewController: UITableViewController {
         
         items.append(sectionItems)
         
+        
+        
         // MARK: **** COMPARING DATES ****
         sections.append("Comparing Dates")
         sectionItems = [TableItem]()
         
         // MARK: isEqual
-        var equality = now.isEqualToDate(date) ? "is equal to" : "is not equal to"
-        sectionItems.append(TableItem(title: "Is Equal", description: "\(now.toString()) \(equality) \(date.toString())"))
+        var equality = now.isEqualToDateIgnoringTime(date) ? "is equal to" : "is not equal to"
+        sectionItems.append(TableItem(title: "Is Equal To Date Ignoring Time", description: "\(now.toString()) \(equality) \(date.toString())"))
         
         // MARK: isToday
         equality = now.isToday() ? "is today" : "is not today"
@@ -115,10 +117,6 @@ class ViewController: UITableViewController {
         equality = now.isSameYearAsDate(date) ? "is same year as" : "is not same year as"
         sectionItems.append(TableItem(title: "Same Year", description: "\(now.toString()) \(equality) \(date.toString())"))
         
-        // MARK: isThisYear
-        equality = date.isThisYear() ? "is this year" : "is not this year"
-        sectionItems.append(TableItem(title: "This Year", description: "\(date.toString()) \(equality)"))
-        
         // MARK: dateByAddingDays
         date = now.dateByAddingDays(365)
         equality = date.isNextYear() ? "is next year" : "is not next year"
@@ -128,6 +126,30 @@ class ViewController: UITableViewController {
         date = now.dateBySubtractingDays(365)
         equality = date.isLastYear() ? "is last year" : "is not last year"
         sectionItems.append(TableItem(title: "Last Year", description: "\(date.toString()) \(equality)"))
+
+        
+        // MARK: isEarlierThanDate
+        equality = date.isEarlierThanDate(now) ? "is earlier than now" : "is not earlier than now"
+        sectionItems.append(TableItem(title: "Earlier Than", description: "\(date.toString()) \(equality)"))
+        
+        // MARK: isLaterThanDate
+        equality = date.isLaterThanDate(now) ? "is later than now" : "is not later than now"
+        sectionItems.append(TableItem(title: "Later Than", description: "\(date.toString()) \(equality)"))
+        
+        // MARK: isEarlierThanDate
+        equality = date.isEarlierThanDate(now) ? "is earlier than now" : "is not earlier than now"
+        sectionItems.append(TableItem(title: "Earlier Than", description: "\(date.toString()) \(equality)"))
+        
+        // MARK: isInFuture
+        date = now.dateByAddingDays(1)
+        equality = date.isInFuture() ? "is in the future" : "is not the future"
+        sectionItems.append(TableItem(title: "Future", description: "\(date.toString()) \(equality)"))
+        
+        // MARK: isInPast
+        date = now.dateBySubtractingDays(1)
+        equality = date.isInPast() ? "is in the past" : "is not the past"
+        sectionItems.append(TableItem(title: "Past", description: "\(date.toString()) \(equality)"))
+        
         
         items.append(sectionItems)
         
@@ -182,7 +204,6 @@ class ViewController: UITableViewController {
         // MARK: dateAtEndOfMonth
         date = now.dateAtTheEndOfMonth()
         sectionItems.append(TableItem(title: "End of Month", description: "\(date.toString())"))
-
         
         items.append(sectionItems)
         
@@ -253,7 +274,7 @@ class ViewController: UITableViewController {
         // MARK: Is Weekend
         sectionItems.append(TableItem(title: "Is Weekend", description: "\(now.isWeekend())"))
         items.append(sectionItems)
-
+        
         // MARK: **** DATE TO STRING ****
         sections.append("Date To String")
         sectionItems = [TableItem]()
@@ -347,7 +368,7 @@ class ViewController: UITableViewController {
         return sections[section]
     }
     
-
+    
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -356,7 +377,7 @@ class ViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let item = items[indexPath.section][indexPath.row]
         cell.textLabel?.text = item.title
         cell.detailTextLabel?.text = item.description
@@ -366,7 +387,6 @@ class ViewController: UITableViewController {
     
     
     
-
-
+    
+    
 }
-
