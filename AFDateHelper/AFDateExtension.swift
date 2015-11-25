@@ -514,6 +514,20 @@ public extension NSDate {
         
     }
     
+    /**
+    Return a new NSDate object with the new hour, minute and seconds values
+     
+    :returns: NSDate
+    */
+    func setTimeOfDate(hour: Int, minute: Int, second: Int) -> NSDate {
+      let flags :NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day]
+      let components = NSCalendar.currentCalendar().components(flags, fromDate: self)
+      components.hour = hour
+      components.minute = minute
+      components.second = second
+      
+      return NSCalendar.currentCalendar().dateFromComponents(components)!
+    }
     
     // MARK: Retrieving Intervals
     
