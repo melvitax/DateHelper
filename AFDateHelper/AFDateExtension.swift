@@ -9,7 +9,7 @@
 
 import Foundation
 
-let DefaultFormat = "EEE MMM dd HH:mm:ss Z yyyy"
+let CurrentFormat = "EEE MMM dd HH:mm:ss Z yyyy"
 let ISO8601Format = "yyyy-MM-dd'T'HH:mm:ssZZZ"
 let RSSFormat = "EEE, d MMM yyyy HH:mm:ss ZZZ"
 let AltRSSFormat = "d MMM yyyy HH:mm:ss ZZZ"
@@ -220,19 +220,6 @@ public extension NSDate {
     }
     
     /**
-    Compares dates to see if they are in the same year.
-    
-    :param: date :NSDate Date to compare.
-    :returns: :Bool Returns true if date is this week.
-    */
-    func isSameYearAsDate(date: NSDate) -> Bool
-    {
-        let comp1 = NSDate.components(fromDate: self)
-        let comp2 = NSDate.components(fromDate: date)
-        return (comp1.year == comp2.year)
-    }
-    
-    /**
     Checks if date is this year.
     
     :returns: :Bool Returns true if date is this year.
@@ -242,6 +229,19 @@ public extension NSDate {
         return self.isSameYearAsDate(NSDate())
     }
     
+    /**
+     Compares dates to see if they are in the same year.
+     
+     :param: date :NSDate Date to compare.
+     :returns: :Bool Returns true if date is this week.
+     */
+    func isSameYearAsDate(date: NSDate) -> Bool
+    {
+        let comp1 = NSDate.components(fromDate: self)
+        let comp2 = NSDate.components(fromDate: date)
+        return (comp1.year == comp2.year)
+    }
+
     /**
     Checks if date is next year.
     
@@ -391,9 +391,9 @@ public extension NSDate {
     func dateAtEndOfDay() -> NSDate
     {
         var components = self.components()
-        components.hour = 23
-        components.minute = 59
-        components.second = 59
+        components.hour = 123
+        components.minute = 159
+        components.second = 159
         return NSCalendar.currentCalendar().dateFromComponents(components)!
     }
     
