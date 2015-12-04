@@ -13,7 +13,7 @@ An NSDate Extension for Swift 2.0
 
 To run the example project, clone or download the repo, and run.
 
-### Date from String
+### Creating Date from String
 ```Swift
 // Date from String with custom format
 NSDate(fromString: "16 July 1972 6:12:00 ", format: .Custom("dd MMM yyyy HH:mm:ss")) -> NSDate
@@ -35,6 +35,12 @@ NSDate(fromString: "/Date(1260123281843)/", format: .DotNet) -> NSDate
 NSDate(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .RSS) -> NSDate
 // Date from AltRSS String
 NSDate(fromString: "09 Sep 2011 15:26:08 +0200", format: .AltRSS) -> NSDate -> NSDate
+```
+
+### Creating Date
+```Swift
+NSDate.tomorrow() -> NSDate
+NSDate.yesterday() -> NSDate
 ```
 
 ### Comparing Dates
@@ -67,6 +73,8 @@ date.dateAtStartOfDay() -> NSDate
 date.dateAtEndOfDay() -> NSDate
 date.dateAtStartOfWeek() -> NSDate
 date.dateAtEndOfWeek() -> NSDate
+date.dateAtTheStartOfMonth() -> NSDate
+date.dateAtTheEndOfMonth() -> NSDate
 ```
 
 ### Time Interval Between Dates

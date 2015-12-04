@@ -494,7 +494,7 @@ public extension NSDate {
     /**
     Creates a new date from the last day of the month
     
-    - Returns NSDate
+    - Returns A new date object.
     */
     func dateAtTheEndOfMonth() -> NSDate {
         
@@ -509,6 +509,26 @@ public extension NSDate {
         
         return lastDayOfMonth
         
+    }
+    
+    /**
+     Creates a new date based on tomorrow.
+     
+     - Returns A new date object.
+     */
+    class func tomorrow() -> NSDate
+    {
+        return NSDate().dateByAddingDays(1).dateAtStartOfDay()
+    }
+    
+    /**
+     Creates a new date based on yesterdat.
+     
+     - Returns A new date object.
+     */
+    class func yesterday() -> NSDate
+    {
+        return NSDate().dateBySubtractingDays(1).dateAtStartOfDay()
     }
     
     

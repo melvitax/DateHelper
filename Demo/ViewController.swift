@@ -71,7 +71,12 @@ class ViewController: UITableViewController {
         
         items.append(sectionItems)
         
-        
+        // MARK: **** CREATING DATES ****
+        sectionItems = [TableItem]()
+        sections.append("Creating Dates")
+        sectionItems.append(TableItem(title: "Tomorrow", description: "\(NSDate.tomorrow())"))
+        sectionItems.append(TableItem(title: "Yesterday", description: "\(NSDate.yesterday())"))
+        items.append(sectionItems)
         
         // MARK: **** COMPARING DATES ****
         sections.append("Comparing Dates")
@@ -220,8 +225,16 @@ class ViewController: UITableViewController {
         sections.append("Time Intervals")
         sectionItems = [TableItem]()
         
+        // MARK: secondsAfterDate
+        var num = date.secondsAfterDate(now)
+        sectionItems.append(TableItem(title: "Seconds After", description: "Interval from \(date.toString()): \(num)"))
+        
+        // MARK: secondsBeforeDate
+        num = date.secondsBeforeDate(now)
+        sectionItems.append(TableItem(title: "Seconds Before", description: "Interval from \(date.toString()): \(num)"))
+        
         // MARK: minutesAfterDate
-        var num = date.minutesAfterDate(now)
+        num = date.minutesAfterDate(now)
         sectionItems.append(TableItem(title: "Minutes After", description: "Interval from \(date.toString()): \(num)"))
         
         // MARK: minutesBeforeDate
