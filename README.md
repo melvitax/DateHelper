@@ -61,6 +61,8 @@ date.dateByAddingHours(2) -> NSDate
 date.dateBySubtractingHours(4) -> NSDate
 date.dateByAddingMinutes(2) -> NSDate
 date.dateBySubtractingMinutes(4) -> NSDate
+date.dateByAddingSeconds(90) -> NSDate
+date.dateBySubtractingSeconds(90) -> NSDate
 date.dateAtStartOfDay() -> NSDate
 date.dateAtEndOfDay() -> NSDate
 date.dateAtStartOfWeek() -> NSDate
@@ -69,6 +71,8 @@ date.dateAtEndOfWeek() -> NSDate
 
 ### Time Interval Between Dates
 ```Swift
+date.secondsAfterDate(now) -> Int
+date.secondsBeforeDate(now) -> Int
 date.minutesAfterDate(now) -> Int
 date.minutesBeforeDate(now) -> Int
 date.hoursAfterDate(now) -> Int

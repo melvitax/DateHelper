@@ -68,13 +68,12 @@ public extension NSDate {
     // MARK: Date From String
     
     /**
-    Returns a new NSDate object based on a date string and a formatter type.
+    Creates a date based on a string and a formatter type. You can ise .ISO8601(nil) to for deducting an ISO8601Format automatically.
     
-    :param: fromString :String Date string i.e. "16 July 1972 6:12:00".
-    :param: format :DateFormat Formatter type can be .ISO8601(ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(String).
+    - Parameter fromString Date string i.e. "16 July 1972 6:12:00".
+    - Parameter format The Date Formatter type can be .ISO8601(ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(String).
     
-    :returns: NSDate
-    :discussion: Use .ISO8601(nil) to generate an automatic ISO8601Format based on the date string.
+    - Returns A new date
     */
     
     convenience init(fromString string: String, format:DateFormat)
@@ -152,11 +151,9 @@ public extension NSDate {
     // MARK: Comparing Dates
     
     /**
-    Compares dates without while ignoring time.
+    Returns true if dates are equal while ignoring time.
     
-    :param: date :NSDate Date to compare.
-    
-    :returns: :Bool Returns true if dates are equal.
+    - Parameter date: The Date to compare.
     */
     func isEqualToDateIgnoringTime(date: NSDate) -> Bool
     {
@@ -166,9 +163,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is today.
-    
-    :returns: :Bool Returns true if date is today.
+    Returns Returns true if date is today.
     */
     func isToday() -> Bool
     {
@@ -176,9 +171,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is tomorrow.
-    
-    :returns: :Bool Returns true if date is tomorrow.
+    Returns true if date is tomorrow.
     */
     func isTomorrow() -> Bool
     {
@@ -186,9 +179,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is yesterday.
-    
-    :returns: :Bool Returns true if date is yesterday.
+    Returns true if date is yesterday.
     */
     func isYesterday() -> Bool
     {
@@ -196,10 +187,9 @@ public extension NSDate {
     }
     
     /**
-    Compares dates to see if they are in the same week.
-    
-    :param: date :NSDate Date to compare.
-    :returns: :Bool Returns true if date is tomorrow.
+    Returns true if date are in the same week.
+     
+    - Parameter date: The date to compare.
     */
     func isSameWeekAsDate(date: NSDate) -> Bool
     {
@@ -214,9 +204,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is this week.
-    
-    :returns: :Bool Returns true if date is this week.
+    Returns true if date is this week.
     */
     func isThisWeek() -> Bool
     {
@@ -224,9 +212,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is next week.
-    
-    :returns: :Bool Returns true if date is next week.
+    Returns true if date is next week.
     */
     func isNextWeek() -> Bool
     {
@@ -236,9 +222,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is last week.
-    
-    :returns: :Bool Returns true if date is last week.
+    Returns true if date is last week.
     */
     func isLastWeek() -> Bool
     {
@@ -248,10 +232,9 @@ public extension NSDate {
     }
     
     /**
-    Compares dates to see if they are in the same year.
+    Returns true if dates are in the same year.
     
-    :param: date :NSDate Date to compare.
-    :returns: :Bool Returns true if date is this week.
+    - Parameter date: The date to compare.
     */
     func isSameYearAsDate(date: NSDate) -> Bool
     {
@@ -261,9 +244,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is this year.
-    
-    :returns: :Bool Returns true if date is this year.
+    Returns true if date is this year.
     */
     func isThisYear() -> Bool
     {
@@ -271,9 +252,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is next year.
-    
-    :returns: :Bool Returns true if date is next year.
+    Returns true if date is next year.
     */
     func isNextYear() -> Bool
     {
@@ -283,9 +262,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is last year.
-    
-    :returns: :Bool Returns true if date is last year.
+    Returns true if date is last year.
     */
     func isLastYear() -> Bool
     {
@@ -295,10 +272,9 @@ public extension NSDate {
     }
     
     /**
-    Compares dates to see if it's an earlier date.
+    Returns true if date is earlier than date.
     
-    :param: date :NSDate Date to compare.
-    :returns: :Bool Returns true if date is earlier.
+    - Parameter date: The date to compare.
     */
     func isEarlierThanDate(date: NSDate) -> Bool
     {
@@ -306,20 +282,17 @@ public extension NSDate {
     }
     
     /**
-    Compares dates to see if it's a later date.
-    
-    :param: date :NSDate Date to compare.
-    :returns: :Bool Returns true if date is later.
-    */
+     Returns true if date is later than date.
+     
+     - Parameter date: The date to compare.
+     */
     func isLaterThanDate(date: NSDate) -> Bool
     {
         return self.laterDate(date) == self
     }
     
     /**
-    Checks if date is in future.
-    
-    :returns: :Bool Returns true if date is in future.
+    Returns true if date is in future.
     */
     func isInFuture() -> Bool
     {
@@ -327,9 +300,7 @@ public extension NSDate {
     }
     
     /**
-    Checks if date is in past.
-    
-    :returns: :Bool Returns true if date is in past.
+    Returns true if date is in past.
     */
     func isInPast() -> Bool
     {
@@ -340,10 +311,10 @@ public extension NSDate {
     // MARK: Adjusting Dates
     
     /**
-    Returns a new NSDate object by a adding days.
+    Creates a new date by a adding days.
     
-    :param: days :Int Days to add.
-    :returns: NSDate
+    - Parameter days: The number of days to add.
+    - Returns A new date object.
     */
     func dateByAddingDays(days: Int) -> NSDate
     {
@@ -353,10 +324,10 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object by a substracting days.
+    Creates a new date by a substracting days.
     
-    :param: days :Int Days to substract.
-    :returns: NSDate
+    - Parameter days: The number of days to substract.
+    - Returns A new date object.
     */
     func dateBySubtractingDays(days: Int) -> NSDate
     {
@@ -366,10 +337,10 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object by a adding hours.
+    Creates a new date by a adding hours.
     
-    :param: days :Int Hours to add.
-    :returns: NSDate
+    - Parameter days: The number of hours to add.
+    - Returns A new date object.
     */
     func dateByAddingHours(hours: Int) -> NSDate
     {
@@ -379,10 +350,10 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object by a substracting hours.
+    Creates a new date by substracting hours.
     
-    :param: days :Int Hours to substract.
-    :returns: NSDate
+    - Parameter days: The number of hours to substract.
+    - Returns A new date object.
     */
     func dateBySubtractingHours(hours: Int) -> NSDate
     {
@@ -392,10 +363,10 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object by a adding minutes.
+    Creates a new date by adding minutes.
     
-    :param: days :Int Minutes to add.
-    :returns: NSDate
+    - Parameter days: The number of minutes to add.
+    - Returns A new date object.
     */
     func dateByAddingMinutes(minutes: Int) -> NSDate
     {
@@ -405,10 +376,10 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object by a substracting minutes.
+    Creates a new date by substracting minutes.
     
-    :param: days :Int Minutes to add.
-    :returns: NSDate
+    - Parameter days: The number of minutes to add.
+    - Returns A new date object.
     */
     func dateBySubtractingMinutes(minutes: Int) -> NSDate
     {
@@ -418,10 +389,10 @@ public extension NSDate {
     }
     
     /**
-     Returns a new NSDate object by a adding seconds.
+     Creates a new date by adding seconds.
      
-     :param: Seconds Seconds to add.
-     :returns: NSDate
+     - Parameter seconds: The number of seconds to add.
+     - Returns A new date object.
      */
     func dateByAddingSeconds(seconds: Int) -> NSDate
     {
@@ -431,10 +402,10 @@ public extension NSDate {
     }
     
     /**
-     Returns a new NSDate object by a substracting seconds.
+     Creates a new date by substracting seconds.
      
-     :param: days :Int Seconds to substract.
-     :returns: NSDate
+     - Parameter days: The number of seconds to substract.
+     - Returns A new date object.
      */
     func dateBySubtractingSeconds(seconds: Int) -> NSDate
     {
@@ -444,9 +415,9 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object from the start of the day.
+    Creates a new date from the start of the day.
     
-    :returns: NSDate
+    - Returns A new date object.
     */
     func dateAtStartOfDay() -> NSDate
     {
@@ -458,9 +429,9 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object from the end of the day.
+    Creates a new date from the end of the day.
     
-    :returns: NSDate
+    - Returns A new date object.
     */
     func dateAtEndOfDay() -> NSDate
     {
@@ -472,9 +443,9 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object from the start of the week.
+    Creates a new date from the start of the week.
     
-    :returns: NSDate
+    - Returns A new date object.
     */
     func dateAtStartOfWeek() -> NSDate
     {
@@ -488,9 +459,9 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object from the end of the week.
+    Creates a new date from the end of the week.
     
-    :returns: NSDate
+    - Returns A new date object.
     */
     func dateAtEndOfWeek() -> NSDate
     {
@@ -504,9 +475,9 @@ public extension NSDate {
     }
     
     /**
-    Return a new NSDate object of the first day of the month
+    Creates a new date from the first day of the month
     
-    :returns: NSDate
+    - Returns A new date object.
     */
     func dateAtTheStartOfMonth() -> NSDate
     {
@@ -521,9 +492,9 @@ public extension NSDate {
     }
     
     /**
-    Return a new NSDate object of the last day of the month
+    Creates a new date from the last day of the month
     
-    :returns: NSDate
+    - Returns NSDate
     */
     func dateAtTheEndOfMonth() -> NSDate {
         
@@ -544,10 +515,32 @@ public extension NSDate {
     // MARK: Retrieving Intervals
     
     /**
-    Returns the interval in minutes after a date.
+    Gets the number of seconds after a date.
     
-    :param: date :NSDate Date to compare.
-    :returns: Int
+    - Parameter date: the date to compare.
+    - Returns The number of seconds
+    */
+    func secondsAfterDate(date: NSDate) -> Int
+    {
+        return Int(self.timeIntervalSinceDate(date))
+    }
+    
+    /**
+     Gets the number of seconds before a date.
+     
+     - Parameter date: The date to compare.
+     - Returns The number of seconds
+     */
+    func secondsBeforeDate(date: NSDate) -> Int
+    {
+        return Int(date.timeIntervalSinceDate(self))
+    }
+    
+    /**
+    Gets the number of minutes after a date.
+    
+    - Parameter date: the date to compare.
+    - Returns The number of minutes
     */
     func minutesAfterDate(date: NSDate) -> Int
     {
@@ -556,10 +549,10 @@ public extension NSDate {
     }
     
     /**
-    Returns the interval in minutes before a date.
+    Gets the number of minutes before a date.
     
-    :param: date :NSDate Date to compare.
-    :returns: Int
+    - Parameter date: The date to compare.
+    - Returns The number of minutes
     */
     func minutesBeforeDate(date: NSDate) -> Int
     {
@@ -568,10 +561,10 @@ public extension NSDate {
     }
     
     /**
-    Returns the interval in hours after a date.
+    Gets the number of hours after a date.
     
-    :param: date :NSDate Date to compare.
-    :returns: Int
+    - Parameter date: The date to compare.
+    - Returns The number of hours
     */
     func hoursAfterDate(date: NSDate) -> Int
     {
@@ -580,10 +573,10 @@ public extension NSDate {
     }
     
     /**
-    Returns the interval in hours before a date.
+    Gets the number of hours before a date.
     
-    :param: date :NSDate Date to compare.
-    :returns: Int
+    - Parameter date: The date to compare.
+    - Returns The number of hours
     */
     func hoursBeforeDate(date: NSDate) -> Int
     {
@@ -592,10 +585,10 @@ public extension NSDate {
     }
     
     /**
-    Returns the interval in days after a date.
+    Gets the number of days after a date.
     
-    :param: date :NSDate Date to compare.
-    :returns: Int
+    - Parameter date: The date to compare.
+    - Returns The number of days
     */
     func daysAfterDate(date: NSDate) -> Int
     {
@@ -604,10 +597,10 @@ public extension NSDate {
     }
     
     /**
-    Returns the interval in days before a date.
+    Gets the number of days before a date.
     
-    :param: date :NSDate Date to compare.
-    :returns: Int
+    - Parameter date: The date to compare.
+    - Returns The number of days
     */
     func daysBeforeDate(date: NSDate) -> Int
     {
@@ -620,8 +613,6 @@ public extension NSDate {
     
     /**
     Returns the nearest hour.
-    
-    :returns: Int
     */
     func nearestHour () -> Int {
         let halfHour = NSDate.minuteInSeconds() * 30
@@ -636,68 +627,46 @@ public extension NSDate {
     }
     /**
     Returns the year component.
-    
-    :returns: Int
     */
     func year () -> Int { return self.components().year  }
     /**
     Returns the month component.
-    
-    :returns: Int
     */
     func month () -> Int { return self.components().month }
     /**
     Returns the week of year component.
-    
-    :returns: Int
     */
     func week () -> Int { return self.components().weekOfYear }
     /**
     Returns the day component.
-    
-    :returns: Int
     */
     func day () -> Int { return self.components().day }
     /**
     Returns the hour component.
-    
-    :returns: Int
     */
     func hour () -> Int { return self.components().hour }
     /**
     Returns the minute component.
-    
-    :returns: Int
     */
     func minute () -> Int { return self.components().minute }
     /**
     Returns the seconds component.
-    
-    :returns: Int
     */
     func seconds () -> Int { return self.components().second }
     /**
     Returns the weekday component.
-    
-    :returns: Int
     */
     func weekday () -> Int { return self.components().weekday }
     /**
     Returns the nth days component. e.g. 2nd Tuesday of the month is 2.
-    
-    :returns: Int
     */
     func nthWeekday () -> Int { return self.components().weekdayOrdinal }
     /**
     Returns the days of the month.
-    
-    :returns: Int
     */
     func monthDays () -> Int { return NSCalendar.currentCalendar().rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: self).length }
     /**
     Returns the first day of the week.
-    
-    :returns: Int
     */
     func firstDayOfWeek () -> Int {
         let distanceToStartOfWeek = NSDate.dayInSeconds() * Double(self.components().weekday - 1)
@@ -706,8 +675,6 @@ public extension NSDate {
     }
     /**
     Returns the last day of the week.
-    
-    :returns: Int
     */
     func lastDayOfWeek () -> Int {
         let distanceToStartOfWeek = NSDate.dayInSeconds() * Double(self.components().weekday - 1)
@@ -716,17 +683,13 @@ public extension NSDate {
         return NSDate(timeIntervalSinceReferenceDate: interval).day()
     }
     /**
-    Checks to see if the date is a weekdday.
-    
-    :returns: :Bool Returns true if weekday.
+    Returns true if a weekday.
     */
     func isWeekday() -> Bool {
         return !self.isWeekend()
     }
     /**
-    Checks to see if the date is a weekdend.
-    
-    :returns: :Bool Returns true if weekend.
+    Returns true if weekend.
     */
     func isWeekend() -> Bool {
         let range = NSCalendar.currentCalendar().maximumRangeOfUnit(NSCalendarUnit.Weekday)
@@ -737,19 +700,17 @@ public extension NSDate {
     // MARK: To String
     
     /**
-    Returns a new String object using .ShortStyle date style and .ShortStyle time style.
-    
-    :returns: :String
+    A string representation using short date and time style.
     */
     func toString() -> String {
         return self.toString(dateStyle: .ShortStyle, timeStyle: .ShortStyle, doesRelativeDateFormatting: false)
     }
     
     /**
-    Returns a new String object based on a  date format.
+    A string representation based on a format.
     
-    :param: format :DateFormat Format of date. Can be .ISO8601(.ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(FormatString).
-    :returns: String
+    - Parameter format: The format of date can be .ISO8601(.ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(FormatString).
+    - Returns The date string representation
     */
     func toString(format format: DateFormat) -> String
     {
@@ -773,12 +734,12 @@ public extension NSDate {
     }
     
     /**
-    Returns a new String object based on a date style, time style and optional relative flag.
+    A string representation based on custom style.
     
-    :param: dateStyle :NSDateFormatterStyle
-    :param: timeStyle :NSDateFormatterStyle
-    :param: doesRelativeDateFormatting :Bool
-    :returns: String
+    - Parameter dateStyle: The date style to use.
+    - Parameter timeStyle: The time style to use.
+    - Parameter doesRelativeDateFormatting: Enables relative date formatting.
+    - Returns A string representation of the date.
     */
     func toString(dateStyle dateStyle: NSDateFormatterStyle, timeStyle: NSDateFormatterStyle, doesRelativeDateFormatting: Bool = false) -> String
     {
@@ -787,9 +748,7 @@ public extension NSDate {
     }
     
     /**
-    Returns a new String object based on a relative time language. i.e. just now, 1 minute ago etc..
-    
-    :returns: String
+    A string representation based on a relative time language. i.e. just now, 1 minute ago etc..
     */
     func relativeTimeToString() -> String
     {
@@ -839,9 +798,7 @@ public extension NSDate {
     }
     
     /**
-    Returns the weekday as a new String object.
-    
-    :returns: String
+    A string representation of the weekday.
     */
     func weekdayToString() -> String {
         let formatter = NSDate.formatter()
@@ -849,9 +806,7 @@ public extension NSDate {
     }
     
     /**
-    Returns the short weekday as a new String object.
-    
-    :returns: String
+    A short string representation of the weekday.
     */
     func shortWeekdayToString() -> String {
         let formatter = NSDate.formatter()
@@ -859,9 +814,9 @@ public extension NSDate {
     }
     
     /**
-    Returns the very short weekday as a new String object.
+    A very short string representation of the weekday.
     
-    :returns: String
+    - Returns String
     */
     func veryShortWeekdayToString() -> String {
         let formatter = NSDate.formatter()
@@ -869,9 +824,9 @@ public extension NSDate {
     }
     
     /**
-    Returns the month as a new String object.
+    A string representation of the month.
     
-    :returns: String
+    - Returns String
     */
     func monthToString() -> String {
         let formatter = NSDate.formatter()
@@ -879,9 +834,9 @@ public extension NSDate {
     }
     
     /**
-    Returns the short month as a new String object.
+    A short string representation of the month.
     
-    :returns: String
+    - Returns String
     */
     func shortMonthToString() -> String {
         let formatter = NSDate.formatter()
@@ -889,9 +844,9 @@ public extension NSDate {
     }
     
     /**
-    Returns the very short month as a new String object.
+    A very short string representation of the month.
     
-    :returns: String
+    - Returns String
     */
     func veryShortMonthToString() -> String {
         let formatter = NSDate.formatter()
@@ -902,9 +857,7 @@ public extension NSDate {
     // MARK: Static Cached Formatters
     
     /**
-    Returns a static singleton array of NSDateFormatters so that thy are only created once.
-    
-    :returns: [String: NSDateFormatter] Array of NSDateFormatters
+    Returns a cached static array of NSDateFormatters so that thy are only created once.
     */
     private class func sharedDateFormatters() -> [String: NSDateFormatter] {
         struct Static {
@@ -918,12 +871,12 @@ public extension NSDate {
     }
     
     /**
-    Returns a singleton formatter based on the format, timeZone and locale. Formatters are cached in a singleton array using hashkeys generated by format, timeZone and locale.
+    Returns a cached formatter based on the format, timeZone and locale. Formatters are cached in a singleton array using hashkeys generated by format, timeZone and locale.
     
-    :param: format :String
-    :param: timeZone :NSTimeZone Uses local time zone as the default
-    :param: locale :NSLocale Uses current locale as the default
-    :returns: [String: NSDateFormatter] Singleton of NSDateFormatters
+    - Parameter format: The format to use.
+    - Parameter timeZone: The time zone to use, defaults to the local time zone.
+    - Parameter locale: The locale to use, defaults to the current locale
+    - Returns The date formatter.
     */
     private class func formatter(format format:String = DefaultFormat, timeZone: NSTimeZone = NSTimeZone.localTimeZone(), locale: NSLocale = NSLocale.currentLocale()) -> NSDateFormatter {
         let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
@@ -941,14 +894,14 @@ public extension NSDate {
     }
     
     /**
-    Returns a singleton formatter based on date style, time style and relative date. Formatters are cached in a singleton array using hashkeys generated by date style, time style, relative date, timeZone and locale.
+    Returns a cached formatter based on date style, time style and relative date. Formatters are cached in a singleton array using hashkeys generated by date style, time style, relative date, timeZone and locale.
     
-    :param: dateStyle :NSDateFormatterStyle
-    :param: timeStyle :NSDateFormatterStyle
-    :param: doesRelativeDateFormatting :Bool
-    :param: timeZone :NSTimeZone
-    :param: locale :NSLocale
-    :returns: [String: NSDateFormatter] Singleton array of NSDateFormatters
+    - Parameter dateStyle: The date style to use.
+    - Parameter timeStyle: The time style to use.
+    - Parameter doesRelativeDateFormatting: Enables relative date formatting.
+    - Parameter timeZone: The time zone to use.
+    - Parameter locale: The locale to use.
+    - Returns The date formatter.
     */
     private class func formatter(dateStyle dateStyle: NSDateFormatterStyle, timeStyle: NSDateFormatterStyle, doesRelativeDateFormatting: Bool, timeZone: NSTimeZone = NSTimeZone.localTimeZone(), locale: NSLocale = NSLocale.currentLocale()) -> NSDateFormatter {
         var formatters = NSDate.sharedDateFormatters()
