@@ -181,6 +181,14 @@ class ViewController: UITableViewController {
         date = now.dateBySubtractingMinutes(4)
         sectionItems.append(TableItem(title: "Substracting Minutes", description: "- 4 Minutes: \(date.toString())"))
         
+        // MARK: dateByAddingSeconds
+        date = now.dateByAddingSeconds(90)
+        sectionItems.append(TableItem(title: "Adding Seconds", description: "+ 90 Seconds: \(date.toString())"))
+        
+        // MARK: dateBySubstractingSeconds
+        date = now.dateBySubtractingSeconds(90)
+        sectionItems.append(TableItem(title: "Substracting Seconds", description: "- 90 Minutes: \(date.toString())"))
+        
         // MARK: dateAtStartOfDay
         date = now.dateAtStartOfDay()
         sectionItems.append(TableItem(title: "Start of Day", description: "\(date.toString())"))

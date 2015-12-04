@@ -405,7 +405,7 @@ public extension NSDate {
     }
     
     /**
-    Returns a new NSDate object by a adding minutes.
+    Returns a new NSDate object by a substracting minutes.
     
     :param: days :Int Minutes to add.
     :returns: NSDate
@@ -414,6 +414,32 @@ public extension NSDate {
     {
         let dateComp = NSDateComponents()
         dateComp.minute = (minutes * -1)
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(rawValue: 0))!
+    }
+    
+    /**
+     Returns a new NSDate object by a adding seconds.
+     
+     :param: Seconds Seconds to add.
+     :returns: NSDate
+     */
+    func dateByAddingSeconds(seconds: Int) -> NSDate
+    {
+        let dateComp = NSDateComponents()
+        dateComp.second = seconds
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(rawValue: 0))!
+    }
+    
+    /**
+     Returns a new NSDate object by a substracting seconds.
+     
+     :param: days :Int Seconds to substract.
+     :returns: NSDate
+     */
+    func dateBySubtractingSeconds(seconds: Int) -> NSDate
+    {
+        let dateComp = NSDateComponents()
+        dateComp.second = (seconds * -1)
         return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(rawValue: 0))!
     }
     
