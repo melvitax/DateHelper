@@ -45,6 +45,10 @@ public enum DateFormat {
     case ISO8601(ISO8601Format?), DotNet, RSS, AltRSS, Custom(String)
 }
 
+public enum TimeZone {
+    case Local, UTC
+}
+
 public extension NSDate {
     
     // MARK: Intervals In Seconds
@@ -72,11 +76,12 @@ public extension NSDate {
     
     - Parameter fromString Date string i.e. "16 July 1972 6:12:00".
     - Parameter format The Date Formatter type can be .ISO8601(ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(String).
+    - Parameter timeZone: The time zone to interpret fromString can be .Local, .UTC applies to Custom format only
     
     - Returns A new date
     */
     
-    convenience init(fromString string: String, format:DateFormat)
+    convenience init(fromString string: String, format:DateFormat, timeZone: TimeZone = .Local)
     {
         if string.isEmpty {
             self.init()
@@ -84,6 +89,15 @@ public extension NSDate {
         }
         
         let string = string as NSString
+        
+        let zone: NSTimeZone
+        
+        switch timeZone {
+        case .Local:
+            zone = NSTimeZone.localTimeZone()
+        case .UTC:
+            zone = NSTimeZone(forSecondsFromGMT: 0)
+        }
         
         switch format {
             
@@ -137,7 +151,7 @@ public extension NSDate {
             
         case .Custom(let dateFormat):
             
-            let formatter = NSDate.formatter(format: dateFormat)
+            let formatter = NSDate.formatter(format: dateFormat, timeZone: zone)
             if let date = formatter.dateFromString(string as String) {
                 self.init(timeInterval:0, sinceDate:date)
             } else {
@@ -730,11 +744,13 @@ public extension NSDate {
     A string representation based on a format.
     
     - Parameter format: The format of date can be .ISO8601(.ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(FormatString).
+    - Parameter timeZone: The time zone to interpret the date can be .Local, .UTC applies to Custom format only
     - Returns The date string representation
     */
-    func toString(format format: DateFormat) -> String
+    func toString(format format: DateFormat, timeZone: TimeZone = .Local) -> String
     {
         var dateFormat: String
+        let zone: NSTimeZone
         switch format {
         case .DotNet:
             let offset = NSTimeZone.defaultTimeZone().secondsFromGMT / 3600
@@ -742,14 +758,24 @@ public extension NSDate {
             return  "/Date(\(nowMillis)\(offset))/"
         case .ISO8601(let isoFormat):
             dateFormat = (isoFormat != nil) ? isoFormat!.rawValue : ISO8601Format.DateTimeMilliSec.rawValue
+            zone = NSTimeZone.localTimeZone()
         case .RSS:
             dateFormat = RSSFormat
+            zone = NSTimeZone.localTimeZone()
         case .AltRSS:
             dateFormat = AltRSSFormat
+            zone = NSTimeZone.localTimeZone()
         case .Custom(let string):
+            switch timeZone {
+            case .Local:
+                zone = NSTimeZone.localTimeZone()
+            case .UTC:
+                zone = NSTimeZone(forSecondsFromGMT: 0)
+            }
             dateFormat = string
         }
-        let formatter = NSDate.formatter(format: dateFormat)
+        
+        let formatter = NSDate.formatter(format: dateFormat, timeZone: zone)
         return formatter.stringFromDate(self)
     }
     
