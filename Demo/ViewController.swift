@@ -218,6 +218,10 @@ class ViewController: UITableViewController {
         date = now.dateAtTheEndOfMonth()
         sectionItems.append(TableItem(title: "End of Month", description: "\(date.toString())"))
         
+        // MARK: setTimeOfDate
+        date = now.setTimeOfDate(hour: 6, minute: 30, second: 15)
+        sectionItems.append(TableItem(title: "Set Time of Date", description: "\(date.toString())"))
+        
         items.append(sectionItems)
         
         

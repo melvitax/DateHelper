@@ -1,7 +1,7 @@
 //
 //  AFDateExtension.swift
 //
-//  Version 3.1.1
+//  Version 3.2.0
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -543,6 +543,19 @@ public extension NSDate {
     class func yesterday() -> NSDate
     {
         return NSDate().dateBySubtractingDays(1).dateAtStartOfDay()
+    }
+    
+    /**
+     Return a new NSDate object with the new hour, minute and seconds values
+     
+     :returns: NSDate
+     */
+    func setTimeOfDate(hour hour: Int, minute: Int, second: Int) -> NSDate {
+        let components = self.components()
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        return NSCalendar.currentCalendar().dateFromComponents(components)!
     }
     
     

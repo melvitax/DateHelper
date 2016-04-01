@@ -75,6 +75,7 @@ date.dateAtStartOfWeek() -> NSDate
 date.dateAtEndOfWeek() -> NSDate
 date.dateAtTheStartOfMonth() -> NSDate
 date.dateAtTheEndOfMonth() -> NSDate
+date.setTimeOfDate(hour: 6, minute: 30, second: 15) -> NSDate
 ```
 
 ### Time Interval Between Dates
