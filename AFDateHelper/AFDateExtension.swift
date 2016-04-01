@@ -798,11 +798,13 @@ public extension NSDate {
     - Parameter dateStyle: The date style to use.
     - Parameter timeStyle: The time style to use.
     - Parameter doesRelativeDateFormatting: Enables relative date formatting.
+    - Parameter timeZone: The time zone to use.
+    - Parameter locale: The locale to use.
     - Returns A string representation of the date.
     */
-    func toString(dateStyle dateStyle: NSDateFormatterStyle, timeStyle: NSDateFormatterStyle, doesRelativeDateFormatting: Bool = false) -> String
+    func toString(dateStyle dateStyle: NSDateFormatterStyle, timeStyle: NSDateFormatterStyle, doesRelativeDateFormatting: Bool = false, timeZone: NSTimeZone = NSTimeZone.localTimeZone(), locale: NSLocale = NSLocale.currentLocale()) -> String
     {
-        let formatter = NSDate.formatter(dateStyle: dateStyle, timeStyle: timeStyle, doesRelativeDateFormatting: doesRelativeDateFormatting)
+        let formatter = NSDate.formatter(dateStyle: dateStyle, timeStyle: timeStyle, doesRelativeDateFormatting: doesRelativeDateFormatting, timeZone: timeZone, locale: locale)
         return formatter.stringFromDate(self)
     }
     
