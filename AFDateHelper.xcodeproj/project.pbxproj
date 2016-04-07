@@ -14,6 +14,7 @@
 		65D016A119771E80005220FB /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AFDateExtension.swift */; };
 		65D86DED1BA0DB3E0081A0F9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */; };
 		CD1B226D1CB62C8400992308 /* AFDateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B226C1CB62C8400992308 /* AFDateHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD1B22721CB62D2200992308 /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AFDateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -231,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1B22721CB62D2200992308 /* AFDateExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +437,7 @@
 				CD1B22711CB62C8400992308 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
