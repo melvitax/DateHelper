@@ -460,12 +460,19 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
      Creates a new date from the start of the week.
      
      - Returns A new date object.
+    
      */
 
+
+
 - (NSDate *) dateAtStartOfWeek {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    calendar.locale = [NSLocale currentLocale];
+    calendar.timeZone = [NSTimeZone defaultTimeZone];
+    calendar.firstWeekday = 2;
     NSCalendarUnit flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfYear | NSCalendarUnitWeekday;
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:flags fromDate:self];
-    components.weekday = [[NSCalendar currentCalendar] firstWeekday];
+    NSDateComponents *components = [calendar components:flags fromDate:self];
+    components.weekday = [calendar firstWeekday];
     components.hour = 0;
     components.minute = 0;
     components.second = 0;
@@ -479,13 +486,20 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
      */
 
 - (NSDate *) dateAtEndOfWeek {
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    calendar.locale = [NSLocale currentLocale];
+    calendar.timeZone = [NSTimeZone defaultTimeZone];
     NSCalendarUnit flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekOfYear | NSCalendarUnitWeekday;
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:flags fromDate:self];
-    components.weekday = [[NSCalendar currentCalendar] firstWeekday] + 6;
-    components.hour = 0;
-    components.minute = 0;
-    components.second = 0;
-    return [[NSCalendar currentCalendar] dateFromComponents:components];
+    NSDateComponents *components = [calendar components:flags fromDate: now];
+    NSUInteger weekdayToday = [components weekday];
+    NSInteger daysToSunday = (8 - weekdayToday) % 7;
+    NSDate *nextSunday = [now dateByAddingTimeInterval:60*60*24*daysToSunday];
+    NSDateComponents *components2 = [calendar components:flags fromDate: nextSunday];
+    components2.hour = 23;
+    components2.minute = 59;
+    components2.second = 59;
+    return [[NSCalendar currentCalendar] dateFromComponents:components2];
 }
     
     /**
@@ -497,6 +511,9 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
 - (NSDate*) dateAtStartOfMonth {
     NSDateComponents *components = [self components];
     components.day = 1;
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
     NSDate *firstDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: components];
     return firstDayOfMonthDate;
 }
@@ -511,6 +528,9 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
     NSDateComponents *components = [self components];
     components.month += 1;
     components.day = 0;
+    components.hour = 23;
+    components.minute = 59;
+    components.second = 59;
     NSDate *lastDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: components];
     return lastDayOfMonthDate;
 }
@@ -655,7 +675,7 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
 - (int) nearestHour {
     NSInteger halfHour = [NSDate minuteInSeconds].intValue * 30;
     NSTimeInterval interval = [self timeIntervalSinceReferenceDate];
-    if ([self seconds] < 30) {
+    if (interval < halfHour) {
         interval -= halfHour;
     }
     else {
@@ -726,7 +746,12 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
      */
 
 - (int) weekday {
-    return [self components].weekday;
+    if ([self components].weekday > 1) {
+        return [self components].weekday - 1;
+    }
+    else {
+        return [self components].weekday + 1;
+    }
 }
 
     /**
@@ -750,7 +775,7 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
      */
 
 - (int) firstDayOfWeek {
-    double distanceToStartOfWeek = [NSDate dayInSeconds].doubleValue * ([self components].weekday - 1);
+    double distanceToStartOfWeek = [NSDate dayInSeconds].doubleValue * ([self components].weekday - 2);
     NSTimeInterval interval = [self timeIntervalSinceReferenceDate] - distanceToStartOfWeek;
     return [[NSDate dateWithTimeIntervalSinceReferenceDate: interval] day];
 }
@@ -765,15 +790,6 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
     NSTimeInterval interval = [self timeIntervalSinceReferenceDate] - distanceToStartOfWeek + distanceToEndOfWeek;
     return [[NSDate dateWithTimeIntervalSinceReferenceDate: interval] day];
 }
-
-//func isWeekday() -> Bool {
-//    return !self.isWeekend()
-//}
-//
-//func isWeekend() -> Bool {
-//    let range = NSCalendar.currentCalendar().maximumRangeOfUnit(NSCalendarUnit.Weekday)
-//    return (self.weekday() == range.location || self.weekday() == range.length)
-//}
 
     /**
      Returns true if a weekday.
@@ -913,7 +929,7 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
 
 - (NSString *) weekdayToString {
     NSDateFormatter *formatter = [NSDate formatterWithFormat: DefaultFormat andTimeZone: [NSTimeZone localTimeZone ] andLocale: [NSLocale currentLocale]];
-    NSString *result = formatter.weekdaySymbols[[self weekday] -1];
+    NSString *result = formatter.weekdaySymbols[[self weekday]];
     return result;
 }
     
@@ -923,7 +939,7 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
 
 - (NSString *) shortWeekdayToString {
     NSDateFormatter *formatter = [NSDate formatterWithFormat: DefaultFormat andTimeZone: [NSTimeZone localTimeZone ] andLocale: [NSLocale currentLocale]];
-    NSString *result = formatter.shortWeekdaySymbols[[self weekday] -1];
+    NSString *result = formatter.shortWeekdaySymbols[[self weekday]];
     return result;
 }
     
@@ -935,7 +951,7 @@ NSString *AltRSSFormat = @"d MMM yyyy HH:mm:ss ZZZ"; // "09 Sep 2011 15:26:08 +0
 
 - (NSString *) veryShortWeekdayToString {
     NSDateFormatter *formatter = [NSDate formatterWithFormat: DefaultFormat andTimeZone: [NSTimeZone localTimeZone ] andLocale: [NSLocale currentLocale]];
-    NSString *result = formatter.veryShortWeekdaySymbols[[self weekday] -1];
+    NSString *result = formatter.veryShortWeekdaySymbols[[self weekday]];
     return result;
 }
     
