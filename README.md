@@ -51,6 +51,7 @@ date.isToday() -> Bool
 date.isTomorrow()-> Bool
 date.isYesterday() -> Bool
 date.isSameWeekAsDate(date) -> Bool
+date.isSameMonthAsDate(date) -> Bool
 date.isThisWeek() -> Bool
 date.isNextWeek() -> Bool
 date.isLastWeek() -> Bool
