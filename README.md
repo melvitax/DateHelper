@@ -50,6 +50,7 @@ date.isEqualToDate(date) -> Bool
 date.isToday() -> Bool  
 date.isTomorrow()-> Bool
 date.isYesterday() -> Bool
+date.isSameDayAsDate(date) -> Bool
 date.isSameWeekAsDate(date) -> Bool
 date.isThisWeek() -> Bool
 date.isNextWeek() -> Bool
