@@ -254,9 +254,22 @@ public extension NSDate {
     {
         let comp1 = NSDate.components(fromDate: self)
         let comp2 = NSDate.components(fromDate: date)
-        return (comp1.year == comp2.year)
+        return comp1.year == comp2.year
     }
     
+    /**
+     Returns true if dates are in the same month
+     
+     - Parameter date: The date to compare
+     */
+    func isSameMonthAsDate(date: NSDate) -> Bool
+    {
+      let comp1 = NSDate.components(fromDate: self)
+      let comp2 = NSDate.components(fromDate: date)
+      
+      return comp1.year == comp2.year && comp1.month == comp2.month
+    }
+  
     /**
     Returns true if date is this year.
     */
