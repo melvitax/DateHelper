@@ -8,21 +8,46 @@
 
 /* Begin PBXBuildFile section */
 		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
-		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
 		65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B75F2C19744D6D000AEFD4 /* Main.storyboard */; };
-		65D016A119771E80005220FB /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AFDateExtension.swift */; };
 		65D86DED1BA0DB3E0081A0F9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */; };
+		AD63E05A1CE60A2200EAE6C6 /* AFDateHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1B226A1CB62C8400992308 /* AFDateHelper.framework */; };
+		AD63E05B1CE60A2200EAE6C6 /* AFDateHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD1B226A1CB62C8400992308 /* AFDateHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AD63E05D1CE60A7300EAE6C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		CD1B226D1CB62C8400992308 /* AFDateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B226C1CB62C8400992308 /* AFDateHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD1B22721CB62D2200992308 /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AFDateExtension.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD63E0581CE60A1900EAE6C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 655AEB37192D42990053AD6C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD1B22691CB62C8400992308;
+			remoteInfo = AFDateHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AD63E05C1CE60A2200EAE6C6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AD63E05B1CE60A2200EAE6C6 /* AFDateHelper.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		655AEB46192D42990053AD6C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		655AEB64192D429A0053AD6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		65889B6C1965051C0049740E /* AFDateHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFDateHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65889B6C1965051C0049740E /* AFDateHelperDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFDateHelperDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65889B6F1965051C0049740E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demo/Info.plist; sourceTree = "<group>"; };
 		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = "<group>"; };
 		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demo/ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD63E05A1CE60A2200EAE6C6 /* AFDateHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +84,6 @@
 		655AEB36192D42990053AD6C = {
 			isa = PBXGroup;
 			children = (
-				65D0169F19771E80005220FB /* AFDateHelper */,
 				65889B701965051C0049740E /* AppDelegate.swift */,
 				65889B721965051C0049740E /* ViewController.swift */,
 				65889B771965051C0049740E /* Images.xcassets */,
@@ -76,7 +101,7 @@
 		655AEB40192D42990053AD6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65889B6C1965051C0049740E /* AFDateHelper.app */,
+				65889B6C1965051C0049740E /* AFDateHelperDemo.app */,
 				CD1B226A1CB62C8400992308 /* AFDateHelper.framework */,
 			);
 			name = Products;
@@ -93,17 +118,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		65D0169F19771E80005220FB /* AFDateHelper */ = {
-			isa = PBXGroup;
-			children = (
-				65D016A019771E80005220FB /* AFDateExtension.swift */,
-			);
-			path = AFDateHelper;
-			sourceTree = "<group>";
-		};
 		CD1B226B1CB62C8400992308 /* AFDateHelper */ = {
 			isa = PBXGroup;
 			children = (
+				65D016A019771E80005220FB /* AFDateExtension.swift */,
 				CD1B226C1CB62C8400992308 /* AFDateHelper.h */,
 				CD1B226E1CB62C8400992308 /* Info.plist */,
 			);
@@ -131,14 +149,16 @@
 				65889B681965051C0049740E /* Sources */,
 				65889B691965051C0049740E /* Frameworks */,
 				65889B6A1965051C0049740E /* Resources */,
+				AD63E05C1CE60A2200EAE6C6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AD63E0591CE60A1900EAE6C6 /* PBXTargetDependency */,
 			);
 			name = AFDateHelperDemo;
 			productName = "Swift Demo UIView+AF+Additions";
-			productReference = 65889B6C1965051C0049740E /* AFDateHelper.app */;
+			productReference = 65889B6C1965051C0049740E /* AFDateHelperDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CD1B22691CB62C8400992308 /* AFDateHelper */ = {
@@ -175,6 +195,7 @@
 					};
 					CD1B22691CB62C8400992308 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = ERA9S8SPNY;
 					};
 				};
 			};
@@ -222,8 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65889B731965051C0049740E /* ViewController.swift in Sources */,
-				65D016A119771E80005220FB /* AFDateExtension.swift in Sources */,
+				AD63E05D1CE60A7300EAE6C6 /* ViewController.swift in Sources */,
 				65889B711965051C0049740E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +257,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD63E0591CE60A1900EAE6C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD1B22691CB62C8400992308 /* AFDateHelper */;
+			targetProxy = AD63E0581CE60A1900EAE6C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		655AEB72192D429A0053AD6C /* Debug */ = {
@@ -319,6 +347,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -329,7 +358,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperDemo;
-				PRODUCT_NAME = AFDateHelper;
+				PRODUCT_NAME = AFDateHelperDemo;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -342,13 +371,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperDemo;
-				PRODUCT_NAME = AFDateHelper;
+				PRODUCT_NAME = AFDateHelperDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -359,6 +389,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -387,6 +418,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

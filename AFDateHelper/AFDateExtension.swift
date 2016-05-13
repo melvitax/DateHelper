@@ -81,7 +81,7 @@ public extension NSDate {
     - Returns A new date
     */
     
-    convenience init(fromString string: String, format:DateFormat, timeZone: TimeZone = .Local)
+    convenience public init(fromString string: String, format:DateFormat, timeZone: TimeZone = .Local)
     {
         if string.isEmpty {
             self.init()
