@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63B7E9B61CF6DCFE00E9D8EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */; };
+		63B7E9BB1CF6DCFF00E9D8EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B7E9B91CF6DCFF00E9D8EF /* Main.storyboard */; };
+		63B7E9BD1CF6DCFF00E9D8EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */; };
+		63B7E9C21CF6DD1300E9D8EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
+		63B7E9C31CF6DE8B00E9D8EF /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AFDateExtension.swift */; };
 		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
 		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63B7E9B31CF6DCFE00E9D8EF /* AFDateHelperTVDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFDateHelperTVDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		63B7E9BA1CF6DCFF00E9D8EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		655AEB46192D42990053AD6C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -38,6 +48,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		63B7E9B01CF6DCFE00E9D8EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65889B691965051C0049740E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -55,6 +72,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63B7E9B41CF6DCFE00E9D8EF /* AFDateHelperTVDemo */ = {
+			isa = PBXGroup;
+			children = (
+				63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */,
+				63B7E9B91CF6DCFF00E9D8EF /* Main.storyboard */,
+				63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */,
+				63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */,
+			);
+			path = AFDateHelperTVDemo;
+			sourceTree = "<group>";
+		};
 		655AEB36192D42990053AD6C = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +95,7 @@
 				65889B6F1965051C0049740E /* Info.plist */,
 				65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */,
 				65B7EA75197082AA0097E598 /* README.md */,
+				63B7E9B41CF6DCFE00E9D8EF /* AFDateHelperTVDemo */,
 				CD1B226B1CB62C8400992308 /* AFDateHelper */,
 				655AEB41192D42990053AD6C /* Frameworks */,
 				655AEB40192D42990053AD6C /* Products */,
@@ -78,6 +107,7 @@
 			children = (
 				65889B6C1965051C0049740E /* AFDateHelper.app */,
 				CD1B226A1CB62C8400992308 /* AFDateHelper.framework */,
+				63B7E9B31CF6DCFE00E9D8EF /* AFDateHelperTVDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +154,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		63B7E9B21CF6DCFE00E9D8EF /* AFDateHelperTVDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63B7E9C11CF6DCFF00E9D8EF /* Build configuration list for PBXNativeTarget "AFDateHelperTVDemo" */;
+			buildPhases = (
+				63B7E9AF1CF6DCFE00E9D8EF /* Sources */,
+				63B7E9B01CF6DCFE00E9D8EF /* Frameworks */,
+				63B7E9B11CF6DCFE00E9D8EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AFDateHelperTVDemo;
+			productName = AFDateHelperTVDemo;
+			productReference = 63B7E9B31CF6DCFE00E9D8EF /* AFDateHelperTVDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		65889B6B1965051C0049740E /* AFDateHelperDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AFDateHelperDemo" */;
@@ -165,10 +212,13 @@
 		655AEB37192D42990053AD6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "All Forces";
 				TargetAttributes = {
+					63B7E9B21CF6DCFE00E9D8EF = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					65889B6B1965051C0049740E = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ERA9S8SPNY;
@@ -192,12 +242,22 @@
 			projectRoot = "";
 			targets = (
 				65889B6B1965051C0049740E /* AFDateHelperDemo */,
+				63B7E9B21CF6DCFE00E9D8EF /* AFDateHelperTVDemo */,
 				CD1B22691CB62C8400992308 /* AFDateHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		63B7E9B11CF6DCFE00E9D8EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B7E9BD1CF6DCFF00E9D8EF /* Assets.xcassets in Resources */,
+				63B7E9BB1CF6DCFF00E9D8EF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65889B6A1965051C0049740E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +278,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		63B7E9AF1CF6DCFE00E9D8EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B7E9C31CF6DE8B00E9D8EF /* AFDateExtension.swift in Sources */,
+				63B7E9C21CF6DD1300E9D8EF /* ViewController.swift in Sources */,
+				63B7E9B61CF6DCFE00E9D8EF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65889B681965051C0049740E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,7 +308,62 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		63B7E9B91CF6DCFF00E9D8EF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63B7E9BA1CF6DCFF00E9D8EF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		63B7E9BF1CF6DCFF00E9D8EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = AFDateHelperTVDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperTVDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		63B7E9C01CF6DCFF00E9D8EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = AFDateHelperTVDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperTVDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 		655AEB72192D429A0053AD6C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -276,6 +401,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -308,6 +434,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -369,7 +496,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = AFDateHelper/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelper;
@@ -398,7 +525,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = AFDateHelper/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelper;
@@ -412,6 +539,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		63B7E9C11CF6DCFF00E9D8EF /* Build configuration list for PBXNativeTarget "AFDateHelperTVDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63B7E9BF1CF6DCFF00E9D8EF /* Debug */,
+				63B7E9C01CF6DCFF00E9D8EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "AFDateHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
