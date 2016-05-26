@@ -21,8 +21,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/melvitax/AFDateHelper.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/melvitax'
 
-  s.platform     = :ios, '8.0'
-  s.platform     = :tvos, '9.0'
+  s.platforms     = { :ios => '8.0', :tvos => '9.0' }
   s.requires_arc = true
 
   s.source_files = 'AFDateHelper/**/*'
