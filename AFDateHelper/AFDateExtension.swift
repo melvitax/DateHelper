@@ -338,6 +338,58 @@ public extension NSDate {
     // MARK: Adjusting Dates
     
     /**
+     Creates a new date by a adding months.
+     
+     - Parameter days: The number of months to add.
+     - Returns A new date object.
+     */
+    func dateByAddingMonths(months: Int) -> NSDate
+    {
+        let dateComp = NSDateComponents()
+        dateComp.month = months
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(rawValue: 0))!
+    }
+    
+    /**
+     Creates a new date by a substracting months.
+     
+     - Parameter days: The number of months to substract.
+     - Returns A new date object.
+     */
+    func dateBySubtractingMonths(months: Int) -> NSDate
+    {
+        let dateComp = NSDateComponents()
+        dateComp.month = (months * -1)
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(rawValue: 0))!
+    }
+    
+    /**
+     Creates a new date by a adding weeks.
+     
+     - Parameter days: The number of weeks to add.
+     - Returns A new date object.
+     */
+    func dateByAddingWeeks(weeks: Int) -> NSDate
+    {
+        let dateComp = NSDateComponents()
+        dateComp.day = 7 * weeks
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(rawValue: 0))!
+    }
+    
+    /**
+     Creates a new date by a substracting weeks.
+     
+     - Parameter days: The number of weeks to substract.
+     - Returns A new date object.
+     */
+    func dateBySubtractingWeeks(weeks: Int) -> NSDate
+    {
+        let dateComp = NSDateComponents()
+        dateComp.day = ((7 * weeks) * -1)
+        return NSCalendar.currentCalendar().dateByAddingComponents(dateComp, toDate: self, options: NSCalendarOptions(rawValue: 0))!
+    }
+    
+    /**
     Creates a new date by a adding days.
     
     - Parameter days: The number of days to add.

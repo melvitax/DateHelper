@@ -63,6 +63,10 @@ date.isLastYear() -> Bool
 
 ### Adjusting Dates
 ```Swift
+date.dateByAddingMonths(2) -> NSDate
+date.dateBySubtractingMonths(4) -> NSDate
+date.dateByAddingWeeks(2) -> NSDate
+date.dateBySubtractingWeeks(4) -> NSDate
 date.dateByAddingDays(2) -> NSDate
 date.dateBySubtractingDays(4) -> NSDate
 date.dateByAddingHours(2) -> NSDate

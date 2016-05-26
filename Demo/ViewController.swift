@@ -166,6 +166,22 @@ class ViewController: UITableViewController {
         sections.append("Adjusting Dates")
         sectionItems = [TableItem]()
         
+        // MARK: dateByAddingMonths
+        date = now.dateByAddingMonths(2)
+        sectionItems.append(TableItem(title: "Adding Months", description: "+ 2 Months: \(date.toString())"))
+        
+        // MARK: dateBySubstractingMonths
+        date = now.dateBySubtractingMonths(4)
+        sectionItems.append(TableItem(title: "Substracting Months", description: "- 4 Months: \(date.toString())"))
+        
+        // MARK: dateByAddingWeeks
+        date = now.dateByAddingWeeks(2)
+        sectionItems.append(TableItem(title: "Adding Weeks", description: "+ 2 Weeks: \(date.toString())"))
+        
+        // MARK: dateBySubstractingWeeks
+        date = now.dateBySubtractingWeeks(4)
+        sectionItems.append(TableItem(title: "Substracting Weeks", description: "- 4 Weeks: \(date.toString())"))
+        
         // MARK: dateByAddingDays
         date = now.dateByAddingDays(2)
         sectionItems.append(TableItem(title: "Adding Days", description: "+ 2 Days: \(date.toString())"))
