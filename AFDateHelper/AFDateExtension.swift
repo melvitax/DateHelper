@@ -256,7 +256,20 @@ public extension NSDate {
         let comp2 = NSDate.components(fromDate: date)
         return (comp1.year == comp2.year)
     }
-    
+  
+    /**
+    Returns true if dates are in the same day 
+   
+    - Parameter date: The date to compare
+    */
+    func isSameDayAsDate(date: NSDate) -> Bool
+    {
+      let comp1 = NSDate.components(fromDate: self)
+      let comp2 = NSDate.components(fromDate: date)
+      
+      return comp1.year == comp2.year && comp1.month == comp2.month && comp1.day == comp2.day
+    }
+  
     /**
     Returns true if date is this year.
     */

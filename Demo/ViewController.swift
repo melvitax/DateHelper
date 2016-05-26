@@ -102,8 +102,12 @@ class ViewController: UITableViewController {
         
         // MARK: isSameWeekAsDate
         equality = now.isSameWeekAsDate(date) ? "is same week as" : "is not same week as"
-        sectionItems.append(TableItem(title: "Same Week", description: "\(date.toString()) \(equality) \(date.toString())"))
-        
+        sectionItems.append(TableItem(title: "Same Week", description: "\(now.toString()) \(equality) \(date.toString())"))
+      
+        // MARK: isSameDayAsDate
+        equality = now.isSameDayAsDate(date) ? "is same day as" : "is not same day as"
+        sectionItems.append(TableItem(title: "Same Day", description: "\(now.toString()) \(equality) \(date.toString())"))
+      
         // MARK: isThisWeek
         equality = date.isThisWeek() ? "is this week" : "is not this week"
         sectionItems.append(TableItem(title: "This Week", description: "\(date.toString()) \(equality)"))
