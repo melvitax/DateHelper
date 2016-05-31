@@ -17,25 +17,25 @@ To run the example project, clone or download the repo, and run.
 ### Creating Date from String
 ```Swift
 // Date from String with custom format
-NSDate(fromString: "16 July 1972 6:12:00 ", format: .Custom("dd MMM yyyy HH:mm:ss")) -> NSDate
+NSDate(fromString: "16 July 1972 6:12:00 ", format: .Custom("dd MMM yyyy HH:mm:ss")) -> NSDate?
 // Date from ISO8601(Year) String
-NSDate(fromString:  "2009", format: .ISO8601(nil)) -> NSDate
+NSDate(fromString:  "2009", format: .ISO8601(nil)) -> NSDate?
 // Date from ISO8601(Year & Month) String
-NSDate(fromString:  "2009-08", format: .ISO8601(nil)) -> NSDate
+NSDate(fromString:  "2009-08", format: .ISO8601(nil)) -> NSDate?
 // Date from ISO8601(Date) String
-NSDate(fromString:  "2009-08-11", format: .ISO8601(nil)) -> NSDate
+NSDate(fromString:  "2009-08-11", format: .ISO8601(nil)) -> NSDate?
 // Date from ISO8601(Date & Time) String
-NSDate(fromString:  "2009-08-11T06:00-07:00", format: .ISO8601(nil)) -> NSDate
+NSDate(fromString:  "2009-08-11T06:00-07:00", format: .ISO8601(nil)) -> NSDate?
 // Date from ISO8601(Date & Time & Sec) String
-NSDate(fromString:  "2009-08-11T06:00:00-07:00", format: .ISO8601(nil)) -> NSDate
+NSDate(fromString:  "2009-08-11T06:00:00-07:00", format: .ISO8601(nil)) -> NSDate?
 // Date from ISO8601(Date & Time & MilliSec) String
-NSDate(fromString: "2009-08-11T06:00:00.000-07:00", format: .ISO8601(nil)) -> NSDate
+NSDate(fromString: "2009-08-11T06:00:00.000-07:00", format: .ISO8601(nil)) -> NSDate?
 // Date from DotNetJSON String
-NSDate(fromString: "/Date(1260123281843)/", format: .DotNet) -> NSDate
+NSDate(fromString: "/Date(1260123281843)/", format: .DotNet) -> NSDate?
 // Date from RSS String
-NSDate(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .RSS) -> NSDate
+NSDate(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .RSS) -> NSDate?
 // Date from AltRSS String
-NSDate(fromString: "09 Sep 2011 15:26:08 +0200", format: .AltRSS) -> NSDate -> NSDate
+NSDate(fromString: "09 Sep 2011 15:26:08 +0200", format: .AltRSS) -> NSDate -> NSDate?
 ```
 
 ### Creating Date
