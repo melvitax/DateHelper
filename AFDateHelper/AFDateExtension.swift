@@ -81,11 +81,10 @@ public extension NSDate {
     - Returns A new date
     */
     
-    convenience init(fromString string: String, format:DateFormat, timeZone: TimeZone = .Local)
+    convenience init?(fromString string: String, format:DateFormat, timeZone: TimeZone = .Local)
     {
         if string.isEmpty {
-            self.init()
-            return
+            return nil
         }
         
         let string = string as NSString
@@ -120,7 +119,7 @@ public extension NSDate {
             if let date = formatter.dateFromString(string as String) {
                 self.init(timeInterval:0, sinceDate:date)
             } else {
-                self.init()
+                return nil
             }
             
         case .RSS:
@@ -133,11 +132,11 @@ public extension NSDate {
             if let date = formatter.dateFromString(string as String) {
                 self.init(timeInterval:0, sinceDate:date)
             } else {
-                self.init()
+                return nil
             }
             
         case .AltRSS:
-            
+
             var s  = string
             if string.hasSuffix("Z") {
                 s = s.substringToIndex(s.length-1) + "GMT"
@@ -146,7 +145,7 @@ public extension NSDate {
             if let date = formatter.dateFromString(string as String) {
                 self.init(timeInterval:0, sinceDate:date)
             } else {
-                self.init()
+                return nil
             }
             
         case .Custom(let dateFormat):
@@ -155,7 +154,7 @@ public extension NSDate {
             if let date = formatter.dateFromString(string as String) {
                 self.init(timeInterval:0, sinceDate:date)
             } else {
-                self.init()
+                return nil
             }
         }
     }

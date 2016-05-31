@@ -30,43 +30,43 @@ class ViewController: UITableViewController {
         var sectionItems = [TableItem]()
         
         // MARK: Date from string with custom format
-        date = NSDate(fromString: "16 July 1972 6:12:00", format: .Custom("dd MMM yyyy HH:mm:ss"))
+        date = NSDate(fromString: "16 July 1972 6:12:00", format: .Custom("dd MMM yyyy HH:mm:ss"))!
         sectionItems.append(TableItem(title: "Custom Format", description: "dd MMM yyyy HH:mm:ss = \(date.toString())"))
         
         // MARK: Date from ISO8601(Year) String
-        date = NSDate(fromString:  "2009", format: .ISO8601(nil))
+        date = NSDate(fromString:  "2009", format: .ISO8601(nil))!
         sectionItems.append(TableItem(title: "ISO8601(Year)", description:  "2009 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Year & Month) String
-        date = NSDate(fromString:  "2009-08", format: .ISO8601(nil))
+        date = NSDate(fromString:  "2009-08", format: .ISO8601(nil))!
         sectionItems.append(TableItem(title: "ISO8601(Year & Month)", description:  "2009-08 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Date) String
-        date = NSDate(fromString:  "2009-08-11", format: .ISO8601(nil))
+        date = NSDate(fromString:  "2009-08-11", format: .ISO8601(nil))!
         sectionItems.append(TableItem(title: "ISO8601(Date)", description:  "2009-08-11 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Date & Time) String
-        date = NSDate(fromString:  "2009-08-11T06:00-07:00", format: .ISO8601(nil))
+        date = NSDate(fromString:  "2009-08-11T06:00-07:00", format: .ISO8601(nil))!
         sectionItems.append(TableItem(title: "ISO8601(Date & Time)", description:  "2009-08-11T06:00-07:00 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Date & Time & Sec) String
-        date = NSDate(fromString:  "2009-08-11T06:00:00-07:00", format: .ISO8601(nil))
+        date = NSDate(fromString:  "2009-08-11T06:00:00-07:00", format: .ISO8601(nil))!
         sectionItems.append(TableItem(title: "ISO8601(Date & Time & Sec)", description:  "2009-08-11T06:00:00-07:00 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Date & Time & MilliSec) String
-        date = NSDate(fromString: "2009-08-11T06:00:00.000-07:00", format: .ISO8601(nil))
+        date = NSDate(fromString: "2009-08-11T06:00:00.000-07:00", format: .ISO8601(nil))!
         sectionItems.append(TableItem(title: "ISO8601(Date & Time & MilliSec)", description: "2009-08-11T06:00:00.000-07:00 = \(date.toString())"))
         
         // MARK: Date from DotNetJSON String
-        date = NSDate(fromString: "/Date(1260123281843)/", format: .DotNet)
+        date = NSDate(fromString: "/Date(1260123281843)/", format: .DotNet)!
         sectionItems.append(TableItem(title: "DotNetJSON", description: "Date(1260123281843) = \(date.toString())"))
         
         // MARK: Date from RSS String
-        date = NSDate(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .RSS)
+        date = NSDate(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .RSS)!
         sectionItems.append(TableItem(title: "RSS", description:"Fri, 09 Sep 2011 15:26:08 +0200 = \(date.toString())"))
         
         // MARK: Date from AltRSS String
-        date = NSDate(fromString: "09 Sep 2011 15:26:08 +0200", format: .AltRSS)
+        date = NSDate(fromString: "09 Sep 2011 15:26:08 +0200", format: .AltRSS)!
         sectionItems.append(TableItem(title: "Alt RSS", description: "09 Sep 2011 15:26:08 +0200 = \(date.toString())"))
         
         items.append(sectionItems)
