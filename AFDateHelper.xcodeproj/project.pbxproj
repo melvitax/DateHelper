@@ -23,28 +23,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		63B7E9B31CF6DCFE00E9D8EF /* AFDateHelperTVDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFDateHelperTVDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		63B7E9B31CF6DCFE00E9D8EF /* AppleTVDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleTVDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = AppleTVDemo/AppDelegate.swift; sourceTree = "<group>"; };
 		63B7E9BA1CF6DCFF00E9D8EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = AppleTVDemo/Assets.xcassets; sourceTree = "<group>"; };
+		63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = AppleTVDemo/Info.plist; sourceTree = "<group>"; };
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		655AEB46192D42990053AD6C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		655AEB64192D429A0053AD6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		65889B6C1965051C0049740E /* AFDateHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFDateHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		65889B6F1965051C0049740E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demo/Info.plist; sourceTree = "<group>"; };
-		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = "<group>"; };
-		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demo/ViewController.swift; sourceTree = "<group>"; };
-		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Demo/Images.xcassets; sourceTree = "<group>"; };
-		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Demo/Main.storyboard; sourceTree = "<group>"; };
+		65889B6F1965051C0049740E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = AppDemo/Info.plist; sourceTree = "<group>"; };
+		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = AppDemo/AppDelegate.swift; sourceTree = "<group>"; };
+		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = AppDemo/ViewController.swift; sourceTree = "<group>"; };
+		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AppDemo/Images.xcassets; sourceTree = "<group>"; };
+		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = AppDemo/Main.storyboard; sourceTree = "<group>"; };
 		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65D016A019771E80005220FB /* AFDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDateExtension.swift; sourceTree = "<group>"; };
-		65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Demo/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "AppDemo/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFDateHelper.podspec; sourceTree = "<group>"; };
 		CD1B226A1CB62C8400992308 /* AFDateHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFDateHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD1B226C1CB62C8400992308 /* AFDateHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDateHelper.h; sourceTree = "<group>"; };
-		CD1B226E1CB62C8400992308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD1B226C1CB62C8400992308 /* AFDateHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AFDateHelper.h; path = ../Framework/AFDateHelper.h; sourceTree = "<group>"; };
+		CD1B226E1CB62C8400992308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Framework/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		63B7E9B41CF6DCFE00E9D8EF /* AFDateHelperTVDemo */ = {
+		63B7E9B41CF6DCFE00E9D8EF /* AppleTVDemo */ = {
 			isa = PBXGroup;
 			children = (
 				63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */,
@@ -80,23 +80,32 @@
 				63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */,
 				63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */,
 			);
+			name = AppleTVDemo;
 			path = AFDateHelperTVDemo;
 			sourceTree = "<group>";
 		};
-		655AEB36192D42990053AD6C = {
+		6524A6281D065F8D00BC7D4D /* AppDemo */ = {
 			isa = PBXGroup;
 			children = (
-				65D0169F19771E80005220FB /* AFDateHelper */,
 				65889B701965051C0049740E /* AppDelegate.swift */,
 				65889B721965051C0049740E /* ViewController.swift */,
 				65889B771965051C0049740E /* Images.xcassets */,
 				65B75F2C19744D6D000AEFD4 /* Main.storyboard */,
 				65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */,
 				65889B6F1965051C0049740E /* Info.plist */,
+			);
+			name = AppDemo;
+			sourceTree = "<group>";
+		};
+		655AEB36192D42990053AD6C = {
+			isa = PBXGroup;
+			children = (
+				65D0169F19771E80005220FB /* AFDateHelper */,
 				65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */,
 				65B7EA75197082AA0097E598 /* README.md */,
-				63B7E9B41CF6DCFE00E9D8EF /* AFDateHelperTVDemo */,
-				CD1B226B1CB62C8400992308 /* AFDateHelper */,
+				6524A6281D065F8D00BC7D4D /* AppDemo */,
+				63B7E9B41CF6DCFE00E9D8EF /* AppleTVDemo */,
+				CD1B226B1CB62C8400992308 /* Feamework */,
 				655AEB41192D42990053AD6C /* Frameworks */,
 				655AEB40192D42990053AD6C /* Products */,
 			);
@@ -107,7 +116,7 @@
 			children = (
 				65889B6C1965051C0049740E /* AFDateHelper.app */,
 				CD1B226A1CB62C8400992308 /* AFDateHelper.framework */,
-				63B7E9B31CF6DCFE00E9D8EF /* AFDateHelperTVDemo.app */,
+				63B7E9B31CF6DCFE00E9D8EF /* AppleTVDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,12 +140,13 @@
 			path = AFDateHelper;
 			sourceTree = "<group>";
 		};
-		CD1B226B1CB62C8400992308 /* AFDateHelper */ = {
+		CD1B226B1CB62C8400992308 /* Feamework */ = {
 			isa = PBXGroup;
 			children = (
 				CD1B226C1CB62C8400992308 /* AFDateHelper.h */,
 				CD1B226E1CB62C8400992308 /* Info.plist */,
 			);
+			name = Feamework;
 			path = AFDateHelper;
 			sourceTree = "<group>";
 		};
@@ -154,9 +164,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		63B7E9B21CF6DCFE00E9D8EF /* AFDateHelperTVDemo */ = {
+		63B7E9B21CF6DCFE00E9D8EF /* AppleTVDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63B7E9C11CF6DCFF00E9D8EF /* Build configuration list for PBXNativeTarget "AFDateHelperTVDemo" */;
+			buildConfigurationList = 63B7E9C11CF6DCFF00E9D8EF /* Build configuration list for PBXNativeTarget "AppleTVDemo" */;
 			buildPhases = (
 				63B7E9AF1CF6DCFE00E9D8EF /* Sources */,
 				63B7E9B01CF6DCFE00E9D8EF /* Frameworks */,
@@ -166,14 +176,14 @@
 			);
 			dependencies = (
 			);
-			name = AFDateHelperTVDemo;
+			name = AppleTVDemo;
 			productName = AFDateHelperTVDemo;
-			productReference = 63B7E9B31CF6DCFE00E9D8EF /* AFDateHelperTVDemo.app */;
+			productReference = 63B7E9B31CF6DCFE00E9D8EF /* AppleTVDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		65889B6B1965051C0049740E /* AFDateHelperDemo */ = {
+		65889B6B1965051C0049740E /* AppDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AFDateHelperDemo" */;
+			buildConfigurationList = 65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AppDemo" */;
 			buildPhases = (
 				65889B681965051C0049740E /* Sources */,
 				65889B691965051C0049740E /* Frameworks */,
@@ -183,7 +193,7 @@
 			);
 			dependencies = (
 			);
-			name = AFDateHelperDemo;
+			name = AppDemo;
 			productName = "Swift Demo UIView+AF+Additions";
 			productReference = 65889B6C1965051C0049740E /* AFDateHelper.app */;
 			productType = "com.apple.product-type.application";
@@ -241,8 +251,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65889B6B1965051C0049740E /* AFDateHelperDemo */,
-				63B7E9B21CF6DCFE00E9D8EF /* AFDateHelperTVDemo */,
+				65889B6B1965051C0049740E /* AppDemo */,
+				63B7E9B21CF6DCFE00E9D8EF /* AppleTVDemo */,
 				CD1B22691CB62C8400992308 /* AFDateHelper */,
 			);
 		};
@@ -315,6 +325,7 @@
 				63B7E9BA1CF6DCFF00E9D8EF /* Base */,
 			);
 			name = Main.storyboard;
+			path = AppleTVDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -330,7 +341,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = AFDateHelperTVDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AppleTVDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperTVDemo;
@@ -353,7 +364,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = AFDateHelperTVDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AppleTVDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperTVDemo;
@@ -451,7 +462,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AppDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
@@ -470,7 +481,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AppDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
@@ -539,13 +550,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63B7E9C11CF6DCFF00E9D8EF /* Build configuration list for PBXNativeTarget "AFDateHelperTVDemo" */ = {
+		63B7E9C11CF6DCFF00E9D8EF /* Build configuration list for PBXNativeTarget "AppleTVDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63B7E9BF1CF6DCFF00E9D8EF /* Debug */,
 				63B7E9C01CF6DCFF00E9D8EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "AFDateHelper" */ = {
 			isa = XCConfigurationList;
@@ -556,7 +568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AFDateHelperDemo" */ = {
+		65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "AppDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65889B851965051C0049740E /* Debug */,
