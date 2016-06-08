@@ -105,7 +105,7 @@
 				65B7EA75197082AA0097E598 /* README.md */,
 				6524A6281D065F8D00BC7D4D /* AppDemo */,
 				63B7E9B41CF6DCFE00E9D8EF /* AppleTVDemo */,
-				CD1B226B1CB62C8400992308 /* Feamework */,
+				CD1B226B1CB62C8400992308 /* Framework */,
 				655AEB41192D42990053AD6C /* Frameworks */,
 				655AEB40192D42990053AD6C /* Products */,
 			);
@@ -140,13 +140,13 @@
 			path = AFDateHelper;
 			sourceTree = "<group>";
 		};
-		CD1B226B1CB62C8400992308 /* Feamework */ = {
+		CD1B226B1CB62C8400992308 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
 				CD1B226C1CB62C8400992308 /* AFDateHelper.h */,
 				CD1B226E1CB62C8400992308 /* Info.plist */,
 			);
-			name = Feamework;
+			name = Framework;
 			path = AFDateHelper;
 			sourceTree = "<group>";
 		};
