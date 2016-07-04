@@ -24,9 +24,4 @@ Pod::Spec.new do |s|
   s.platforms     = { :ios => '8.0', :tvos => '9.0', :osx => '10.10', :watchos => '2.0' }
 
   s.source_files = 'AFDateHelper/**/*'
-  #s.resource_bundles = {}
-
-  # s.public_header_files
-  # s.frameworks
-  # s.dependency 
 end
