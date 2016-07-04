@@ -22,7 +22,6 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/melvitax'
 
   s.platforms     = { :ios => '8.0', :tvos => '9.0', :osx => '10.10', :watchos => '2.0' }
-  s.requires_arc = true
 
   s.source_files = 'AFDateHelper/**/*'
   #s.resource_bundles = {}
