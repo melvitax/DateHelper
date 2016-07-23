@@ -15,8 +15,8 @@ struct TableItem {
 
 class ViewController: UITableViewController {
     
-    let now = NSDate()
-    var date = NSDate()
+    let now = Date()
+    var date = Date()
     
     var sections:[String] = []
     var items:[[TableItem]] = []
@@ -30,43 +30,43 @@ class ViewController: UITableViewController {
         var sectionItems = [TableItem]()
         
         // MARK: Date from string with custom format
-        date = NSDate(fromString: "16 July 1972 6:12:00", format: .Custom("dd MMM yyyy HH:mm:ss"))
+        date = Date(fromString: "16 July 1972 6:12:00", format: .custom("dd MMM yyyy HH:mm:ss"))
         sectionItems.append(TableItem(title: "Custom Format", description: "dd MMM yyyy HH:mm:ss = \(date.toString())"))
         
         // MARK: Date from ISO8601(Year) String
-        date = NSDate(fromString:  "2009", format: .ISO8601(nil))
+        date = Date(fromString:  "2009", format: .iso8601(nil))
         sectionItems.append(TableItem(title: "ISO8601(Year)", description:  "2009 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Year & Month) String
-        date = NSDate(fromString:  "2009-08", format: .ISO8601(nil))
+        date = Date(fromString:  "2009-08", format: .iso8601(nil))
         sectionItems.append(TableItem(title: "ISO8601(Year & Month)", description:  "2009-08 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Date) String
-        date = NSDate(fromString:  "2009-08-11", format: .ISO8601(nil))
+        date = Date(fromString:  "2009-08-11", format: .iso8601(nil))
         sectionItems.append(TableItem(title: "ISO8601(Date)", description:  "2009-08-11 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Date & Time) String
-        date = NSDate(fromString:  "2009-08-11T06:00-07:00", format: .ISO8601(nil))
+        date = Date(fromString:  "2009-08-11T06:00-07:00", format: .iso8601(nil))
         sectionItems.append(TableItem(title: "ISO8601(Date & Time)", description:  "2009-08-11T06:00-07:00 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Date & Time & Sec) String
-        date = NSDate(fromString:  "2009-08-11T06:00:00-07:00", format: .ISO8601(nil))
+        date = Date(fromString:  "2009-08-11T06:00:00-07:00", format: .iso8601(nil))
         sectionItems.append(TableItem(title: "ISO8601(Date & Time & Sec)", description:  "2009-08-11T06:00:00-07:00 = \(date.toString())"))
         
         // MARK: Date from ISO8601(Date & Time & MilliSec) String
-        date = NSDate(fromString: "2009-08-11T06:00:00.000-07:00", format: .ISO8601(nil))
+        date = Date(fromString: "2009-08-11T06:00:00.000-07:00", format: .iso8601(nil))
         sectionItems.append(TableItem(title: "ISO8601(Date & Time & MilliSec)", description: "2009-08-11T06:00:00.000-07:00 = \(date.toString())"))
         
         // MARK: Date from DotNetJSON String
-        date = NSDate(fromString: "/Date(1260123281843)/", format: .DotNet)
+        date = Date(fromString: "/Date(1260123281843)/", format: .dotNet)
         sectionItems.append(TableItem(title: "DotNetJSON", description: "Date(1260123281843) = \(date.toString())"))
         
         // MARK: Date from RSS String
-        date = NSDate(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .RSS)
+        date = Date(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .rss)
         sectionItems.append(TableItem(title: "RSS", description:"Fri, 09 Sep 2011 15:26:08 +0200 = \(date.toString())"))
         
         // MARK: Date from AltRSS String
-        date = NSDate(fromString: "09 Sep 2011 15:26:08 +0200", format: .AltRSS)
+        date = Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .altRSS)
         sectionItems.append(TableItem(title: "Alt RSS", description: "09 Sep 2011 15:26:08 +0200 = \(date.toString())"))
         
         items.append(sectionItems)
@@ -74,8 +74,8 @@ class ViewController: UITableViewController {
         // MARK: **** CREATING DATES ****
         sectionItems = [TableItem]()
         sections.append("Creating Dates")
-        sectionItems.append(TableItem(title: "Tomorrow", description: "\(NSDate.tomorrow())"))
-        sectionItems.append(TableItem(title: "Yesterday", description: "\(NSDate.yesterday())"))
+        sectionItems.append(TableItem(title: "Tomorrow", description: "\(Date.tomorrow())"))
+        sectionItems.append(TableItem(title: "Yesterday", description: "\(Date.yesterday())"))
         items.append(sectionItems)
         
         // MARK: **** COMPARING DATES ****
@@ -239,7 +239,7 @@ class ViewController: UITableViewController {
         sectionItems.append(TableItem(title: "End of Month", description: "\(date.toString())"))
         
         // MARK: setTimeOfDate
-        date = now.setTimeOfDate(hour: 6, minute: 30, second: 15)
+        date = now.setTimeOfDate(6, minute: 30, second: 15)
         sectionItems.append(TableItem(title: "Set Time of Date", description: "\(date.toString())"))
         
         items.append(sectionItems)
@@ -328,49 +328,49 @@ class ViewController: UITableViewController {
         sectionItems.append(TableItem(title: "toString()", description: now.toString()))
         
         // MARK: toString Cutom Format
-        sectionItems.append(TableItem(title: "Custom: dd MMM yyyy HH:mm:ss", description: now.toString(format: .Custom("dd MMM yyyy HH:mm:ss"))))
+        sectionItems.append(TableItem(title: "Custom: dd MMM yyyy HH:mm:ss", description: now.toString(.custom("dd MMM yyyy HH:mm:ss"))))
         
         // MARK: toString ISO8601(Year)
-        sectionItems.append(TableItem(title: "ISO8601(Year)", description: now.toString(format: .ISO8601(ISO8601Format.Year))))
+        sectionItems.append(TableItem(title: "ISO8601(Year)", description: now.toString(.iso8601(ISO8601Format.Year))))
         
         // MARK: toString ISO8601(Year & Month)
-        sectionItems.append(TableItem(title: "ISO8601(Year & Month)", description: now.toString(format: .ISO8601(ISO8601Format.YearMonth))))
+        sectionItems.append(TableItem(title: "ISO8601(Year & Month)", description: now.toString(.iso8601(ISO8601Format.YearMonth))))
         
         // MARK: toString ISO8601(Date)
-        sectionItems.append(TableItem(title: "ISO8601(Date)", description: now.toString(format: .ISO8601(ISO8601Format.Date))))
+        sectionItems.append(TableItem(title: "ISO8601(Date)", description: now.toString(.iso8601(ISO8601Format.Date))))
         
         // MARK: toString ISO8601(Date & Time)
-        sectionItems.append(TableItem(title: "ISO8601(Date & Time)", description: now.toString(format: .ISO8601(ISO8601Format.DateTime))))
+        sectionItems.append(TableItem(title: "ISO8601(Date & Time)", description: now.toString(.iso8601(ISO8601Format.DateTime))))
         
         // MARK: toString ISO8601(Date & Time & Sec)
-        sectionItems.append(TableItem(title: "ISO8601(Date & Time & Sec)", description: now.toString(format: .ISO8601(ISO8601Format.DateTimeSec))))
+        sectionItems.append(TableItem(title: "ISO8601(Date & Time & Sec)", description: now.toString(.iso8601(ISO8601Format.DateTimeSec))))
         
         // MARK: toString ISO8601(Date & Time & MilliSec)
-        sectionItems.append(TableItem(title: "ISO8601(Date & Time & MilliSec)", description: now.toString(format: .ISO8601(ISO8601Format.DateTimeMilliSec))))
+        sectionItems.append(TableItem(title: "ISO8601(Date & Time & MilliSec)", description: now.toString(.iso8601(ISO8601Format.DateTimeMilliSec))))
         
         // MARK: toString DotNet JSON
-        sectionItems.append(TableItem(title: "DotNet JSON", description: now.toString(format: .DotNet)))
+        sectionItems.append(TableItem(title: "DotNet JSON", description: now.toString(.dotNet)))
         
         // MARK: toString RSS
-        sectionItems.append(TableItem(title: "RSS", description: now.toString(format: .RSS)))
+        sectionItems.append(TableItem(title: "RSS", description: now.toString(.rss)))
         
         // MARK: toString AltRSS
-        sectionItems.append(TableItem(title: "AltRSS", description: now.toString(format: .AltRSS)))
+        sectionItems.append(TableItem(title: "AltRSS", description: now.toString(.altRSS)))
         
         // MARK: toString Short Date, No Time, Relative
-        sectionItems.append(TableItem(title: "Short Date, No Time, Relative", description: now.toString(dateStyle: .ShortStyle, timeStyle: .NoStyle, doesRelativeDateFormatting: true)))
+        sectionItems.append(TableItem(title: "Short Date, No Time, Relative", description: now.toString(.short, timeStyle: .none, doesRelativeDateFormatting: true)))
         
         // MARK: toString Short Date, Short Time, Not Relative
-        sectionItems.append(TableItem(title: "Short Date, Short Time, Not Relative", description: now.toString(dateStyle: .ShortStyle, timeStyle: .ShortStyle, doesRelativeDateFormatting: false)))
+        sectionItems.append(TableItem(title: "Short Date, Short Time, Not Relative", description: now.toString(.short, timeStyle: .short, doesRelativeDateFormatting: false)))
         
         // MARK: toString Medium Date, Medium Time, Not Relative
-        sectionItems.append(TableItem(title: "Medium Date, Medium Time, Not Relative", description: now.toString(dateStyle: .MediumStyle, timeStyle: .MediumStyle, doesRelativeDateFormatting: false)))
+        sectionItems.append(TableItem(title: "Medium Date, Medium Time, Not Relative", description: now.toString(.medium, timeStyle: .medium, doesRelativeDateFormatting: false)))
         
         // MARK: toString Long Date, Long Time, Not Relative
-        sectionItems.append(TableItem(title: "Long Date, Long Time, Not Relative", description: now.toString(dateStyle: .LongStyle, timeStyle: .LongStyle, doesRelativeDateFormatting: false)))
+        sectionItems.append(TableItem(title: "Long Date, Long Time, Not Relative", description: now.toString(.long, timeStyle: .long, doesRelativeDateFormatting: false)))
         
         // MARK: toString Full Date, Full Time, Not Relative
-        sectionItems.append(TableItem(title: "Full Date, Full Time, Not Relative", description: now.toString(dateStyle: .FullStyle, timeStyle: .FullStyle, doesRelativeDateFormatting: false)))
+        sectionItems.append(TableItem(title: "Full Date, Full Time, Not Relative", description: now.toString(.full, timeStyle: .full, doesRelativeDateFormatting: false)))
         
         // MARK: Relative Time
         sectionItems.append(TableItem(title: "Relative Time", description: now.relativeTimeToString()))
@@ -405,25 +405,25 @@ class ViewController: UITableViewController {
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
     
     
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items[section].count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        let item = items[indexPath.section][indexPath.row]
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+        let item = items[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         cell.textLabel?.text = item.title
         cell.detailTextLabel?.text = item.description
         

@@ -232,6 +232,7 @@
 					65889B6B1965051C0049740E = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ERA9S8SPNY;
+						LastSwiftMigration = 0800;
 					};
 					CD1B22691CB62C8400992308 = {
 						CreatedOnToolsVersion = 7.3;
@@ -477,6 +478,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperDemo;
 				PRODUCT_NAME = AFDateHelper;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -496,6 +498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperDemo;
 				PRODUCT_NAME = AFDateHelper;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
