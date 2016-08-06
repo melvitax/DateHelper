@@ -59,10 +59,10 @@ public extension Date {
     private static func yearInSeconds() -> Double { return 31556926 }
     
     // MARK: Components
-    private static func componentFlags() -> Calendar.Unit { return [Calendar.Unit.year, Calendar.Unit.month, Calendar.Unit.day, Calendar.Unit.weekOfYear, Calendar.Unit.hour, Calendar.Unit.minute, Calendar.Unit.second, Calendar.Unit.weekday, Calendar.Unit.weekdayOrdinal, Calendar.Unit.weekOfYear] }
+    private static func componentFlags() -> Set<Calendar.Component> { return [Calendar.Component.year, Calendar.Component.month, Calendar.Component.day, Calendar.Component.weekOfYear, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second, Calendar.Component.weekday, Calendar.Component.weekdayOrdinal, Calendar.Component.weekOfYear] }
     
     private static func components(_ fromDate: Date) -> DateComponents! {
-        return Calendar.current.components(Date.componentFlags(), from: fromDate)
+        return Calendar.current.dateComponents(Date.componentFlags(), from: fromDate)
     }
     
     private func components() -> DateComponents  {
@@ -94,9 +94,9 @@ public extension Date {
         
         switch timeZone {
         case .local:
-            zone = Foundation.TimeZone.local
+            zone = Foundation.NSTimeZone.local
         case .utc:
-            zone = Foundation.TimeZone(forSecondsFromGMT: 0)
+            zone = Foundation.TimeZone(secondsFromGMT: 0)!
         }
         
         switch format {
@@ -114,8 +114,8 @@ public extension Date {
             
             let dateFormat = (isoFormat != nil) ? isoFormat! : ISO8601Format(dateString: string as String)
             let formatter = Date.formatter(dateFormat.rawValue)
-            formatter.locale = Locale(localeIdentifier: "en_US_POSIX")
-            formatter.timeZone = Foundation.TimeZone.local
+            formatter.locale = Foundation.Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = Foundation.NSTimeZone.local
             formatter.dateFormat = dateFormat.rawValue
             if let date = formatter.date(from: string as String) {
                 self.init(timeInterval:0, since:date)
@@ -347,7 +347,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.month = months
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -360,7 +360,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.month = (months * -1)
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -373,7 +373,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.day = 7 * weeks
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -386,7 +386,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.day = ((7 * weeks) * -1)
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -399,7 +399,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.day = days
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -412,7 +412,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.day = (days * -1)
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -425,7 +425,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.hour = hours
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -438,7 +438,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.hour = (hours * -1)
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -451,7 +451,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.minute = minutes
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -464,7 +464,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.minute = (minutes * -1)
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -477,7 +477,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.second = seconds
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -490,7 +490,7 @@ public extension Date {
     {
         var dateComp = DateComponents()
         dateComp.second = (seconds * -1)
-        return Calendar.current.date(byAdding: dateComp, to: self, options: Calendar.Options(rawValue: 0))!
+        return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
     /**
@@ -528,8 +528,8 @@ public extension Date {
     */
     func dateAtStartOfWeek() -> Date
     {
-        let flags :Calendar.Unit = [Calendar.Unit.year, Calendar.Unit.month, Calendar.Unit.weekOfYear, Calendar.Unit.weekday]
-        var components = Calendar.current.components(flags, from: self)
+        let flags: Set<Calendar.Component> = [Calendar.Component.year, Calendar.Component.month, Calendar.Component.weekOfYear, Calendar.Component.weekday]
+        var components = Calendar.current.dateComponents(flags, from: self)
         components.weekday = Calendar.current.firstWeekday
         components.hour = 0
         components.minute = 0
@@ -544,8 +544,8 @@ public extension Date {
     */
     func dateAtEndOfWeek() -> Date
     {
-        let flags :Calendar.Unit = [Calendar.Unit.year, Calendar.Unit.month, Calendar.Unit.weekOfYear, Calendar.Unit.weekday]
-        var components = Calendar.current.components(flags, from: self)
+        let flags: Set<Calendar.Component> = [Calendar.Component.year, Calendar.Component.month, Calendar.Component.weekOfYear, Calendar.Component.weekday]
+        var components = Calendar.current.dateComponents(flags, from: self)
         components.weekday = Calendar.current.firstWeekday + 6
         components.hour = 0
         components.minute = 0
@@ -776,7 +776,10 @@ public extension Date {
     /**
     Returns the days of the month.
     */
-    func monthDays () -> Int { return Calendar.current.range(of: Calendar.Unit.day, in: Calendar.Unit.month, for: self).length }
+    func monthDays () -> Int {
+      let range = Calendar.current.range(of: Calendar.Component.day, in: Calendar.Component.month, for: self)!
+      return range.upperBound - range.lowerBound
+  }
     /**
     Returns the first day of the week.
     */
@@ -804,8 +807,8 @@ public extension Date {
     Returns true if weekend.
     */
     func isWeekend() -> Bool {
-        let range = Calendar.current.maximumRange(of: Calendar.Unit.weekday)
-        return (self.weekday() == range.location || self.weekday() == range.length)
+        let range = Calendar.current.maximumRange(of: Calendar.Component.weekday)!
+        return (self.weekday() == range.lowerBound || self.weekday() == range.upperBound - range.lowerBound)
     }
     
     
@@ -831,24 +834,24 @@ public extension Date {
         let zone: Foundation.TimeZone
         switch format {
         case .dotNet:
-            let offset = Foundation.TimeZone.default.secondsFromGMT / 3600
+            let offset = Foundation.NSTimeZone.default.secondsFromGMT() / 3600
             let nowMillis = 1000 * self.timeIntervalSince1970
             return  "/Date(\(nowMillis)\(offset))/"
         case .iso8601(let isoFormat):
             dateFormat = (isoFormat != nil) ? isoFormat!.rawValue : ISO8601Format.DateTimeMilliSec.rawValue
-            zone = Foundation.TimeZone.local
+            zone = NSTimeZone.local
         case .rss:
             dateFormat = RSSFormat
-            zone = Foundation.TimeZone.local
+            zone = NSTimeZone.local
         case .altRSS:
             dateFormat = AltRSSFormat
-            zone = Foundation.TimeZone.local
+            zone = NSTimeZone.local
         case .custom(let string):
             switch timeZone {
             case .local:
-                zone = Foundation.TimeZone.local
+                zone = NSTimeZone.local
             case .utc:
-                zone = Foundation.TimeZone(forSecondsFromGMT: 0)
+                zone = Foundation.TimeZone(secondsFromGMT: 0)!
             }
             dateFormat = string
         }
@@ -867,7 +870,7 @@ public extension Date {
     - Parameter locale: The locale to use.
     - Returns A string representation of the date.
     */
-    func toString(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool = false, timeZone: Foundation.TimeZone = Foundation.TimeZone.local, locale: Locale = Locale.current) -> String
+    func toString(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool = false, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> String
     {
         let formatter = Date.formatter(dateStyle, timeStyle: timeStyle, doesRelativeDateFormatting: doesRelativeDateFormatting, timeZone: timeZone, locale: locale)
         return formatter.string(from: self)
@@ -1007,7 +1010,7 @@ public extension Date {
     - Parameter locale: The locale to use, defaults to the current locale
     - Returns The date formatter.
     */
-    private static func formatter(_ format:String = DefaultFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
+    private static func formatter(_ format:String = DefaultFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.current, locale: Locale = Locale.current) -> DateFormatter {
         let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
         var formatters = Date.sharedDateFormatters()
         if let cachedDateFormatter = formatters[hashKey] {
@@ -1032,7 +1035,7 @@ public extension Date {
     - Parameter locale: The locale to use.
     - Returns The date formatter.
     */
-    private static func formatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.TimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
+    private static func formatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
         var formatters = Date.sharedDateFormatters()
         let hashKey = "\(dateStyle.hashValue)\(timeStyle.hashValue)\(doesRelativeDateFormatting.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
         if let cachedDateFormatter = formatters[hashKey] {
