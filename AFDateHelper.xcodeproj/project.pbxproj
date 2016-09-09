@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63B7E9B61CF6DCFE00E9D8EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */; };
-		63B7E9BB1CF6DCFF00E9D8EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B7E9B91CF6DCFF00E9D8EF /* Main.storyboard */; };
-		63B7E9BD1CF6DCFF00E9D8EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */; };
 		63B7E9C21CF6DD1300E9D8EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		63B7E9C31CF6DE8B00E9D8EF /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AFDateExtension.swift */; };
 		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
 		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
 		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
 		65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B75F2C19744D6D000AEFD4 /* Main.storyboard */; };
+		65B802BB1D835DF7005361F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B802BA1D835DF7005361F4 /* AppDelegate.swift */; };
+		65B802BD1D836A06005361F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65B802BC1D836A06005361F4 /* Assets.xcassets */; };
+		65B802C21D836A18005361F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B802C01D836A18005361F4 /* Main.storyboard */; };
 		65D016A119771E80005220FB /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D016A019771E80005220FB /* AFDateExtension.swift */; };
 		65D86DED1BA0DB3E0081A0F9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */; };
 		CD1B226D1CB62C8400992308 /* AFDateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B226C1CB62C8400992308 /* AFDateHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,9 +24,6 @@
 
 /* Begin PBXFileReference section */
 		63B7E9B31CF6DCFE00E9D8EF /* AppleTVDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleTVDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = AppleTVDemo/AppDelegate.swift; sourceTree = "<group>"; };
-		63B7E9BA1CF6DCFF00E9D8EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = AppleTVDemo/Assets.xcassets; sourceTree = "<group>"; };
 		63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = AppleTVDemo/Info.plist; sourceTree = "<group>"; };
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -39,6 +36,9 @@
 		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AppDemo/Images.xcassets; sourceTree = "<group>"; };
 		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = AppDemo/Main.storyboard; sourceTree = "<group>"; };
 		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65B802BA1D835DF7005361F4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = AppleTVDemo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		65B802BC1D836A06005361F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = AppleTVDemo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		65B802C11D836A18005361F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AppleTVDemo/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		65D016A019771E80005220FB /* AFDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDateExtension.swift; sourceTree = "<group>"; };
 		65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "AppDemo/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFDateHelper.podspec; sourceTree = "<group>"; };
@@ -75,9 +75,9 @@
 		63B7E9B41CF6DCFE00E9D8EF /* AppleTVDemo */ = {
 			isa = PBXGroup;
 			children = (
-				63B7E9B51CF6DCFE00E9D8EF /* AppDelegate.swift */,
-				63B7E9B91CF6DCFF00E9D8EF /* Main.storyboard */,
-				63B7E9BC1CF6DCFF00E9D8EF /* Assets.xcassets */,
+				65B802BA1D835DF7005361F4 /* AppDelegate.swift */,
+				65B802BC1D836A06005361F4 /* Assets.xcassets */,
+				65B802C01D836A18005361F4 /* Main.storyboard */,
 				63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */,
 			);
 			name = AppleTVDemo;
@@ -228,6 +228,8 @@
 				TargetAttributes = {
 					63B7E9B21CF6DCFE00E9D8EF = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ERA9S8SPNY;
+						LastSwiftMigration = 0800;
 					};
 					65889B6B1965051C0049740E = {
 						CreatedOnToolsVersion = 6.0;
@@ -265,8 +267,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63B7E9BD1CF6DCFF00E9D8EF /* Assets.xcassets in Resources */,
-				63B7E9BB1CF6DCFF00E9D8EF /* Main.storyboard in Resources */,
+				65B802BD1D836A06005361F4 /* Assets.xcassets in Resources */,
+				65B802C21D836A18005361F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,9 +296,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B802BB1D835DF7005361F4 /* AppDelegate.swift in Sources */,
 				63B7E9C31CF6DE8B00E9D8EF /* AFDateExtension.swift in Sources */,
 				63B7E9C21CF6DD1300E9D8EF /* ViewController.swift in Sources */,
-				63B7E9B61CF6DCFE00E9D8EF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,13 +323,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		63B7E9B91CF6DCFF00E9D8EF /* Main.storyboard */ = {
+		65B802C01D836A18005361F4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				63B7E9BA1CF6DCFF00E9D8EF /* Base */,
+				65B802C11D836A18005361F4 /* Base */,
 			);
 			name = Main.storyboard;
-			path = AppleTVDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -341,6 +342,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ERA9S8SPNY;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/AppleTVDemo/Info.plist";
@@ -350,6 +352,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -364,6 +367,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ERA9S8SPNY;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/AppleTVDemo/Info.plist";
@@ -373,6 +377,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};

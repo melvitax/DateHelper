@@ -1,7 +1,7 @@
 //
 //  AFDateExtension.swift
 //
-//  Version 3.4.2
+//  Version 3.5.0
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -127,7 +127,7 @@ public extension Date {
             
             var s  = string
             if string.hasSuffix("Z") {
-                s = s.substring(to: s.length-1) + "GMT"
+                s = s.substring(to: s.length-1).appending("GMT") as NSString
             }
             let formatter = Date.formatter(RSSFormat)
             if let date = formatter.date(from: string as String) {
@@ -140,7 +140,7 @@ public extension Date {
             
             var s  = string
             if string.hasSuffix("Z") {
-                s = s.substring(to: s.length-1) + "GMT"
+                s = s.substring(to: s.length-1).appending("GMT") as NSString
             }
             let formatter = Date.formatter(AltRSSFormat)
             if let date = formatter.date(from: string as String) {
