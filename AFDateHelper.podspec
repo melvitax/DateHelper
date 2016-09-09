@@ -19,15 +19,9 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "Melvin Rivera" => "melvin@allforces.com" }
   s.source           = { :git => "https://github.com/melvitax/AFDateHelper.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/melvitax'
+  s.social_media_url = 'https://twitter.com/melvitax'
 
-  s.platforms     = { :ios => '8.0', :tvos => '9.0' }
-  s.requires_arc = true
+  s.platforms     = { :ios => '8.0', :tvos => '9.0', :osx => '10.10', :watchos => '2.0' }
 
   s.source_files = 'AFDateHelper/**/*'
-  #s.resource_bundles = {}
-
-  # s.public_header_files
-  # s.frameworks
-  # s.dependency 
 end
