@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD1B22691CB62C8400992308"
-               BuildableName = "AFDateHelper.framework"
-               BlueprintName = "AFDateHelper"
-               ReferencedContainer = "container:AFDateHelper.xcodeproj">
+               BlueprintIdentifier = "65E6A7861D8B46AD000FAA78"
+               BuildableName = "DateHelper.framework"
+               BlueprintName = "DateHelper iOS"
+               ReferencedContainer = "container:DateHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD1B22691CB62C8400992308"
-            BuildableName = "AFDateHelper.framework"
-            BlueprintName = "AFDateHelper"
-            ReferencedContainer = "container:AFDateHelper.xcodeproj">
+            BlueprintIdentifier = "65E6A7861D8B46AD000FAA78"
+            BuildableName = "DateHelper.framework"
+            BlueprintName = "DateHelper iOS"
+            ReferencedContainer = "container:DateHelper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD1B22691CB62C8400992308"
-            BuildableName = "AFDateHelper.framework"
-            BlueprintName = "AFDateHelper"
-            ReferencedContainer = "container:AFDateHelper.xcodeproj">
+            BlueprintIdentifier = "65E6A7861D8B46AD000FAA78"
+            BuildableName = "DateHelper.framework"
+            BlueprintName = "DateHelper iOS"
+            ReferencedContainer = "container:DateHelper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

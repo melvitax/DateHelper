@@ -8,9 +8,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "AFDateHelper"
-  s.version          = "3.5.0"
-  s.summary          = "NSDate Extension for Swift 3.0"
+  s.name             = "DateHelper"
+  s.version          = "3.5.1"
+  s.summary          = "Date Extension for Swift 3.0"
   s.description      = <<-DESC
                        Extension for NSDate in Swift for creating, modifying or comparing dates.
                        DESC
@@ -19,15 +19,11 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "Melvin Rivera" => "melvin@allforces.com" }
   s.source           = { :git => "https://github.com/melvitax/AFDateHelper.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/melvitax'
+  s.social_media_url = 'https://twitter.com/melvitax'
 
-  s.platforms     = { :ios => '8.0', :tvos => '9.0' }
-  s.requires_arc = true
+  s.platforms     = { :ios => '8.4', :tvos => '9.0', :osx => '10.10', :watchos => '2.0' }
+  s.xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
   s.source_files = 'AFDateHelper/**/*'
-  #s.resource_bundles = {}
 
-  # s.public_header_files
-  # s.frameworks
-  # s.dependency 
 end

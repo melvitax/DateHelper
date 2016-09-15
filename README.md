@@ -1,11 +1,11 @@
-# AFDateHelper
+# DateHelper
 
 [![Version](https://img.shields.io/cocoapods/v/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![License](https://img.shields.io/cocoapods/l/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![Platform](https://img.shields.io/cocoapods/p/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-An NSDate Extension for Swift 3.0
+Date extension for Swift 3.0
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/AFDateHelper/master/Screenshot.png "Sample Project Screenshot")
 
