@@ -25,7 +25,6 @@
 		65E6A7D51D8B4C76000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
 		65E6A7D61D8B4C76000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
 		65E6A7D71D8B4C77000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
-		65E6A7D81D8B4CA7000FAA78 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */; };
 		65E6A7DB1D8B4CBC000FAA78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65E6A7D91D8B4CBC000FAA78 /* Main.storyboard */; };
 		65E6A7DC1D8B5096000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
 		65E6A7DD1D8B5097000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
@@ -401,7 +400,6 @@
 			files = (
 				65E6A7DB1D8B4CBC000FAA78 /* Main.storyboard in Resources */,
 				65B802BD1D836A06005361F4 /* Assets.xcassets in Resources */,
-				65E6A7D81D8B4CA7000FAA78 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

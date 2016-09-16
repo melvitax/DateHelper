@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Pl-1Z-F17">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Pl-1Z-F17">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -21,34 +22,34 @@
             </objects>
             <point key="canvasLocation" x="-438" y="-285"/>
         </scene>
-        <!--AF Date Helper-->
+        <!--Date Helper-->
         <scene sceneID="Jhf-fe-Yk7">
             <objects>
-                <tableViewController id="sgH-7a-lds" customClass="ViewController" customModule="AFDateHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sgH-7a-lds" customClass="ViewController" customModule="DateHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="hdY-Qh-42s">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="8xd-f2-dkY" detailTextLabel="OOo-dd-wrM" style="IBUITableViewCellStyleSubtitle" id="ebm-IR-qOS">
-                                <rect key="frame" x="0.0" y="86" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ebm-IR-qOS" id="DQr-mx-HI7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <frame key="frameInset" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="8xd-f2-dkY">
-                                            <rect key="frame" x="15" y="9" width="35.5" height="24"/>
+                                            <frame key="frameInset" minX="15" minY="9" width="35.5" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="OOo-dd-wrM">
-                                            <rect key="frame" x="15" y="33" width="52" height="19"/>
+                                            <frame key="frameInset" minX="15" minY="33" width="52" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -60,7 +61,7 @@
                             <outlet property="delegate" destination="sgH-7a-lds" id="3PU-IP-glO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="AF Date Helper" id="rYI-Mr-t9G"/>
+                    <navigationItem key="navigationItem" title="Date Helper" id="rYI-Mr-t9G"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYL-29-SPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
