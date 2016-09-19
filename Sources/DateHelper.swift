@@ -714,12 +714,12 @@ public extension Date {
      - Parameter date: The date to compare.
      - Returns The number of days
      */
-    func daysCountAfterDate(date: NSDate) -> Int
+    func daysCountAfterDate(_ date: Date) -> Int
     {
-      let calendar = NSCalendar.currentCalendar()
-      let endDay = calendar.ordinalityOfUnit(.Day, inUnit: NSCalendarUnit.Era, forDate: self)
-      let startDay = calendar.ordinalityOfUnit(.Day, inUnit: NSCalendarUnit.Era, forDate: date)
-      return endDay - startDay
+      let calendar = Calendar.current
+      let endDay = calendar.ordinality(of: .day, in: .era, for: self)
+      let startDay = calendar.ordinality(of: .day, in: .era, for: date)
+      return endDay! - startDay!
     }
   
     /**
@@ -740,12 +740,12 @@ public extension Date {
      - Parameter date: The date to compare.
      - Returns The number of days
      */
-    func daysCountBeforeDate(date: NSDate) -> Int
+    func daysCountBeforeDate(_ date: Date) -> Int
     {
-      let calendar = NSCalendar.currentCalendar()
-      let startDay = calendar.ordinalityOfUnit(.Day, inUnit: NSCalendarUnit.Era, forDate: self)
-      let endDay = calendar.ordinalityOfUnit(.Day, inUnit: NSCalendarUnit.Era, forDate: date)
-      return endDay - startDay
+      let calendar = Calendar.current
+      let startDay = calendar.ordinality(of:.day, in: .era, for: self)
+      let endDay = calendar.ordinality(of: .day, in: .era, for: date)
+      return endDay! - startDay!
     }
   
   
