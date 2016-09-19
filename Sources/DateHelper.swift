@@ -707,7 +707,21 @@ public extension Date {
         let interval = self.timeIntervalSince(date)
         return Int(interval / Date.dayInSeconds())
     }
-    
+  
+    /**
+     Gets the number of days after a date.
+     
+     - Parameter date: The date to compare.
+     - Returns The number of days
+     */
+    func daysCountAfterDate(date: NSDate) -> Int
+    {
+      let calendar = NSCalendar.currentCalendar()
+      let endDay = calendar.ordinalityOfUnit(.Day, inUnit: NSCalendarUnit.Era, forDate: self)
+      let startDay = calendar.ordinalityOfUnit(.Day, inUnit: NSCalendarUnit.Era, forDate: date)
+      return endDay - startDay
+    }
+  
     /**
     Gets the number of days before a date.
     
@@ -719,8 +733,22 @@ public extension Date {
         let interval = date.timeIntervalSince(self)
         return Int(interval / Date.dayInSeconds())
     }
-    
-    
+  
+    /**
+     Gets the number of days before a date.
+     
+     - Parameter date: The date to compare.
+     - Returns The number of days
+     */
+    func daysCountBeforeDate(date: NSDate) -> Int
+    {
+      let calendar = NSCalendar.currentCalendar()
+      let startDay = calendar.ordinalityOfUnit(.Day, inUnit: NSCalendarUnit.Era, forDate: self)
+      let endDay = calendar.ordinalityOfUnit(.Day, inUnit: NSCalendarUnit.Era, forDate: date)
+      return endDay - startDay
+    }
+  
+  
     // MARK: Decomposing Dates
     
     /**
