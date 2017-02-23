@@ -149,7 +149,7 @@ date.veryShortMonthToString() -> String
 
 ## Requirements
 
-Swift 2.0
+Swift 3
 
 ## Installation
 
