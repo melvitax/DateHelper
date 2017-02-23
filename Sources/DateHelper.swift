@@ -826,9 +826,10 @@ public extension Date {
     
     - Parameter format: The format of date can be .ISO8601(.ISO8601Format?), .DotNet, .RSS, .AltRSS or Custom(FormatString).
     - Parameter timeZone: The time zone to interpret the date can be .Local, .UTC applies to Custom format only
+    - Parameter locale: The locale to use, defaults to the current locale
     - Returns The date string representation
     */
-    func toString(_ format: DateFormat, timeZone: TimeZone = .local) -> String
+    func toString(_ format: DateFormat, timeZone: TimeZone = .local, locale: Locale = Locale.current) -> String
     {
         var dateFormat: String
         let zone: Foundation.TimeZone
@@ -856,7 +857,7 @@ public extension Date {
             dateFormat = string
         }
         
-        let formatter = Date.formatter(dateFormat, timeZone: zone)
+        let formatter = Date.formatter(dateFormat, timeZone: zone, locale: locale)
         return formatter.string(from: self)
     }
     
