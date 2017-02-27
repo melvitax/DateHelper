@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/melvitax/DateHelper"
   s.screenshots      = "https://raw.githubusercontent.com/melvitax/DateHelper/master/logo.png"
   s.license          = 'MIT'
-  s.author           = { "Melvin Rivera" => "melvitax@gmail.com" }
+  s.author           = { "Melvin Rivera" => "melvin@allforces.com" }
   s.source           = { :git => "https://github.com/melvitax/DateHelper.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/melvitax'
 
