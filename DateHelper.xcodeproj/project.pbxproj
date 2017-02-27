@@ -7,88 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63B7E9C21CF6DD1300E9D8EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
-		65889B711965051C0049740E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B701965051C0049740E /* AppDelegate.swift */; };
-		65889B731965051C0049740E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65889B721965051C0049740E /* ViewController.swift */; };
-		65889B781965051C0049740E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65889B771965051C0049740E /* Images.xcassets */; };
-		65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B75F2C19744D6D000AEFD4 /* Main.storyboard */; };
-		65B802BB1D835DF7005361F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B802BA1D835DF7005361F4 /* AppDelegate.swift */; };
-		65B802BD1D836A06005361F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65B802BC1D836A06005361F4 /* Assets.xcassets */; };
-		65D86DED1BA0DB3E0081A0F9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */; };
 		65E6A78B1D8B46AD000FAA78 /* DateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 65E6A7891D8B46AD000FAA78 /* DateHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		65E6A78E1D8B46AD000FAA78 /* DateHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E6A7871D8B46AD000FAA78 /* DateHelper.framework */; };
-		65E6A78F1D8B46AD000FAA78 /* DateHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65E6A7871D8B46AD000FAA78 /* DateHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65E6A7AD1D8B46F7000FAA78 /* DateHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E6A7A61D8B46F7000FAA78 /* DateHelper.framework */; };
-		65E6A7AE1D8B46F7000FAA78 /* DateHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65E6A7A61D8B46F7000FAA78 /* DateHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65E6A7D21D8B4B07000FAA78 /* DateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 65E6A7891D8B46AD000FAA78 /* DateHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65E6A7D31D8B4B07000FAA78 /* DateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 65E6A7891D8B46AD000FAA78 /* DateHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65E6A7D51D8B4C76000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
 		65E6A7D61D8B4C76000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
 		65E6A7D71D8B4C77000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
-		65E6A7DB1D8B4CBC000FAA78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65E6A7D91D8B4CBC000FAA78 /* Main.storyboard */; };
-		65E6A7DC1D8B5096000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
-		65E6A7DD1D8B5097000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		65E6A78C1D8B46AD000FAA78 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 655AEB37192D42990053AD6C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 65E6A7861D8B46AD000FAA78;
-			remoteInfo = "DateHelper IOS";
-		};
-		65E6A7AB1D8B46F7000FAA78 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 655AEB37192D42990053AD6C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 65E6A7A51D8B46F7000FAA78;
-			remoteInfo = "DateHelper tvOS";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		65E6A7931D8B46AD000FAA78 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				65E6A78F1D8B46AD000FAA78 /* DateHelper.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65E6A7B21D8B46F7000FAA78 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				65E6A7AE1D8B46F7000FAA78 /* DateHelper.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		63B7E9B31CF6DCFE00E9D8EF /* Demo tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		655AEB42192D42990053AD6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655AEB44192D42990053AD6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		655AEB46192D42990053AD6C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		655AEB64192D429A0053AD6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		65889B6C1965051C0049740E /* DateHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		65889B6F1965051C0049740E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65889B701965051C0049740E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65889B721965051C0049740E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		65889B771965051C0049740E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		65B75F2C19744D6D000AEFD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		65B802BA1D835DF7005361F4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Demo tvOS/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
-		65B802BC1D836A06005361F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Demo tvOS/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
-		65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFDateHelper.podspec; sourceTree = "<group>"; };
 		65E6A7871D8B46AD000FAA78 /* DateHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E6A7891D8B46AD000FAA78 /* DateHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
@@ -98,26 +29,9 @@
 		65E6A7CF1D8B4959000FAA78 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		65E6A7D01D8B4959000FAA78 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		65E6A7D11D8B4959000FAA78 /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
-		65E6A7DA1D8B4CBC000FAA78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		63B7E9B01CF6DCFE00E9D8EF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65E6A7AD1D8B46F7000FAA78 /* DateHelper.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65889B691965051C0049740E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65E6A78E1D8B46AD000FAA78 /* DateHelper.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		65E6A7831D8B46AD000FAA78 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,38 +56,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		63B7E9B41CF6DCFE00E9D8EF /* Demo tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				65B802BA1D835DF7005361F4 /* AppDelegate.swift */,
-				65B802BC1D836A06005361F4 /* Assets.xcassets */,
-				65E6A7D91D8B4CBC000FAA78 /* Main.storyboard */,
-				63B7E9BE1CF6DCFF00E9D8EF /* Info.plist */,
-			);
-			path = "Demo tvOS";
-			sourceTree = "<group>";
-		};
-		6524A6281D065F8D00BC7D4D /* Demo iOS */ = {
-			isa = PBXGroup;
-			children = (
-				65889B701965051C0049740E /* AppDelegate.swift */,
-				65889B721965051C0049740E /* ViewController.swift */,
-				65889B771965051C0049740E /* Images.xcassets */,
-				65B75F2C19744D6D000AEFD4 /* Main.storyboard */,
-				65D86DEC1BA0DB3E0081A0F9 /* Launch Screen.storyboard */,
-				65889B6F1965051C0049740E /* Info.plist */,
-			);
-			path = "Demo iOS";
-			sourceTree = "<group>";
-		};
 		655AEB36192D42990053AD6C = {
 			isa = PBXGroup;
 			children = (
 				65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */,
 				65B7EA75197082AA0097E598 /* README.md */,
 				65E6A7CD1D8B4959000FAA78 /* Sources */,
-				6524A6281D065F8D00BC7D4D /* Demo iOS */,
-				63B7E9B41CF6DCFE00E9D8EF /* Demo tvOS */,
 				655AEB41192D42990053AD6C /* Frameworks */,
 				655AEB40192D42990053AD6C /* Products */,
 			);
@@ -182,8 +70,6 @@
 		655AEB40192D42990053AD6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65889B6C1965051C0049740E /* DateHelper.app */,
-				63B7E9B31CF6DCFE00E9D8EF /* Demo tvOS.app */,
 				65E6A7871D8B46AD000FAA78 /* DateHelper.framework */,
 				65E6A7A61D8B46F7000FAA78 /* DateHelper.framework */,
 				65E6A7C51D8B481F000FAA78 /* DateHelper.framework */,
@@ -197,7 +83,6 @@
 				655AEB42192D42990053AD6C /* Foundation.framework */,
 				655AEB44192D42990053AD6C /* CoreGraphics.framework */,
 				655AEB46192D42990053AD6C /* UIKit.framework */,
-				655AEB64192D429A0053AD6C /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -244,44 +129,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		63B7E9B21CF6DCFE00E9D8EF /* Demo tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 63B7E9C11CF6DCFF00E9D8EF /* Build configuration list for PBXNativeTarget "Demo tvOS" */;
-			buildPhases = (
-				63B7E9AF1CF6DCFE00E9D8EF /* Sources */,
-				63B7E9B01CF6DCFE00E9D8EF /* Frameworks */,
-				63B7E9B11CF6DCFE00E9D8EF /* Resources */,
-				65E6A7B21D8B46F7000FAA78 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				65E6A7AC1D8B46F7000FAA78 /* PBXTargetDependency */,
-			);
-			name = "Demo tvOS";
-			productName = AFDateHelperTVDemo;
-			productReference = 63B7E9B31CF6DCFE00E9D8EF /* Demo tvOS.app */;
-			productType = "com.apple.product-type.application";
-		};
-		65889B6B1965051C0049740E /* Demo iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "Demo iOS" */;
-			buildPhases = (
-				65889B681965051C0049740E /* Sources */,
-				65889B691965051C0049740E /* Frameworks */,
-				65889B6A1965051C0049740E /* Resources */,
-				65E6A7931D8B46AD000FAA78 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				65E6A78D1D8B46AD000FAA78 /* PBXTargetDependency */,
-			);
-			name = "Demo iOS";
-			productName = "Swift Demo UIView+AF+Additions";
-			productReference = 65889B6C1965051C0049740E /* DateHelper.app */;
-			productType = "com.apple.product-type.application";
-		};
 		65E6A7861D8B46AD000FAA78 /* DateHelper iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65E6A7901D8B46AD000FAA78 /* Build configuration list for PBXNativeTarget "DateHelper iOS" */;
@@ -343,19 +190,9 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "All Forces";
 				TargetAttributes = {
-					63B7E9B21CF6DCFE00E9D8EF = {
-						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = ERA9S8SPNY;
-						LastSwiftMigration = 0800;
-					};
-					65889B6B1965051C0049740E = {
-						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = ERA9S8SPNY;
-						LastSwiftMigration = 0800;
-					};
 					65E6A7861D8B46AD000FAA78 = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
@@ -384,8 +221,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65889B6B1965051C0049740E /* Demo iOS */,
-				63B7E9B21CF6DCFE00E9D8EF /* Demo tvOS */,
 				65E6A7861D8B46AD000FAA78 /* DateHelper iOS */,
 				65E6A7A51D8B46F7000FAA78 /* DateHelper tvOS */,
 				65E6A7C41D8B481F000FAA78 /* DateHelper watchOS */,
@@ -394,25 +229,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		63B7E9B11CF6DCFE00E9D8EF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65E6A7DB1D8B4CBC000FAA78 /* Main.storyboard in Resources */,
-				65B802BD1D836A06005361F4 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65889B6A1965051C0049740E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65D86DED1BA0DB3E0081A0F9 /* Launch Screen.storyboard in Resources */,
-				65889B781965051C0049740E /* Images.xcassets in Resources */,
-				65B75F2D19744D6D000AEFD4 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		65E6A7851D8B46AD000FAA78 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,26 +253,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		63B7E9AF1CF6DCFE00E9D8EF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65E6A7DC1D8B5096000FAA78 /* DateHelper.swift in Sources */,
-				65B802BB1D835DF7005361F4 /* AppDelegate.swift in Sources */,
-				63B7E9C21CF6DD1300E9D8EF /* ViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65889B681965051C0049740E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65E6A7DD1D8B5097000FAA78 /* DateHelper.swift in Sources */,
-				65889B731965051C0049740E /* ViewController.swift in Sources */,
-				65889B711965051C0049740E /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		65E6A7821D8B46AD000FAA78 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -483,82 +279,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		65E6A78D1D8B46AD000FAA78 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 65E6A7861D8B46AD000FAA78 /* DateHelper iOS */;
-			targetProxy = 65E6A78C1D8B46AD000FAA78 /* PBXContainerItemProxy */;
-		};
-		65E6A7AC1D8B46F7000FAA78 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 65E6A7A51D8B46F7000FAA78 /* DateHelper tvOS */;
-			targetProxy = 65E6A7AB1D8B46F7000FAA78 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		65E6A7D91D8B4CBC000FAA78 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65E6A7DA1D8B4CBC000FAA78 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		63B7E9BF1CF6DCFF00E9D8EF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = ERA9S8SPNY;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Demo tvOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperTVDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		63B7E9C01CF6DCFF00E9D8EF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = ERA9S8SPNY;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Demo tvOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperTVDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
 		655AEB72192D429A0053AD6C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -572,8 +293,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -617,8 +340,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -642,52 +367,6 @@
 			};
 			name = Release;
 		};
-		65889B851965051C0049740E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Demo iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperDemo;
-				PRODUCT_NAME = DateHelper;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		65889B861965051C0049740E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Demo iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.allforces.AFDateHelperDemo;
-				PRODUCT_NAME = DateHelper;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		65E6A7911D8B46AD000FAA78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -697,6 +376,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -729,6 +409,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -891,29 +572,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63B7E9C11CF6DCFF00E9D8EF /* Build configuration list for PBXNativeTarget "Demo tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				63B7E9BF1CF6DCFF00E9D8EF /* Debug */,
-				63B7E9C01CF6DCFF00E9D8EF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		655AEB3A192D42990053AD6C /* Build configuration list for PBXProject "DateHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				655AEB72192D429A0053AD6C /* Debug */,
 				655AEB73192D429A0053AD6C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		65889B891965051C0049740E /* Build configuration list for PBXNativeTarget "Demo iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				65889B851965051C0049740E /* Debug */,
-				65889B861965051C0049740E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
