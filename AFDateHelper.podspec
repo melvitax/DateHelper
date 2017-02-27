@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
                        A Swift Date extension for creating, modifying and comparing dates.
                        DESC
   s.homepage         = "https://github.com/melvitax/DateHelper"
-  s.screenshots      = "https://raw.githubusercontent.com/melvitax/DateHelper/master/Screenshot.png"
+  s.screenshots      = "https://raw.githubusercontent.com/melvitax/DateHelper/master/logo.png"
   s.license          = 'MIT'
   s.author           = { "Melvin Rivera" => "melvitax@gmail.com" }
   s.source           = { :git => "https://github.com/melvitax/DateHelper.git", :tag => s.version.to_s }
