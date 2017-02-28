@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
-//
-//  Version 4.0.0
+//  https://github.com/melvitax/DateHelper
+//  Version 4.0.1
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -373,7 +373,7 @@ public extension Date {
     func dateWith(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date {
         var comp = Date.components(self)
         comp.month = month ?? comp.month
-        comp.day = day ?? comp.weekday
+        comp.day = day ?? comp.day
         comp.hour = hour ?? comp.hour
         comp.minute = minute ?? comp.minute
         comp.second = second ?? comp.second

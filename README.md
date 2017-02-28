@@ -16,7 +16,7 @@ Swift 3
 ## Installation
 
 **Carthage** github "melvitax/DateHelper"  
-**Cocoapods** pod 'AFDateHelper', '~> 4.0'  
+**Cocoapods** pod 'AFDateHelper', '~> 4.0.1'  
 **Manually**  Include DateHelper.swift in your project
 
 ## Usage
