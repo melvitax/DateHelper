@@ -9,15 +9,59 @@ A Swift Date extension helper that uses predefined or custom cached formatters f
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/DateHelper/master/logo.png "Date Helper")
 
-## Requirements
 
-Swift 3
+## Capabilities
 
-## Installation
+Convert from string
 
-**Carthage** github "melvitax/DateHelper"  
-**Cocoapods** pod 'AFDateHelper', '~> 4.0.1'  
-**Manually**  Include DateHelper.swift in your project
+```Swift
+date = Date(fromString: "2009-08-11", format: .isoDate)
+```
+
+Convert to string
+
+```Swift
+let mediumDateString = date.toString(style: .medium)
+let rssDateString = date.toString(format: .rss)
+let shortTimeString =  date.toString(dateStyle: .none, timeStyle: .short)
+let relativeTimeSting = date.toStringWithRelativeTime()
+```
+
+Compare dates
+
+```Swift
+let isToday = date.compare(.isToday)
+let isSameWeek = date.compare(.isSameWeek(as: otherDate))
+```
+
+Adjust dates
+
+```Swift
+let twoHoursBefore = date.adjust(.hour, offset: -2)
+let atNoon = date.dateWith(hour: 12, minute: 0, second: 0)
+```
+
+Create dates for...
+
+```Swift
+let startOfWeek = date.dateFor(.startOfWeek)
+let nearest5Hours = date.dateFor(.nearestMinute(hour:5))
+```
+
+Time since...
+
+```Swift
+let secondsSince = date.since(otherDate, in: .second)
+```
+
+Extracting components
+
+```Swift
+let seconds = date.component(.second)
+let daysInMonth = date.numberOfDaysInMonth()
+let firstDayOfWeek = date.firstDayOfWeek()
+let lastDayOfWeek = date.lastDayOfWeek()
+```
 
 ## Usage
 
@@ -242,13 +286,14 @@ case isWeekday
 case isWeekend
 ```
 
-### Adjusting Date Components
+### Adjusting Dates
 
-Use the `adjust(_ component:DateComponentType, offset:Int) -> Date` to adjust a change the value of a date component.
+Use the `adjust(_ component:DateComponentType, offset:Int) -> Date` to change a the date with an offset.
 
 ```Swift
 date = now.adjust(.day, offset: -4)
 ```
+
 The DateComponentType enum is used for the components that can be adjusted.
 
 ```Swift
@@ -261,6 +306,12 @@ case nthWeekday
 case week
 case month
 case year
+```
+
+Use the `dateWith(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date` function to change the date components.
+
+```Swift
+let atNoon = date.dateWith(hour: 12, minute: 0, second: 0)
 ```
 
 ### Create Dates For...
@@ -341,7 +392,14 @@ date.lastDayofWeek()
 
 ## Requirements
 
-Swift 3
+Language: Swift 3  
+Minimum: IOS 8, tvOS 9, WatchOS 2
+
+## Installation
+
+**Carthage** github "melvitax/DateHelper"  
+**Cocoapods** pod 'AFDateHelper', '~> 4.0.1'  
+**Manually**  Include DateHelper.swift in your project
 
 
 ## Author

@@ -51,6 +51,8 @@ Date(fromString: "/Date(1260123281843)/", format: .dotNet)
 Date(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .rss)
 // AltRSS
 Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .altRSS)
+// HTTP Header
+Date(fromString: "Wed, 01 03 2017 06:43:19 -0500", format: .httpHeader)
 
 
 /***********************
@@ -194,6 +196,8 @@ now.adjust(.week, offset: 1)
 now.adjust(.month, offset: 1)
 now.adjust(.year, offset: 1)
 
+now.dateWith(hour: 12, minute: 0, second: 0)
+
 
 /***********************
     Create Dates For
@@ -215,6 +219,7 @@ now.dateFor(.nearestHour(hour:2))
 /***********************
     Time Since In...
  ***********************/
+
 now.since(thirtySecondsBack, in: .second)
 now.since(twoHoursBack, in: .minute)
 now.since(twoHoursBack, in: .hour)
@@ -224,3 +229,25 @@ now.since(twoWeeksBack, in: .nthWeekday)
 now.since(lastWeek, in: .week)
 now.since(lastMonth, in: .month)
 now.since(lastYear, in: .year)
+
+
+/***********************
+  Extracting Components
+ ***********************/
+
+now.component(.second)
+now.component(.minute)
+now.component(.hour)
+now.component(.day)
+now.component(.weekday)
+now.component(.nthWeekday)
+now.component(.month)
+now.component(.year)
+
+now.numberOfDaysInMonth()
+now.firstDayOfWeek()
+now.lastDayOfWeek()
+
+
+
+

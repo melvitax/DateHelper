@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.0.1
+//  Version 4.0.2
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -462,7 +462,7 @@ public extension Date {
         return Date(timeIntervalSinceReferenceDate: interval).component(.day)!
     }
     
-    func lastDayofWeek() -> Int {
+    func lastDayOfWeek() -> Int {
         let distanceToStartOfWeek = Date.dayInSeconds * Double(self.component(.weekday)! - 1)
         let distanceToEndOfWeek = Date.dayInSeconds * Double(7)
         let interval: TimeInterval = self.timeIntervalSinceReferenceDate - distanceToStartOfWeek + distanceToEndOfWeek
@@ -470,7 +470,7 @@ public extension Date {
     }
     
     
-    // MARK: Components
+    // MARK: Internal Components
     
     internal static func componentFlags() -> Set<Calendar.Component> { return [Calendar.Component.year, Calendar.Component.month, Calendar.Component.day, Calendar.Component.weekOfYear, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second, Calendar.Component.weekday, Calendar.Component.weekdayOrdinal, Calendar.Component.weekOfYear] }
     internal static func components(_ fromDate: Date) -> DateComponents {
@@ -530,6 +530,8 @@ public extension Date {
     internal static let yearInSeconds:Double = 31556926
     
 }
+
+// MARK: Enums used
 
 
 /**
