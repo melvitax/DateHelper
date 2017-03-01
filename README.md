@@ -38,7 +38,7 @@ Adjust dates
 
 ```Swift
 let twoHoursBefore = date.adjust(.hour, offset: -2)
-let atNoon = date.dateWith(hour: 12, minute: 0, second: 0)
+let atNoon = date.adjust(hour: 12, minute: 0, second: 0)
 ```
 
 Create dates for...
@@ -308,10 +308,10 @@ case month
 case year
 ```
 
-Use the `dateWith(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date` function to change the date components.
+Use the `adjust(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date` function to change the date components.
 
 ```Swift
-let atNoon = date.dateWith(hour: 12, minute: 0, second: 0)
+let atNoon = date.adjust(hour: 12, minute: 0, second: 0)
 ```
 
 ### Create Dates For...

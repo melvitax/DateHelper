@@ -195,8 +195,7 @@ now.adjust(.nthWeekday, offset: 1)
 now.adjust(.week, offset: 1)
 now.adjust(.month, offset: 1)
 now.adjust(.year, offset: 1)
-
-now.dateWith(hour: 12, minute: 0, second: 0)
+now.adjust(hour: 12, minute: 0, second: 0)
 
 
 /***********************

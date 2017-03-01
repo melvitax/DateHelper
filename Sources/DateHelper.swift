@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.0.2
+//  Version 4.1.0
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -342,35 +342,35 @@ public extension Date {
     func dateFor(_ type:DateForType) -> Date {
         switch type {
         case .startOfDay:
-            return dateWith(hour: 0, minute: 0, second: 0)
+            return adjust(hour: 0, minute: 0, second: 0)
         case .endOfDay:
-            return dateWith(hour: 23, minute: 59, second: 29)
+            return adjust(hour: 23, minute: 59, second: 29)
         case .startOfWeek:
             let firstDayOfWeek = Calendar.current.firstWeekday
-            return dateWith(hour: 0, minute: 0, second: 0, day: firstDayOfWeek)
+            return adjust(hour: 0, minute: 0, second: 0, day: firstDayOfWeek)
         case .endOfWeek:
             let lastDayOfWeek = Calendar.current.firstWeekday+6
-             return dateWith(hour: 0, minute: 0, second: 0, day: lastDayOfWeek)
+             return adjust(hour: 0, minute: 0, second: 0, day: lastDayOfWeek)
         case .startOfMonth:
-            return dateWith(hour: 0, minute: 0, second: 0, day: 1)
+            return adjust(hour: 0, minute: 0, second: 0, day: 1)
         case .endOfMonth:
             let month = (component(.month) ?? 0) + 1
-            return dateWith(hour: 0, minute: 0, second: 0, day: 0, month: month)
+            return adjust(hour: 0, minute: 0, second: 0, day: 0, month: month)
         case .tomorrow:
             return adjust(.day, offset:1)
         case .yesterday:
             return adjust(.day, offset:-1)
         case .nearestMinute(let nearest):
             let minutes = (component(.minute)! + nearest/2) / nearest * nearest
-            return dateWith(hour: nil, minute: minutes, second: nil)
+            return adjust(hour: nil, minute: minutes, second: nil)
         case .nearestHour(let nearest):
             let hours = (component(.hour)! + nearest/2) / nearest * nearest
-            return dateWith(hour: hours, minute: 0, second: nil)
+            return adjust(hour: hours, minute: 0, second: nil)
         }
     }
     
     /// Return a new Date object with the new hour, minute and seconds values.
-    func dateWith(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date {
+    func adjust(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date {
         var comp = Date.components(self)
         comp.month = month ?? comp.month
         comp.day = day ?? comp.day
