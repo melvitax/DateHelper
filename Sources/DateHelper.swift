@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.1.0
+//  Version 4.1.1
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -12,7 +12,7 @@ import Foundation
 
 public extension Date {
     
-    // MARK: Date From String
+    // MARK: Convert from String
     
     /*
         Initializes a new Date() objext based on a date string, format, optional timezone and optional locale.
@@ -49,7 +49,7 @@ public extension Date {
         self.init(timeInterval:0, since:date)
     }
     
-    // MARK: To String
+    // MARK: Convert to String
     
     
     /// Converts the date to string using the short date and time style.
@@ -241,7 +241,7 @@ public extension Date {
     }
     
     
-    // MARK: Comparing Dates
+    // MARK: Compare Dates
     
     /// Compares dates to see if they are equal while ignoring time.
     func compare(_ comparison:DateComparisonType) -> Bool {
@@ -310,7 +310,7 @@ public extension Date {
     }
  
     
-    // MARK: Adjusting Dates
+    // MARK: Adjust dates
     
     /// Creates a new date with adjusted components
     
@@ -339,6 +339,19 @@ public extension Date {
         return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
+    /// Return a new Date object with the new hour, minute and seconds values.
+    func adjust(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date {
+        var comp = Date.components(self)
+        comp.month = month ?? comp.month
+        comp.day = day ?? comp.day
+        comp.hour = hour ?? comp.hour
+        comp.minute = minute ?? comp.minute
+        comp.second = second ?? comp.second
+        return Calendar.current.date(from: comp)!
+    }
+    
+    // MARK: Date for...
+    
     func dateFor(_ type:DateForType) -> Date {
         switch type {
         case .startOfDay:
@@ -346,11 +359,11 @@ public extension Date {
         case .endOfDay:
             return adjust(hour: 23, minute: 59, second: 29)
         case .startOfWeek:
-            let firstDayOfWeek = Calendar.current.firstWeekday
-            return adjust(hour: 0, minute: 0, second: 0, day: firstDayOfWeek)
+            let offset = component(.weekday)!-1
+            return adjust(.day, offset: -(offset))
         case .endOfWeek:
-            let lastDayOfWeek = Calendar.current.firstWeekday+6
-             return adjust(hour: 0, minute: 0, second: 0, day: lastDayOfWeek)
+            let offset = 7 - component(.weekday)!
+            return adjust(.day, offset: offset)
         case .startOfMonth:
             return adjust(hour: 0, minute: 0, second: 0, day: 1)
         case .endOfMonth:
@@ -369,16 +382,7 @@ public extension Date {
         }
     }
     
-    /// Return a new Date object with the new hour, minute and seconds values.
-    func adjust(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date {
-        var comp = Date.components(self)
-        comp.month = month ?? comp.month
-        comp.day = day ?? comp.day
-        comp.hour = hour ?? comp.hour
-        comp.minute = minute ?? comp.minute
-        comp.second = second ?? comp.second
-        return Calendar.current.date(from: comp)!
-    }
+    // MARK: Time since...
     
     func since(_ date:Date, in component:DateComponentType) -> Int64 {
         switch component {
