@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.1.1
+//  Version 4.1.2
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -75,13 +75,13 @@ public extension Date {
             return veryShortWeekdaySymbols[component(.weekday)!-1] as String
         case .month:
             let monthSymbols = Date.cachedFormatter().monthSymbols!
-            return monthSymbols[component(.weekday)!-1] as String
+            return monthSymbols[component(.month)!-1] as String
         case .shortMonth:
             let shortMonthSymbols = Date.cachedFormatter().shortMonthSymbols!
-            return shortMonthSymbols[component(.weekday)!-1] as String
+            return shortMonthSymbols[component(.month)!-1] as String
         case .veryShortMonth:
             let veryShortMonthSymbols = Date.cachedFormatter().veryShortMonthSymbols!
-            return veryShortMonthSymbols[component(.weekday)!-1] as String
+            return veryShortMonthSymbols[component(.month)!-1] as String
         }
     }
     
