@@ -357,7 +357,7 @@ public extension Date {
         case .startOfDay:
             return adjust(hour: 0, minute: 0, second: 0)
         case .endOfDay:
-            return adjust(hour: 23, minute: 59, second: 29)
+            return adjust(hour: 23, minute: 59, second: 59)
         case .startOfWeek:
             let offset = component(.weekday)!-1
             return adjust(.day, offset: -(offset))
