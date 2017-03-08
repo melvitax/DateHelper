@@ -45,7 +45,7 @@ Create dates for...
 
 ```Swift
 let startOfWeek = date.dateFor(.startOfWeek)
-let nearest5Hours = date.dateFor(.nearestMinute(hour:5))
+let nearest5Hours = date.dateFor(.nearestHour(hour:5))
 ```
 
 Time since...
