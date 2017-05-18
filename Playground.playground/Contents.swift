@@ -63,6 +63,7 @@ now.toString(style: .short)
 now.toString(style: .medium)
 now.toString(style: .long)
 now.toString(style: .full)
+now.toString(style: .ordinalDay)
 now.toString(style: .weekday)
 now.toString(style: .shortWeekday)
 now.toString(style: .veryShortWeekday)
@@ -246,7 +247,6 @@ now.component(.year)
 now.numberOfDaysInMonth()
 now.firstDayOfWeek()
 now.lastDayOfWeek()
-
 
 
 

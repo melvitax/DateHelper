@@ -115,6 +115,7 @@ case short; "2/27/17, 2:22 PM"
 case medium; "Feb 27, 2017, 2:22:06 PM"
 case long; "February 27, 2017 at 2:22:06 PM EST"
 case full; "Monday, February 27, 2017 at 2:22:06 PM Eastern Standard Time"
+case ordinalDay; 27th
 case weekday; "Monday"
 case shortWeekday; "Mon"
 case veryShortWeekday; "M"

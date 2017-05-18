@@ -63,6 +63,9 @@ public extension Date {
             return self.toString(dateStyle: .long, timeStyle: .long, isRelative: false)
         case .full:
             return self.toString(dateStyle: .full, timeStyle: .full, isRelative: false)
+        case .ordinalDay:
+            let formatter = Date.cachedOrdinalNumberFormatter()
+            return formatter.string(from: component(.day)! as NSNumber)!
         case .weekday:
             let weekdaySymbols = Date.cachedFormatter().weekdaySymbols!
             let string = weekdaySymbols[component(.weekday)!-1] as String
@@ -492,6 +495,16 @@ public extension Date {
         return Static.formatters!
     }
     
+    private static func cachedOrdinalNumberFormatter() -> NumberFormatter {
+        struct Static {
+            static var numberFormatter = NumberFormatter()
+        }
+        if #available(iOSApplicationExtension 9.0, *) {
+            Static.numberFormatter.numberStyle = .ordinal
+        }
+        return Static.numberFormatter
+    }
+    
     /// Generates a cached formatter based on the specified format, timeZone and locale. Formatters are cached in a singleton array using hashkeys.
     private static func cachedFormatter(_ format:String = DateFormatType.standard.stringFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.current, locale: Locale = Locale.current) -> DateFormatter {
         let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
@@ -706,5 +719,26 @@ public enum DateForType {
 
 // Convenience types for date to string conversion
 public enum DateStyleType {
-    case short, medium, long, full, weekday, shortWeekday, veryShortWeekday, month, shortMonth, veryShortMonth
+    /// Short style: "2/27/17, 2:22 PM"
+    case short
+    /// Medium style: "Feb 27, 2017, 2:22:06 PM"
+    case medium
+    /// Long style: "February 27, 2017 at 2:22:06 PM EST"
+    case long
+    /// Full style: "Monday, February 27, 2017 at 2:22:06 PM Eastern Standard Time"
+    case full
+    /// Ordinal day: "27th"
+    case ordinalDay
+    /// Weekday: "Monday"
+    case weekday
+    /// Short week day: "Mon"
+    case shortWeekday
+    /// Very short weekday: "M"
+    case veryShortWeekday
+    /// Month: "February"
+    case month
+    /// Short month: "Feb"
+    case shortMonth
+    /// Very short month: "F"
+    case veryShortMonth
 }
