@@ -398,7 +398,7 @@ Minimum: IOS 8, tvOS 9, WatchOS 2
 ## Installation
 
 **Carthage** github "melvitax/DateHelper"  
-**Cocoapods** pod 'AFDateHelper', '~> 4.0.1'  
+**Cocoapods** pod 'AFDateHelper', '~> 4.1.2'  
 **Manually**  Include DateHelper.swift in your project
 
 
