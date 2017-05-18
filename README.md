@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-A Swift Date extension helper that uses predefined or custom cached formatters for creating dates or converting dates to strings. You can also do date comparisons based on relative times, adjust a component of a date or extract components from it.
+A Swift Date extension for iOS, watchOS, tvOS, and macOS that creates or converts dates to or from strings. It can also compare, modify or extract date components and uses cached formatters for performance gains. 
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/DateHelper/master/logo.png "Date Helper")
 
@@ -393,8 +393,9 @@ date.lastDayofWeek()
 
 ## Requirements
 
-Language: Swift 3  
-Minimum: IOS 8, tvOS 9, WatchOS 2
+Language: Swift 3.1
+Minimum: iOS 8, tvOS 9, watchOS 2, macOS 10.12
+
 
 ## Installation
 
