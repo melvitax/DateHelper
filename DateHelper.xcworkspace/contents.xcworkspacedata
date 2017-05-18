@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/melvinrivera/Dropbox (Personal)/Projects/Libraries/DateHelper/Playground.playground">
+      location = "container:DateHelper.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:DateHelper.xcodeproj">
+      location = "container:Playground.playground">
    </FileRef>
 </Workspace>
