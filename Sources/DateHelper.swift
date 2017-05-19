@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.2.1
+//  Version 4.2.2
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -499,9 +499,7 @@ public extension Date {
         struct Static {
             static var numberFormatter = NumberFormatter()
         }
-        if #available(iOSApplicationExtension 9.0, *) {
-            Static.numberFormatter.numberStyle = .ordinal
-        }
+        Static.numberFormatter.numberStyle = .ordinal
         return Static.numberFormatter
     }
     

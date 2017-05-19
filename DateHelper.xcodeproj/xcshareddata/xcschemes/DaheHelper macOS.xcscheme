@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65441F3F1ECDEC5600669834"
-               BuildableName = "DaheHelper macOS.framework"
+               BuildableName = "DateHelper.framework"
                BlueprintName = "DaheHelper macOS"
                ReferencedContainer = "container:DateHelper.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65441F3F1ECDEC5600669834"
-            BuildableName = "DaheHelper macOS.framework"
+            BuildableName = "DateHelper.framework"
             BlueprintName = "DaheHelper macOS"
             ReferencedContainer = "container:DateHelper.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65441F3F1ECDEC5600669834"
-            BuildableName = "DaheHelper macOS.framework"
+            BuildableName = "DateHelper.framework"
             BlueprintName = "DaheHelper macOS"
             ReferencedContainer = "container:DateHelper.xcodeproj">
          </BuildableReference>
