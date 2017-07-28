@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.2.2
+//  Version 4.2.3
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -64,7 +64,10 @@ public extension Date {
         case .full:
             return self.toString(dateStyle: .full, timeStyle: .full, isRelative: false)
         case .ordinalDay:
-            let formatter = Date.cachedOrdinalNumberFormatter()
+            let formatter = Date.cachedOrdinalNumberFormatter
+            if #available(iOSApplicationExtension 9.0, *) {
+                formatter.numberStyle = .ordinal
+            }
             return formatter.string(from: component(.day)! as NSNumber)!
         case .weekday:
             let weekdaySymbols = Date.cachedFormatter().weekdaySymbols!
@@ -488,25 +491,13 @@ public extension Date {
     // MARK: Static Cached Formatters
     
     /// A cached static array of DateFormatters so that thy are only created once.
-    private static func cachedDateFormatters() -> [String: DateFormatter] {
-        struct Static {
-            static var formatters: [String: DateFormatter]? = [String: DateFormatter]()
-        }
-        return Static.formatters!
-    }
-    
-    private static func cachedOrdinalNumberFormatter() -> NumberFormatter {
-        struct Static {
-            static var numberFormatter = NumberFormatter()
-        }
-        Static.numberFormatter.numberStyle = .ordinal
-        return Static.numberFormatter
-    }
+    private static var cachedDateFormatters = [String: DateFormatter]()
+    private static var cachedOrdinalNumberFormatter = NumberFormatter()
     
     /// Generates a cached formatter based on the specified format, timeZone and locale. Formatters are cached in a singleton array using hashkeys.
     private static func cachedFormatter(_ format:String = DateFormatType.standard.stringFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.current, locale: Locale = Locale.current) -> DateFormatter {
         let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
-        var formatters = Date.cachedDateFormatters()
+        var formatters = Date.cachedDateFormatters
         if let cachedDateFormatter = formatters[hashKey] {
             return cachedDateFormatter
         } else {
@@ -521,7 +512,7 @@ public extension Date {
     
     /// Generates a cached formatter based on the provided date style, time style and relative date. Formatters are cached in a singleton array using hashkeys.
     private static func cachedFormatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
-        var formatters = Date.cachedDateFormatters()
+        var formatters = Date.cachedDateFormatters
         let hashKey = "\(dateStyle.hashValue)\(timeStyle.hashValue)\(doesRelativeDateFormatting.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
         if let cachedDateFormatter = formatters[hashKey] {
             return cachedDateFormatter
