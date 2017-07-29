@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.2.3
+//  Version 4.2.4
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -497,35 +497,29 @@ public extension Date {
     /// Generates a cached formatter based on the specified format, timeZone and locale. Formatters are cached in a singleton array using hashkeys.
     private static func cachedFormatter(_ format:String = DateFormatType.standard.stringFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.current, locale: Locale = Locale.current) -> DateFormatter {
         let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
-        var formatters = Date.cachedDateFormatters
-        if let cachedDateFormatter = formatters[hashKey] {
-            return cachedDateFormatter
-        } else {
+        if Date.cachedDateFormatters[hashKey] == nil {
             let formatter = DateFormatter()
             formatter.dateFormat = format
             formatter.timeZone = timeZone
             formatter.locale = locale
-            formatters[hashKey] = formatter
-            return formatter
+            Date.cachedDateFormatters[hashKey] = formatter
         }
+        return Date.cachedDateFormatters[hashKey]!
     }
     
     /// Generates a cached formatter based on the provided date style, time style and relative date. Formatters are cached in a singleton array using hashkeys.
     private static func cachedFormatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
-        var formatters = Date.cachedDateFormatters
         let hashKey = "\(dateStyle.hashValue)\(timeStyle.hashValue)\(doesRelativeDateFormatting.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
-        if let cachedDateFormatter = formatters[hashKey] {
-            return cachedDateFormatter
-        } else {
+        if Date.cachedDateFormatters[hashKey] == nil {
             let formatter = DateFormatter()
             formatter.dateStyle = dateStyle
             formatter.timeStyle = timeStyle
             formatter.doesRelativeDateFormatting = doesRelativeDateFormatting
             formatter.timeZone = timeZone
             formatter.locale = locale
-            formatters[hashKey] = formatter
-            return formatter
+            Date.cachedDateFormatters[hashKey] = formatter
         }
+        return Date.cachedDateFormatters[hashKey]!
     }
     
     // MARK: Intervals In Seconds
