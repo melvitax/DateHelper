@@ -31,13 +31,13 @@ public extension Date {
                 guard let match = regex.firstMatch(in: string, range: NSRange(location: 0, length: string.utf16.count)) else {
                     return nil
                 }
-                let dateString = (string as NSString).substring(with: match.rangeAt(1))
+                let dateString = (string as NSString).substring(with: match.range(at: 1))
                 let interval = Double(dateString)! / 1000.0
                 self.init(timeIntervalSince1970: interval)
                 return
             case .rss, .altRSS:
                 if string.hasSuffix("Z") {
-                    string = string.substring(to: string.index(string.endIndex, offsetBy: -1)).appending("GMT")
+                    string = string[..<string.index(string.endIndex, offsetBy: -1)].appending("GMT")
                 }
             default:
                 break
