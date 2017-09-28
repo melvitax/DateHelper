@@ -393,7 +393,7 @@ date.lastDayofWeek()
 
 ## Requirements
 
-Language: Swift 3.1
+Language: Swift 4.0
 Minimum: iOS 9, tvOS 9, watchOS 2, macOS 10.06
 
 
