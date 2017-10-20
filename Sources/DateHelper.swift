@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.2.5
+//  Version 4.2.6
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
@@ -502,6 +502,7 @@ public extension Date {
             formatter.dateFormat = format
             formatter.timeZone = timeZone
             formatter.locale = locale
+            formatter.isLenient = true
             Date.cachedDateFormatters[hashKey] = formatter
         }
         return Date.cachedDateFormatters[hashKey]!
@@ -517,6 +518,7 @@ public extension Date {
             formatter.doesRelativeDateFormatting = doesRelativeDateFormatting
             formatter.timeZone = timeZone
             formatter.locale = locale
+            formatter.isLenient = true
             Date.cachedDateFormatters[hashKey] = formatter
         }
         return Date.cachedDateFormatters[hashKey]!
