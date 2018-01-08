@@ -1,7 +1,7 @@
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
-//  Version 4.2.6
+//  Version 4.2.7
 //
 //  Created by Melvin Rivera on 7/15/14.
 //  Copyright (c) 2014. All rights reserved.
