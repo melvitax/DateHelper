@@ -48,6 +48,13 @@ let startOfWeek = date.dateFor(.startOfWeek)
 let nearest5Hours = date.dateFor(.nearestHour(hour:5))
 ```
 
+Forcing a week to start on monday
+```Swift
+var calendar = Calendar(identifier: .gregorian)
+calendar = 2 // sets the week to start on the second day.. monday
+now.dateFor(.startOfWeek, calendar: calendar)
+```
+
 Time since...
 
 ```Swift

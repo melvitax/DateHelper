@@ -362,15 +362,14 @@ public extension Date {
     
     // MARK: Date for...
     
-    func dateFor(_ type:DateForType) -> Date {
+    func dateFor(_ type:DateForType, calendar:Calendar = Calendar.current) -> Date {
         switch type {
         case .startOfDay:
             return adjust(hour: 0, minute: 0, second: 0)
         case .endOfDay:
             return adjust(hour: 23, minute: 59, second: 59)
         case .startOfWeek:
-            let offset = component(.weekday)!-1
-            return adjust(.day, offset: -(offset))
+            return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
         case .endOfWeek:
             let offset = 7 - component(.weekday)!
             return adjust(.day, offset: offset)
