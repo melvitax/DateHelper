@@ -31,7 +31,11 @@ public extension Date {
                 guard let match = regex.firstMatch(in: string, range: NSRange(location: 0, length: string.utf16.count)) else {
                     return nil
                 }
+                 #if swift(>=4.0)
                 let dateString = (string as NSString).substring(with: match.range(at: 1))
+                #else
+                let dateString = (string as NSString).substring(with: match.rangeAt(1))
+                #endif
                 let interval = Double(dateString)! / 1000.0
                 self.init(timeIntervalSince1970: interval)
                 return
