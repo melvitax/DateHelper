@@ -616,7 +616,7 @@ public enum DateFormatType {
 
 /// The time zone to be used for date conversion
 public enum TimeZoneType {
-    case local, default, utc
+    case local, `default`, utc
     var timeZone:TimeZone {
         switch self {
         case .local: return NSTimeZone.local
