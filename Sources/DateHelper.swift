@@ -616,11 +616,14 @@ public enum DateFormatType {
 
 /// The time zone to be used for date conversion
 public enum TimeZoneType {
-    case local, utc
+    case local
+    case utc
+    case custom(Int)
     var timeZone:TimeZone {
         switch self {
         case .local: return NSTimeZone.local
         case .utc: return TimeZone(secondsFromGMT: 0)!
+        case let .custom(gmt): return TimeZone(secondsFromGMT: gmt)!
         }
     }
 }
