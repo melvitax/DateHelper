@@ -491,30 +491,55 @@ public extension Date {
     }
   
     
+    class concurrentFormatterCache {
+        private var cachedDateFormattersQueue = DispatchQueue(label: "date-formatter-queue", attributes: .concurrent)
+        private var cachedDateFormatters = [String: DateFormatter]()
+
+        public func register(hashKey: String, formatter: DateFormatter) -> Void {
+            cachedDateFormattersQueue.async(flags: .barrier) {
+                self.cachedDateFormatters[hashKey] = formatter
+            }
+        }
+        
+        public func retrieve(hashKey: String) -> DateFormatter? {
+            let dateFormatter = cachedDateFormattersQueue.sync { () -> DateFormatter? in
+                guard let result = self.cachedDateFormatters[hashKey] else { return nil }
+                
+                return result.copy() as? DateFormatter
+            }
+            
+            return dateFormatter
+        }
+    }
+    
     // MARK: Static Cached Formatters
+    // Todo: move these into cache class?
     
     /// A cached static array of DateFormatters so that thy are only created once.
-    private static var cachedDateFormatters = [String: DateFormatter]()
+    private static var cachedDateFormatters = concurrentFormatterCache()
     private static var cachedOrdinalNumberFormatter = NumberFormatter()
     
     /// Generates a cached formatter based on the specified format, timeZone and locale. Formatters are cached in a singleton array using hashkeys.
     private static func cachedFormatter(_ format:String = DateFormatType.standard.stringFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.current, locale: Locale = Locale.current) -> DateFormatter {
         let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
-        if Date.cachedDateFormatters[hashKey] == nil {
+        
+        if Date.cachedDateFormatters.retrieve(hashKey: hashKey) == nil {
             let formatter = DateFormatter()
             formatter.dateFormat = format
             formatter.timeZone = timeZone
             formatter.locale = locale
             formatter.isLenient = true
-            Date.cachedDateFormatters[hashKey] = formatter
+            Date.cachedDateFormatters.register(hashKey: hashKey, formatter: formatter)
         }
-        return Date.cachedDateFormatters[hashKey]!
+        
+        //todo: fix the need to unwrap this mess
+        return Date.cachedDateFormatters.retrieve(hashKey: hashKey)!
     }
     
     /// Generates a cached formatter based on the provided date style, time style and relative date. Formatters are cached in a singleton array using hashkeys.
     private static func cachedFormatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
         let hashKey = "\(dateStyle.hashValue)\(timeStyle.hashValue)\(doesRelativeDateFormatting.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
-        if Date.cachedDateFormatters[hashKey] == nil {
+        if Date.cachedDateFormatters.retrieve(hashKey: hashKey) == nil {
             let formatter = DateFormatter()
             formatter.dateStyle = dateStyle
             formatter.timeStyle = timeStyle
@@ -522,9 +547,10 @@ public extension Date {
             formatter.timeZone = timeZone
             formatter.locale = locale
             formatter.isLenient = true
-            Date.cachedDateFormatters[hashKey] = formatter
+            Date.cachedDateFormatters.register(hashKey: hashKey, formatter: formatter)
         }
-        return Date.cachedDateFormatters[hashKey]!
+        // todo: fix the need to unwrap this mess
+        return Date.cachedDateFormatters.retrieve(hashKey: hashKey)!
     }
     
     // MARK: Intervals In Seconds
