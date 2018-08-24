@@ -95,8 +95,6 @@ public extension Date {
         }
     }
     
-    
-    
     /// Converts the date to string based on a date format, optional timezone and optional locale.
     func toString(format: DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Locale.current) -> String {
         switch format {
@@ -117,7 +115,6 @@ public extension Date {
         return formatter.string(from: self)
     }
     
-    
     /// Converts the date to string based on a relative time language. i.e. just now, 1 minute ago etc...
     func toStringWithRelativeTime(strings:[RelativeTimeStringType:String]? = nil) -> String {
         
@@ -129,7 +126,6 @@ public extension Date {
         let min:Double = round(sec/60)
         let hr:Double = round(min/60)
         let d:Double = round(hr/24)
-        
         
         if sec < 60 {
             if sec < 10 {
@@ -627,12 +623,13 @@ extension DateFormatType: Equatable {
 
 /// The time zone to be used for date conversion
 public enum TimeZoneType {
-    case local, `default`, utc
+    case local, `default`, utc, custom(Int)
     var timeZone:TimeZone {
         switch self {
         case .local: return NSTimeZone.local
         case .default: return NSTimeZone.default
         case .utc: return TimeZone(secondsFromGMT: 0)!
+        case let .custom(gmt): return TimeZone(secondsFromGMT: gmt)!
         }
     }
 }
