@@ -72,7 +72,7 @@ public extension Date {
         case .full:
             return self.toString(dateStyle: .full, timeStyle: .full, isRelative: false)
         case .ordinalDay:
-            let formatter = Date.cachedOrdinalNumberFormatter
+            let formatter = Date.cachedDateFormatters.cachedNumberFormatter()
             if #available(iOSApplicationExtension 9.0, *) {
                 formatter.numberStyle = .ordinal
             }
@@ -501,7 +501,13 @@ public extension Date {
             attributes: .concurrent
         )
         
+        private static let cachedNumberFormatterQueue = DispatchQueue(
+            label: "number-formatter-queue",
+            attributes: .concurrent
+        )
+        
         private static var cachedDateFormatters = [String: DateFormatter]()
+        private static var cachedNumberFormatter = NumberFormatter()
         
         private func register(hashKey: String, formatter: DateFormatter) -> Void {
             concurrentFormatterCache.cachedDateFormattersQueue.async(flags: .barrier) {
@@ -517,6 +523,16 @@ public extension Date {
             }
             
             return dateFormatter
+        }
+        
+        private func retrieve() -> NumberFormatter {
+            let numberFormatter = concurrentFormatterCache.cachedNumberFormatterQueue.sync { () -> NumberFormatter in
+                
+                // Should always be NumberFormatter
+                return concurrentFormatterCache.cachedNumberFormatter.copy() as! NumberFormatter
+            }
+            
+            return numberFormatter
         }
         
         public func cachedFormatter(_ format: String = DateFormatType.standard.stringFormat,
@@ -555,15 +571,14 @@ public extension Date {
             return Date.cachedDateFormatters.retrieve(hashKey: hashKey)!
         }
         
+        public func cachedNumberFormatter() -> NumberFormatter {
+            return Date.cachedDateFormatters.retrieve()
+        }
         
     }
     
-    // MARK: Static Cached Formatters
-    // Todo: move these into cache class?
-    
     /// A cached static array of DateFormatters so that thy are only created once.
     private static var cachedDateFormatters = concurrentFormatterCache()
-    private static var cachedOrdinalNumberFormatter = NumberFormatter()
     
     // MARK: Intervals In Seconds
     internal static let minuteInSeconds:Double = 60
