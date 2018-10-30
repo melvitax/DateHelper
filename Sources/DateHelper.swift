@@ -19,7 +19,7 @@ public extension Date {
      
         - Returns: A Date() object if successfully converted from string or nil.
     */
-    init?(fromString string: String, format:DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Foundation.Locale.current) {
+    init?(fromString string: String, format:DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Foundation.Locale.current, isLenient: Bool = true) {
         guard !string.isEmpty else {
             return nil
         }
@@ -46,7 +46,7 @@ public extension Date {
             default:
                 break
         }
-        let formatter = Date.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: locale)
+        let formatter = Date.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: locale, isLenient: isLenient)
         guard let date = formatter.date(from: string) else {
             return nil
         }
@@ -494,14 +494,14 @@ public extension Date {
     private static var cachedOrdinalNumberFormatter = NumberFormatter()
     
     /// Generates a cached formatter based on the specified format, timeZone and locale. Formatters are cached in a singleton array using hashkeys.
-    private static func cachedFormatter(_ format:String = DateFormatType.standard.stringFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.current, locale: Locale = Locale.current) -> DateFormatter {
+    private static func cachedFormatter(_ format:String = DateFormatType.standard.stringFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.current, locale: Locale = Locale.current, isLenient: Bool = true) -> DateFormatter {
         let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
         if Date.cachedDateFormatters[hashKey] == nil {
             let formatter = DateFormatter()
             formatter.dateFormat = format
             formatter.timeZone = timeZone
             formatter.locale = locale
-            formatter.isLenient = true
+            formatter.isLenient = isLenient
             Date.cachedDateFormatters[hashKey] = formatter
         }
         return Date.cachedDateFormatters[hashKey]!
