@@ -400,14 +400,14 @@ date.lastDayofWeek()
 
 ## Requirements
 
-Language: Swift 4.0
+Language: Swift 4.2
 Minimum: iOS 9, tvOS 9, watchOS 2, macOS 10.06
 
 
 ## Installation
 
 **Carthage** github "melvitax/DateHelper"  
-**Cocoapods** pod 'AFDateHelper', '~> 4.2.2'  
+**Cocoapods** pod 'AFDateHelper', '~> 4.3.0'  
 **Manually**  Include DateHelper.swift in your project
 
 
