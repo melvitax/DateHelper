@@ -367,7 +367,8 @@ public extension Date {
         case .startOfWeek:
             return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
         case .endOfWeek:
-            let offset = 7 - component(.weekday)!
+            let weekdayOffset = calendar.firstWeekday - 1
+            let offset = 7 - (component(.weekday)! - weekdayOffset)
             return adjust(.day, offset: offset)
         case .startOfMonth:
             return adjust(hour: 0, minute: 0, second: 0, day: 1)
