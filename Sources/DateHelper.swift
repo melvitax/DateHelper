@@ -46,7 +46,11 @@ public extension Date {
             default:
                 break
         }
-        let formatter = Date.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: locale)
+        let formatter = Date.cachedDateFormatters.cachedFormatter(
+            format.stringFormat,
+            timeZone: timeZone.timeZone,
+            locale: locale)
+        
         guard let date = formatter.date(from: string) else {
             return nil
         }
@@ -68,29 +72,29 @@ public extension Date {
         case .full:
             return self.toString(dateStyle: .full, timeStyle: .full, isRelative: false)
         case .ordinalDay:
-            let formatter = Date.cachedOrdinalNumberFormatter
+            let formatter = Date.cachedDateFormatters.cachedNumberFormatter()
             if #available(iOSApplicationExtension 9.0, *) {
                 formatter.numberStyle = .ordinal
             }
             return formatter.string(from: component(.day)! as NSNumber)!
         case .weekday:
-            let weekdaySymbols = Date.cachedFormatter().weekdaySymbols!
+            let weekdaySymbols = Date.cachedDateFormatters.cachedFormatter().weekdaySymbols!
             let string = weekdaySymbols[component(.weekday)!-1] as String
             return string
         case .shortWeekday:
-            let shortWeekdaySymbols = Date.cachedFormatter().shortWeekdaySymbols!
+            let shortWeekdaySymbols = Date.cachedDateFormatters.cachedFormatter().shortWeekdaySymbols!
             return shortWeekdaySymbols[component(.weekday)!-1] as String
         case .veryShortWeekday:
-            let veryShortWeekdaySymbols = Date.cachedFormatter().veryShortWeekdaySymbols!
+            let veryShortWeekdaySymbols = Date.cachedDateFormatters.cachedFormatter().veryShortWeekdaySymbols!
             return veryShortWeekdaySymbols[component(.weekday)!-1] as String
         case .month:
-            let monthSymbols = Date.cachedFormatter().monthSymbols!
+            let monthSymbols = Date.cachedDateFormatters.cachedFormatter().monthSymbols!
             return monthSymbols[component(.month)!-1] as String
         case .shortMonth:
-            let shortMonthSymbols = Date.cachedFormatter().shortMonthSymbols!
+            let shortMonthSymbols = Date.cachedDateFormatters.cachedFormatter().shortMonthSymbols!
             return shortMonthSymbols[component(.month)!-1] as String
         case .veryShortMonth:
-            let veryShortMonthSymbols = Date.cachedFormatter().veryShortMonthSymbols!
+            let veryShortMonthSymbols = Date.cachedDateFormatters.cachedFormatter().veryShortMonthSymbols!
             return veryShortMonthSymbols[component(.month)!-1] as String
         }
     }
@@ -105,13 +109,13 @@ public extension Date {
         default:
             break
         }
-        let formatter = Date.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: locale)
+        let formatter = Date.cachedDateFormatters.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: locale)
         return formatter.string(from: self)
     }
     
     /// Converts the date to string based on DateFormatter's date style and time style with optional relative date formatting, optional time zone and optional locale.
     func toString(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, isRelative: Bool = false, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> String {
-        let formatter = Date.cachedFormatter(dateStyle, timeStyle: timeStyle, doesRelativeDateFormatting: isRelative, timeZone: timeZone, locale: locale)
+        let formatter = Date.cachedDateFormatters.cachedFormatter(dateStyle, timeStyle: timeStyle, doesRelativeDateFormatting: isRelative, timeZone: timeZone, locale: locale)
         return formatter.string(from: self)
     }
     
@@ -487,41 +491,90 @@ public extension Date {
     }
   
     
-    // MARK: Static Cached Formatters
+    internal class concurrentFormatterCache {
+        private static let cachedDateFormattersQueue = DispatchQueue(
+            label: "date-formatter-queue",
+            attributes: .concurrent
+        )
+        
+        private static let cachedNumberFormatterQueue = DispatchQueue(
+            label: "number-formatter-queue",
+            attributes: .concurrent
+        )
+        
+        private static var cachedDateFormatters = [String: DateFormatter]()
+        private static var cachedNumberFormatter = NumberFormatter()
+        
+        private func register(hashKey: String, formatter: DateFormatter) -> Void {
+            concurrentFormatterCache.cachedDateFormattersQueue.async(flags: .barrier) {
+                concurrentFormatterCache.cachedDateFormatters.updateValue(formatter, forKey: hashKey)
+            }
+        }
+        
+        private func retrieve(hashKey: String) -> DateFormatter? {
+            let dateFormatter = concurrentFormatterCache.cachedDateFormattersQueue.sync { () -> DateFormatter? in
+                guard let result = concurrentFormatterCache.cachedDateFormatters[hashKey] else { return nil }
+                
+                return result.copy() as? DateFormatter
+            }
+            
+            return dateFormatter
+        }
+        
+        private func retrieve() -> NumberFormatter {
+            let numberFormatter = concurrentFormatterCache.cachedNumberFormatterQueue.sync { () -> NumberFormatter in
+                
+                // Should always be NumberFormatter
+                return concurrentFormatterCache.cachedNumberFormatter.copy() as! NumberFormatter
+            }
+            
+            return numberFormatter
+        }
+        
+        public func cachedFormatter(_ format: String = DateFormatType.standard.stringFormat,
+                                    timeZone: Foundation.TimeZone = Foundation.TimeZone.current,
+                                    locale: Locale = Locale.current) -> DateFormatter {
+            
+                let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
+                
+                if Date.cachedDateFormatters.retrieve(hashKey: hashKey) == nil {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = format
+                    formatter.timeZone = timeZone
+                    formatter.locale = locale
+                    formatter.isLenient = true
+                    Date.cachedDateFormatters.register(hashKey: hashKey, formatter: formatter)
+                }
+            
+                return Date.cachedDateFormatters.retrieve(hashKey: hashKey)!
+        }
+        
+        /// Generates a cached formatter based on the provided date style, time style and relative date.
+        /// Formatters are cached in a singleton array using hashkeys.
+        public func cachedFormatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
+            let hashKey = "\(dateStyle.hashValue)\(timeStyle.hashValue)\(doesRelativeDateFormatting.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
+            if Date.cachedDateFormatters.retrieve(hashKey: hashKey) == nil {
+                let formatter = DateFormatter()
+                formatter.dateStyle = dateStyle
+                formatter.timeStyle = timeStyle
+                formatter.doesRelativeDateFormatting = doesRelativeDateFormatting
+                formatter.timeZone = timeZone
+                formatter.locale = locale
+                formatter.isLenient = true
+                Date.cachedDateFormatters.register(hashKey: hashKey, formatter: formatter)
+            }
+
+            return Date.cachedDateFormatters.retrieve(hashKey: hashKey)!
+        }
+        
+        public func cachedNumberFormatter() -> NumberFormatter {
+            return Date.cachedDateFormatters.retrieve()
+        }
+        
+    }
     
     /// A cached static array of DateFormatters so that thy are only created once.
-    private static var cachedDateFormatters = [String: DateFormatter]()
-    private static var cachedOrdinalNumberFormatter = NumberFormatter()
-    
-    /// Generates a cached formatter based on the specified format, timeZone and locale. Formatters are cached in a singleton array using hashkeys.
-    private static func cachedFormatter(_ format:String = DateFormatType.standard.stringFormat, timeZone: Foundation.TimeZone = Foundation.TimeZone.current, locale: Locale = Locale.current) -> DateFormatter {
-        let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
-        if Date.cachedDateFormatters[hashKey] == nil {
-            let formatter = DateFormatter()
-            formatter.dateFormat = format
-            formatter.timeZone = timeZone
-            formatter.locale = locale
-            formatter.isLenient = true
-            Date.cachedDateFormatters[hashKey] = formatter
-        }
-        return Date.cachedDateFormatters[hashKey]!
-    }
-    
-    /// Generates a cached formatter based on the provided date style, time style and relative date. Formatters are cached in a singleton array using hashkeys.
-    private static func cachedFormatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
-        let hashKey = "\(dateStyle.hashValue)\(timeStyle.hashValue)\(doesRelativeDateFormatting.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
-        if Date.cachedDateFormatters[hashKey] == nil {
-            let formatter = DateFormatter()
-            formatter.dateStyle = dateStyle
-            formatter.timeStyle = timeStyle
-            formatter.doesRelativeDateFormatting = doesRelativeDateFormatting
-            formatter.timeZone = timeZone
-            formatter.locale = locale
-            formatter.isLenient = true
-            Date.cachedDateFormatters[hashKey] = formatter
-        }
-        return Date.cachedDateFormatters[hashKey]!
-    }
+    private static var cachedDateFormatters = concurrentFormatterCache()
     
     // MARK: Intervals In Seconds
     internal static let minuteInSeconds:Double = 60
