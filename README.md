@@ -401,7 +401,7 @@ date.lastDayofWeek()
 ## Requirements
 
 Language: Swift 4.2
-Minimum: iOS 9, tvOS 9, watchOS 2, macOS 10.06
+Minimum: iOS 11, tvOS 12, watchOS 4, macOS 10.14
 
 
 ## Installation
