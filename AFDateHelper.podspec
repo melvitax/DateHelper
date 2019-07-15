@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "AFDateHelper"
-  s.version          = "4.2.8"
-  s.summary          = "Date Extension for Swift 4.0"
+  s.version          = "4.3.0"
+  s.summary          = "Date Extension for Swift 4.2"
   s.description      = <<-DESC
                        A Swift Date extension for creating, modifying and comparing dates.
                        DESC
@@ -26,6 +26,6 @@ Pod::Spec.new do |s|
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.requires_arc = true
-  s.pod_target_xcconfig  = { 'SWIFT_VERSION' => '4.0' }
+  s.pod_target_xcconfig  = { 'SWIFT_VERSION' => '4.2' }
 
 end
