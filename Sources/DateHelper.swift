@@ -19,7 +19,7 @@ public extension Date {
      
         - Returns: A Date() object if successfully converted from string or nil.
     */
-    init?(fromString string: String, format:DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Foundation.Locale.current) {
+    init?(fromString string: String, format:DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Foundation.Locale.current, isLenient: Bool = true) {
         guard !string.isEmpty else {
             return nil
         }
@@ -49,8 +49,8 @@ public extension Date {
         let formatter = Date.cachedDateFormatters.cachedFormatter(
             format.stringFormat,
             timeZone: timeZone.timeZone,
-            locale: locale)
-        
+            locale: locale, 
+            isLenient: isLenient)
         guard let date = formatter.date(from: string) else {
             return nil
         }
@@ -490,7 +490,6 @@ public extension Date {
         return Calendar.current.dateComponents(Date.componentFlags(), from: fromDate)
     }
   
-    
     internal class concurrentFormatterCache {
         private static let cachedDateFormattersQueue = DispatchQueue(
             label: "date-formatter-queue",
@@ -509,6 +508,7 @@ public extension Date {
             concurrentFormatterCache.cachedDateFormattersQueue.async(flags: .barrier) {
                 concurrentFormatterCache.cachedDateFormatters.updateValue(formatter, forKey: hashKey)
             }
+
         }
         
         private func retrieve(hashKey: String) -> DateFormatter? {
@@ -533,7 +533,7 @@ public extension Date {
         
         public func cachedFormatter(_ format: String = DateFormatType.standard.stringFormat,
                                     timeZone: Foundation.TimeZone = Foundation.TimeZone.current,
-                                    locale: Locale = Locale.current) -> DateFormatter {
+                                    locale: Locale = Locale.current, isLenient: Bool = true) -> DateFormatter {
             
                 let hashKey = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
                 
@@ -542,7 +542,7 @@ public extension Date {
                     formatter.dateFormat = format
                     formatter.timeZone = timeZone
                     formatter.locale = locale
-                    formatter.isLenient = true
+                    formatter.isLenient = trisLenientue
                     Date.cachedDateFormatters.register(hashKey: hashKey, formatter: formatter)
                 }
             
@@ -551,7 +551,7 @@ public extension Date {
         
         /// Generates a cached formatter based on the provided date style, time style and relative date.
         /// Formatters are cached in a singleton array using hashkeys.
-        public func cachedFormatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> DateFormatter {
+        public func cachedFormatter(_ dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, doesRelativeDateFormatting: Bool, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current, isLenient: Bool = true) -> DateFormatter {
             let hashKey = "\(dateStyle.hashValue)\(timeStyle.hashValue)\(doesRelativeDateFormatting.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
             if Date.cachedDateFormatters.retrieve(hashKey: hashKey) == nil {
                 let formatter = DateFormatter()
@@ -560,7 +560,7 @@ public extension Date {
                 formatter.doesRelativeDateFormatting = doesRelativeDateFormatting
                 formatter.timeZone = timeZone
                 formatter.locale = locale
-                formatter.isLenient = true
+                formatter.isLenient = isLenient
                 Date.cachedDateFormatters.register(hashKey: hashKey, formatter: formatter)
             }
 
