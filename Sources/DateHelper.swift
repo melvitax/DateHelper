@@ -542,7 +542,7 @@ public extension Date {
                     formatter.dateFormat = format
                     formatter.timeZone = timeZone
                     formatter.locale = locale
-                    formatter.isLenient = trisLenientue
+                    formatter.isLenient = isLenient
                     Date.cachedDateFormatters.register(hashKey: hashKey, formatter: formatter)
                 }
             
