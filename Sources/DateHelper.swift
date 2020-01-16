@@ -101,6 +101,8 @@ public extension Date {
     
     /// Converts the date to string based on a date format, optional timezone and optional locale.
     func toString(format: DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Locale.current) -> String {
+        var useLocale = locale
+        
         switch format {
         case .dotNet:
             let offset = Foundation.NSTimeZone.default.secondsFromGMT() / 3600
@@ -108,14 +110,19 @@ public extension Date {
             return String(format: format.stringFormat, nowMillis, offset)
         case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime,
              .isoYear,. isoDate, .isoYearMonth:
-            return formatIsoDate(format: format, timeZone: timeZone)
+            if #available(iOS 11.0, watchOS 3, tvOS 10, macOS 13, *) {
+                return formatIsoDate(format: format, timeZone: timeZone)
+            } else {
+                useLocale = Locale(identifier: "en_US_POSIX")
+            }
         default:
             break
         }
-        let formatter = Date.cachedDateFormatters.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: locale)
+        let formatter = Date.cachedDateFormatters.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: useLocale)
         return formatter.string(from: self)
     }
     
+    @available(iOS 11.0, watchOS 3, tvOS 10, macOS 13, *)
     func formatIsoDate(format: DateFormatType, timeZone: TimeZoneType = .local) -> String {
         let formatter = ISO8601DateFormatter()
         formatter.timeZone = timeZone.timeZone
