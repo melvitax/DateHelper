@@ -122,6 +122,7 @@ public extension Date {
         return formatter.string(from: self)
     }
     
+    /// Converts to ISO format using the new API
     @available(iOS 11.0, watchOS 3, tvOS 10, macOS 13, *)
     func formatIsoDate(format: DateFormatType, timeZone: TimeZoneType = .local) -> String {
         let formatter = ISO8601DateFormatter()
