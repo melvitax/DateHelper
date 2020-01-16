@@ -106,10 +106,37 @@ public extension Date {
             let offset = Foundation.NSTimeZone.default.secondsFromGMT() / 3600
             let nowMillis = 1000 * self.timeIntervalSince1970
             return String(format: format.stringFormat, nowMillis, offset)
+        case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime,
+             .isoYear,. isoDate, .isoYearMonth:
+            return formatIsoDate(format: format, timeZone: timeZone)
         default:
             break
         }
         let formatter = Date.cachedDateFormatters.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: locale)
+        return formatter.string(from: self)
+    }
+    
+    func formatIsoDate(format: DateFormatType, timeZone: TimeZoneType = .local) -> String {
+        let formatter = ISO8601DateFormatter()
+        formatter.timeZone = timeZone.timeZone
+        
+        var options: ISO8601DateFormatter.Options = []
+        switch format {
+        case .isoDate:
+            options = [.withFullDate]
+        case .isoYearMonth:
+            options = [.withYear, .withMonth]
+        case .isoYear:
+            options = [.withYear]
+        case .isoDateTimeSec, .isoDateTime:
+            options = [.withInternetDateTime]
+        case .isoDateTimeMilliSec:
+            options = [.withInternetDateTime, .withFractionalSeconds]
+        default:
+            fatalError("Unimplemented format \(format)")
+        }
+        
+        formatter.formatOptions = options
         return formatter.string(from: self)
     }
     
