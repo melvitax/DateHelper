@@ -419,7 +419,7 @@ Minimum: iOS 11, tvOS 12, watchOS 4, macOS 10.14
 
 **Carthage** github "melvitax/DateHelper"   
 **Swift Package Manager** https://github.com/melvitax/DateHelper.git   
-**Cocoapods** pod 'AFDateHelper', '~> 4.4.0'   
+**Cocoapods** pod 'AFDateHelper', '~> 4.4.1'   
 **Manually**  Include DateHelper.swift in your project
 
 
