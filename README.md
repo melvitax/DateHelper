@@ -5,20 +5,20 @@
 [![Platform](https://img.shields.io/cocoapods/p/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-A Swift Date extension for iOS, watchOS, tvOS, and macOS that creates or converts dates to or from strings. It can also compare, modify or extract date components and uses cached formatters for performance gains. 
+A high performant Swift Date Extension for creating, converting, comparing, or modifying dates. 
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/DateHelper/master/logo.png "Date Helper")
 
 
 ## Capabilities
 
-Convert from string
+### String to Date
 
 ```Swift
 date = Date(fromString: "2009-08-11", format: .isoDate)
 ```
 
-Convert to string
+### Convert to string
 
 ```Swift
 let mediumDateString = date.toString(style: .medium)
@@ -27,41 +27,42 @@ let shortTimeString =  date.toString(dateStyle: .none, timeStyle: .short)
 let relativeTimeSting = date.toStringWithRelativeTime()
 ```
 
-Compare dates
+### Compare dates
 
 ```Swift
 let isToday = date.compare(.isToday)
 let isSameWeek = date.compare(.isSameWeek(as: otherDate))
 ```
 
-Adjust dates
+### Adjust dates
 
 ```Swift
 let twoHoursBefore = date.adjust(.hour, offset: -2)
 let atNoon = date.adjust(hour: 12, minute: 0, second: 0)
 ```
 
-Create dates for...
+### Create dates for...
 
 ```Swift
 let startOfWeek = date.dateFor(.startOfWeek)
 let nearest5Hours = date.dateFor(.nearestHour(hour:5))
 ```
 
-Forcing a week to start on monday
+### Forcing a week to start on monday
+
 ```Swift
 var calendar = Calendar(identifier: .gregorian)
 calendar = 2 // sets the week to start on the second day.. monday
 now.dateFor(.startOfWeek, calendar: calendar)
 ```
 
-Time since...
+### Time since...
 
 ```Swift
 let secondsSince = date.since(otherDate, in: .second)
 ```
 
-Extracting components
+### Extracting components
 
 ```Swift
 let seconds = date.component(.second)
@@ -74,26 +75,21 @@ let lastDayOfWeek = date.lastDayOfWeek()
 
 ### Date from string
 
-Use the initializer `Date(detectFromString:String)?` to detect the first date on a string.
+**`Date(detectFromString:String)?`**
+Use this initializer to detect the first date on a string.
 
 ```Swift
-if let date = Date(detectFromString: "Sunday, November 1, 2020") -> 
- {
-    // Do stuff with date
+if let date = Date(detectFromString: "Sunday, November 1, 2020") {
+    // Do stuff 
 }
 ```
 
-Use the initializer `Date(fromString:String, format: DateFormatType)?` to create an optional date from a string. 
-
-/*
-    Creates a new Date based on the first date detected on a string using data dectors.
-*/
-init?(fromString string: String) {
+**`Date(fromString:String, format: DateFormatType)?`**
+Use this initializer to create an optional date from a string. This uses a chached formatter for perfomance gains.  
 
 ```Swift
-if let date = Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .httpHeader) -> 
- {
-	// Do stuff with date
+if let date = Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .httpHeader) {
+	// Do stuff
 }
 ```
 The DateFormatType enum has a few predifined options as well as a tupple for providing a custom date format.
@@ -423,7 +419,7 @@ Minimum: iOS 11, tvOS 12, watchOS 4, macOS 10.14
 
 **Carthage** github "melvitax/DateHelper"   
 **Swift Package Manager** https://github.com/melvitax/DateHelper.git   
-**Cocoapods** pod 'AFDateHelper', '~> 4.3.0'   
+**Cocoapods** pod 'AFDateHelper', '~> 4.4.0'   
 **Manually**  Include DateHelper.swift in your project
 
 
