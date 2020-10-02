@@ -12,12 +12,10 @@ import Foundation
 
 public extension Date {
     
-    // MARK: Convert from String
+    // MARK: - Convert from String
     
     /*
-        Initializes a new Date() objext based on a date string, format, optional timezone and optional locale.
-     
-        - Returns: A Date() object if successfully converted from string or nil.
+        Creates a new Date based on a string of a specified format. Supports optional timezone and locale.
     */
     init?(fromString string: String, format:DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Foundation.Locale.current, isLenient: Bool = true) {
         guard !string.isEmpty else {
@@ -57,8 +55,21 @@ public extension Date {
         self.init(timeInterval:0, since:date)
     }
     
-    // MARK: Convert to String
+    /*
+        Creates a new Date based on the first date detected on a string using data dectors.
+    */
+    init?(detectFromString string: String) {
+        let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.date.rawValue)
+        let matches = detector?.matches(in: string, options: [], range: NSMakeRange(0, string.utf16.count))
+        if let date = matches?.first?.date {
+            self.init()
+            self = date
+        } else {
+            return nil
+        }
+    }
     
+    // MARK: - Convert to String
     
     /// Converts the date to string using the short date and time style.
     func toString(style:DateStyleType = .short) -> String {
@@ -371,7 +382,7 @@ public extension Date {
     }
     
     
-    // MARK: Compare Dates
+    // MARK: - Compare Dates
     
     /// Compares dates to see if they are equal while ignoring time.
     func compare(_ comparison:DateComparisonType) -> Bool {
@@ -440,7 +451,7 @@ public extension Date {
     }
  
     
-    // MARK: Adjust dates
+    // MARK: - Adjust dates
     
     /// Creates a new date with adjusted components
     
@@ -480,7 +491,7 @@ public extension Date {
         return Calendar.current.date(from: comp)!
     }
     
-    // MARK: Date for...
+    // MARK: - Date for...
     
     func dateFor(_ type:DateForType, calendar:Calendar = Calendar.current) -> Date {
         switch type {
@@ -511,7 +522,7 @@ public extension Date {
         }
     }
     
-    // MARK: Time since...
+    // MARK: - Time since...
     
     func since(_ date:Date, in component:DateComponentType) -> Int64 {
         switch component {
@@ -558,7 +569,7 @@ public extension Date {
     }
     
     
-    // MARK: Extracting components
+    // MARK: - Extracting components
     
     func component(_ component:DateComponentType) -> Int? {
         let components = Date.components(self)
@@ -603,7 +614,7 @@ public extension Date {
     }
     
     
-    // MARK: Internal Components
+    // MARK: - Internal Components
     
     internal static func componentFlags() -> Set<Calendar.Component> { return [Calendar.Component.year, Calendar.Component.month, Calendar.Component.day, Calendar.Component.weekOfYear, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second, Calendar.Component.weekday, Calendar.Component.weekdayOrdinal, Calendar.Component.weekOfYear] }
     internal static func components(_ fromDate: Date) -> DateComponents {
@@ -696,7 +707,7 @@ public extension Date {
     /// A cached static array of DateFormatters so that thy are only created once.
     private static var cachedDateFormatters = concurrentFormatterCache()
     
-    // MARK: Intervals In Seconds
+    // MARK: - Intervals In Seconds
     internal static let minuteInSeconds:Double = 60
     internal static let hourInSeconds:Double = 3600
     internal static let dayInSeconds:Double = 86400
@@ -705,8 +716,7 @@ public extension Date {
     
 }
 
-// MARK: Enums used
-
+// MARK: - Enums used
 
 /**
  The string format used for date string conversion.

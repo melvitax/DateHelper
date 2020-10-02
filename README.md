@@ -74,7 +74,21 @@ let lastDayOfWeek = date.lastDayOfWeek()
 
 ### Date from string
 
+Use the initializer `Date(detectFromString:String)?` to detect the first date on a string.
+
+```Swift
+if let date = Date(detectFromString: "Sunday, November 1, 2020") -> 
+ {
+    // Do stuff with date
+}
+```
+
 Use the initializer `Date(fromString:String, format: DateFormatType)?` to create an optional date from a string. 
+
+/*
+    Creates a new Date based on the first date detected on a string using data dectors.
+*/
+init?(fromString string: String) {
 
 ```Swift
 if let date = Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .httpHeader) -> 
