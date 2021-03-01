@@ -121,7 +121,7 @@ public extension Date {
             return String(format: format.stringFormat, nowMillis, offset)
         case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime,
              .isoYear,. isoDate, .isoYearMonth:
-            if #available(iOS 11.0, watchOS 3, tvOS 10, macOS 13, *) {
+            if #available(iOS 11.0, watchOS 4, tvOS 10, macOS 13, *) {
                 return formatIsoDate(format: format, timeZone: timeZone)
             } else {
                 useLocale = Locale(identifier: "en_US_POSIX")
@@ -134,7 +134,7 @@ public extension Date {
     }
     
     /// Converts to ISO format using the new API
-    @available(iOS 11.0, watchOS 3, tvOS 10, macOS 13, *)
+    @available(iOS 11.0, watchOS 4, tvOS 10, macOS 13, *)
     func formatIsoDate(format: DateFormatType, timeZone: TimeZoneType = .local) -> String {
         let formatter = ISO8601DateFormatter()
         formatter.timeZone = timeZone.timeZone
