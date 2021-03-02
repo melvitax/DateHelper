@@ -1,171 +1,228 @@
 # DateHelper
 
-[![Version](https://img.shields.io/cocoapods/v/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
-[![License](https://img.shields.io/cocoapods/l/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
-[![Platform](https://img.shields.io/cocoapods/p/AFDateHelper.svg?style=flat)](http://cocoapods.org/pods/AFDateHelper)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-
-A high performant Swift Date Extension for creating, converting, comparing, or modifying dates. 
+[![License](https://img.shields.io/badge/License-MIT-lightgrey)](https://github.com/melvitax/DateHelper/blob/master/LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20macOS-lightgrey)](https://github.com/melvitax/DateHelper)
+[![Cocoapods Compatible](https://img.shields.io/badge/Cocoapods-Deprecated-red)](http://cocoapods.org/pods/AFDateHelpe)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-Compatible-green)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager Compatible](https://img.shields.io/badge/Swift%20Package%20Manager-Compatible-green)](https://swift.org/package-manager/)
 
 ![Sample Project Screenshot](https://raw.githubusercontent.com/melvitax/DateHelper/master/logo.png "Date Helper")
+
+A high performant Swift Date Extension for creating, converting, comparing, or modifying dates. 
 
 
 ## Capabilities
 
-### String to Date
+### Creating a Date from a String
+Provides two initializers to create a date from string.
+
+- **detectFromString:**  
+`init?(detectFromString string: String)`  
+Uses NSDataDetector to detect a date from natural language in a string. Similar to what Apple mail does on emails. This initializer is not as efficient as **fromString:format:** and should not be used in collections like lists.
 
 ```Swift
-date = Date(fromString: "2009-08-11", format: .isoDate)
+Date(detectFromString: "It happened on August 11 of 2009")
+Date(detectFromString: "Tomorrow at 5:30 PM")
 ```
 
-### Convert to string
+- **fromString:format:**  
+`init?(fromString string: String, format:DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Foundation.Locale.current, isLenient: Bool = true) `  
+Initializes a date from a string using a strict or custom format that is cached, highly performant and thread safe.
 
 ```Swift
-let mediumDateString = date.toString(style: .medium)
-let rssDateString = date.toString(format: .rss)
-let shortTimeString =  date.toString(dateStyle: .none, timeStyle: .short)
-let relativeTimeSting = date.toStringWithRelativeTime()
+ Date(fromString: "2009", format: .isoYear)
+ Date(fromString: "2009-08", format: .isoYearMonth)
+ Date(fromString: "2009-08-11", format: .isoDate)
+ Date(fromString: "2009-08-11T06:00-07:00", format: .isoDateTime)
+ Date(fromString: "2009-08-11T06:00:00-07:00", format: .isoDateTimeSec)
+ Date(fromString: "2009-08-11T06:00:00.000-07:00", format: .isoDateTimeMilliSec)
+ Date(fromString: "/Date(1260123281843)/", format: .dotNet)
+ Date(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .rss)
+ Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .altRSS)
+ Date(fromString: "Wed, 01 03 2017 06:43:19 -0500", format: .httpHeader)
+ Date(fromString: "16 July 1972 6:12:00", format: .custom("dd MMM yyyy HH:mm:ss"))
+
 ```
 
-### Compare dates
+### Convert a Date to a String
+Provides three ways to convert a Date object to string
+
+- **toString(style:)**  
+`func toString(style:DateStyleType = .short) -> String`  
+Converts a date to string based on a pre-desfined style
 
 ```Swift
-let isToday = date.compare(.isToday)
-let isSameWeek = date.compare(.isSameWeek(as: otherDate))
+Date().toString(style: .short)
+Date().toString(style: .medium)
+Date().toString(style: .long)
+Date().toString(style: .full)
+Date().toString(style: .ordinalDay)
+Date().toString(style: .weekday)
+Date().toString(style: .shortWeekday)
+Date().toString(style: .veryShortWeekday)
+Date().toString(style: .month)
+Date().toString(style: .shortMonth)
+Date().toString(style: .veryShortMonth)
+```
+
+- **toString(format:)**  
+`func toString(format: DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Locale.current) -> String`  
+Converts a date to string based on a predefined or custom format
+
+```Swift
+Date().toString(format: .custom("MMM d, yyyy"))
+Date().toString(format: .custom("h:mm a"))
+Date().toString(format: .custom("MMM d"))
+Date().toString(format: .custom("MMM d"))
+Date().toString(format: .isoYear)
+Date().toString(format: .isoYearMonth)
+Date().toString(format: .isoDate)
+Date().toString(format: .isoDateTime)
+Date().toString(format: .isoDateTimeSec)
+Date().toString(format: .isoDateTimeMilliSec)
+Date().toString(format: .dotNet)
+Date().toString(format: .rss)
+Date().toString(format: .altRSS)
+Date().toString(format: .httpHeader)
+```
+
+- **toString(dateStyle:timeStyle)**  
+`func toString(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, isRelative: Bool = false, timeZone: Foundation.TimeZone = Foundation.NSTimeZone.local, locale: Locale = Locale.current) -> String`  
+Converts a date to string based on a predefined date and time style
+
+```Swift 
+Date().toString(dateStyle: .none, timeStyle: .short)
+Date().toString(dateStyle: .short, timeStyle: .none)
+Date().toString(dateStyle: .short, timeStyle: .short)
+Date().toString(dateStyle: .medium, timeStyle: .medium)
+Date().toString(dateStyle: .long, timeStyle: .long)
+Date().toString(dateStyle: .full, timeStyle: .full)
+```
+
+### Compare Dates
+Provides a way to check a date against another common scenarios like isToday, isNextWeek, is etc.
+
+- **Quick Checks**  
+ Checks date against common scenarios  
+ `func compare(_ comparison: DateComparisonType) -> Bool`
+
+```Swift
+Date().compare(.isToday) 
+Date().compare(.isTomorrow)
+Date().compare(.isYesterday)
+Date().compare(.isThisWeek)
+Date().compare(.isNextWeek)
+Date().compare(.isLastWeek)
+Date().compare(.isThisYear)
+Date().compare(.isNextYear)
+Date().compare(.isLastYear)
+Date().compare(.isInTheFuture)
+Date().compare(.isInThePast)
+```
+
+- **Comparing Dates**  
+Checks first date against second date  
+ `func compare(_ comparison: DateComparisonType) -> Bool`
+
+```Swift
+firstDate.compare(.isSameDay(as: secondDate))
+firstDate.compare(.isSameWeek(as: secondDate))
+firstDate.compare(.isSameMonth(as: secondDate))
+firstDate.compare(.isSameYear(as: secondDate))
+firstDate.compare(.isEarlier(than: secondDate))
+firstDate.compare(.isLater(than: secondDate))
 ```
 
 ### Adjust dates
+Provides two functions for adjusting dates
+
+- **adjust(_ component:, offset:)**  
+Offsets the specified date compontent of a date  
+`func adjust(_ component:DateComponentType, offset:Int) -> Date`
 
 ```Swift
-let twoHoursBefore = date.adjust(.hour, offset: -2)
-let atNoon = date.adjust(hour: 12, minute: 0, second: 0)
+Date().adjust(.second, offset: 110)
+Date().adjust(.minute, offset: 60)
+Date().adjust(.hour, offset: 2)
+Date().adjust(.day, offset: 1)
+Date().adjust(.weekday, offset: 2)
+Date().adjust(.nthWeekday, offset: 1)
+Date().adjust(.week, offset: 1)
+Date().adjust(.month, offset: 1)
+Date().adjust(.year, offset: 1)
 ```
-
-### Create dates for...
+- **adjust(hour:minute:second:)**  
+Offsets the specified time component of the date  
+`func adjust(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date`
 
 ```Swift
-let startOfWeek = date.dateFor(.startOfWeek)
-let nearest5Hours = date.dateFor(.nearestHour(hour:5))
+Date().adjust(hour: 12, minute: 0, second: 0)
 ```
 
-### Forcing a week to start on monday
+### Create Dates for...  
+Provides convenience date creators for common scenarios like endOfDay, startOfDay etc.  
+`func dateFor(_ type:DateForType, calendar:Calendar = Calendar.current) -> Date`  
+
+```Swift 
+Date().dateFor(.startOfDay)
+Date().dateFor(.endOfDay)
+Date().dateFor(.startOfWeek)
+Date().dateFor(.endOfWeek)
+Date().dateFor(.startOfMonth)
+Date().dateFor(.endOfMonth)
+Date().dateFor(.tomorrow)
+Date().dateFor(.yesterday)
+Date().dateFor(.nearestMinute(minute:30))
+Date().dateFor(.nearestHour(hour:2))  
+```
+
+### Time since...  
+Returns a number in the specified unit of measure since the secondary date.  
+`func since(_ date:Date, in component:DateComponentType) -> Int64`  
+
+```Swift
+Date().since(secondDate, in: .second)
+Date().since(secondDate, in: .minute)
+Date().since(secondDate, in: .hour)
+Date().since(secondDate, in: .day)
+Date().since(secondDate, in: .week)
+Date().since(secondDate, in: .nthWeekday)
+Date().since(secondDate, in: .week)
+Date().since(secondDate, in: .month)
+Date().since(secondDate, in: .year)  
+```
+### Miscelanius
+**Setting the start day of the week**  
 
 ```Swift
 var calendar = Calendar(identifier: .gregorian)
-calendar = 2 // sets the week to start on the second day.. monday
-now.dateFor(.startOfWeek, calendar: calendar)
+calendar.firstWeekday = 2 // sets the week to start on Monday
+Date().dateFor(.startOfWeek, calendar: calendar)
 ```
 
-### Time since...
+**Extracting components from a date**. 
 
 ```Swift
-let secondsSince = date.since(otherDate, in: .second)
+Date().component(.second)
+Date().component(.minute)
+Date().component(.hour)
+Date().component(.day)
+Date().component(.weekday)
+Date().component(.nthWeekday)
+Date().component(.month)
+Date().component(.year)
 ```
 
-### Extracting components
+**Extracting miscellaneous items from a date**. 
 
 ```Swift
-let seconds = date.component(.second)
-let daysInMonth = date.numberOfDaysInMonth()
-let firstDayOfWeek = date.firstDayOfWeek()
-let lastDayOfWeek = date.lastDayOfWeek()
+Date().numberOfDaysInMonth()
+Date().firstDayOfWeek()
+Date().lastDayOfWeek()
 ```
 
-## Usage
+## Custom Component guide
 
-### Date from string
-
-**`Date(detectFromString:String)?`**
-Use this initializer to detect the first date on a string.
-
-```Swift
-if let date = Date(detectFromString: "Sunday, November 1, 2020") {
-    // Do stuff 
-}
-```
-
-**`Date(fromString:String, format: DateFormatType)?`**
-Use this initializer to create an optional date from a string. This uses a chached formatter for perfomance gains.  
-
-```Swift
-if let date = Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .httpHeader) {
-	// Do stuff
-}
-```
-The DateFormatType enum has a few predifined options as well as a tupple for providing a custom date format.
-
-````
-case isoYear: i.e. 1997
-case isoYearMonth: i.e. 1997-07
-case isoDate: i.e. 1997-07-16
-case isoDateTime: i.e. 1997-07-16T19:20+01:00
-case isoDateTimeSec: i.e. 1997-07-16T19:20:30+01:00
-case isoDateTimeMilliSec: i.e. 1997-07-16T19:20:30.45+01:00
-case dotNet: i.e. "/Date(1268123281843)/"
-case rss: i.e. "Fri, 09 Sep 2011 15:26:08 +0200"
-case altRSS: i.e. "09 Sep 2011 15:26:08 +0200"
-case httpHeader: i.e. "Tue, 15 Nov 1994 12:45:26 GMT"
-case standard: "EEE MMM dd HH:mm:ss Z yyyy"
-case custom(String): a custom date format string
-````
-
-### To String
-
-There's four options for converting a date to string.
-
-1. date.toString(style: .shortWeekday) 
-2. date.toString(format: .rss)
-3. date.toString(dateStyle: .short, timeStyle: .short)
-4. date.toStringWithRelativeTime()
-
-### 1. String with style
-Converts to string using a predefined style
-
-```Swift
-let string = date.toString(.shortWeekday)
-// Mon
-```
-The DateStyleType enum 
-
-```Swift
-case short; "2/27/17, 2:22 PM"
-case medium; "Feb 27, 2017, 2:22:06 PM"
-case long; "February 27, 2017 at 2:22:06 PM EST"
-case full; "Monday, February 27, 2017 at 2:22:06 PM Eastern Standard Time"
-case ordinalDay; 27th
-case weekday; "Monday"
-case shortWeekday; "Mon"
-case veryShortWeekday; "M"
-case month; "February"
-case shortMonth; "Feb"
-case veryShortMonth; "F"
-```
-
-### 2. String with format
-
-Converts to string with specific or  custom date formatters.
-
-```Swift
-let string = date.toString(format: .rss)
-// Fri, 09 Sep 2011 15:26:08 +0200
-```
-
-The DateFormatType enum has a few predifined options as well as a tupple for providing a custom date format.
-
-````
-case isoYear: i.e. 1997
-case isoYearMonth: i.e. 1997-07
-case isoDate: i.e. 1997-07-16
-case isoDateTime: i.e. 1997-07-16T19:20+01:00
-case isoDateTimeSec: i.e. 1997-07-16T19:20:30+01:00
-case isoDateTimeMilliSec: i.e. 1997-07-16T19:20:30.45+01:00
-case dotNet: i.e. "/Date(1268123281843)/"
-case rss: i.e. "Fri, 09 Sep 2011 15:26:08 +0200"
-case altRSS: i.e. "09 Sep 2011 15:26:08 +0200"
-case httpHeader: i.e. "Tue, 15 Nov 1994 12:45:26 GMT"
-case standard: "EEE MMM dd HH:mm:ss Z yyyy"
-case custom(String): a custom date format string
-````
 **Unicode Date Field Symbol Guide**
 
 | Format  | Description | Example |
@@ -198,216 +255,6 @@ case custom(String): a custom date format string
 | "SS" | 10th's & 100th's place of fractional second | 123ms -> 12, 7ms -> 00 |
 | "SSS" | 10th's & 100th's & 1,000's place of fractional second | 123ms -> 123, 7ms -> 007 |
 
-### 3. String with date and time style
-
-Converts to string using a DateFormatter.Style for date and time style plus an optional isRelative flag.
-
-```Swift
-let string = date.toString(dateStyle: .short, timeStyle: .short)
-// 11/23/37 3:30 PM
-```
-The DateFormatter.Style uses predefined formats for date and time.
-
-```Swift
-case .none
-case .short; "11/23/37" or "3:30 PM"
-case .medium; "Nov 23, 1937" or "3:30:32 PM"
-case .long; "November 23, 1937" or "3:30:32 PM PST"
-case .full; "Tuesday, April 12, 1952 AD" or "3:30:42 PM Pacific Standard Time"
-
-```
-
-### 4. String with relative time format
-
-Converts to string using a customizable  relative time format.
-
-```Swift
-let string = date.toStringWithRelativeTime()
-// yesterday
-```
-Use the optional `strings:[RelativeTimeStringType:String]?` to customize the relative time strings
-
-```Swift
-let string = date.toStringWithRelativeTime([.nowPast: "just posted"])
-```
-
-The RelativeTimeStringType enum keys are used for customizing the strings
-
-```Swift
-case nowPast: "just now"
-case nowFuture: "in a few seconds"
-case secondsPast: "%.f seconds ago"
-case secondsFuture: "in %.f seconds"
-case oneMinutePast: "1 minute ago"
-case oneMinuteFuture: "in 1 minute"
-case minutesPast: "%.f minutes ago"
-case minutesFuture: "in %.f minutes"
-case oneHourPast: "last hour"
-case oneHourFuture: "next hour"
-case hoursPast: "%.f hours ago"
-case hoursFuture: "in %.f hours"
-case oneDayPast: "yesterday"
-case oneDayFuture: "tomorrow"
-case daysPast: "%.f days ago"
-case daysFuture: "in %.f days"
-case oneWeekPast: "last week"
-case oneWeekFuture: "next week"
-case weeksPast: "%.f weeks ago"
-case weeksFuture: "in %.f weeks"
-case oneMonthPast: "last month"
-case oneMonthFuture: "next month"
-case monthsPast: "%.f months ago"
-case monthsFuture: "in %.f months"
-case oneYearPast: "last year"
-case oneYearFuture: "next year"
-case yearsPast: "%.f years ago"
-case yearsFuture: "in %.f years"
-```
-
-### Comparing Dates
-
-Use the `compare(_ comparison:DateComparisonType) -> Bool` function to compare a date against a type or a date.
-
-```Swift
-var isSameDay = now.compare(.isSameDay(as: date))
-var isToday = now.compare(.isToday)  
-```
-The DateComparisonType enum can compare the date to a predetermined date, period or a custom date in a tupple. i.e. isLater(thanDate:Date)
-
-```Swift
-// Days
-case isToday
-case isTomorrow
-case isYesterday
-case isSameDay(as:Date)
-// Weeks
-case isThisWeek
-case isNextWeek
-case isLastWeek
-case isSameWeek(as:Date)
-// Months
-case isThisMonth
-case isNextMonth
-case isLastMonth
-case isSameMonth(as:Date)
-// Years
-case isThisYear
-case isNextYear
-case isLastYear
-case isSameYear(as:Date)
-// Relative Time
-case isInTheFuture
-case isInThePast
-case isEarlier(than:Date)
-case isLater(than:Date)
-case isWeekday
-case isWeekend
-```
-
-### Adjusting Dates
-
-Use the `adjust(_ component:DateComponentType, offset:Int) -> Date` to change a the date with an offset.
-
-```Swift
-date = now.adjust(.day, offset: -4)
-```
-
-The DateComponentType enum is used for the components that can be adjusted.
-
-```Swift
-case second
-case minute
-case hour
-case day
-case weekday
-case nthWeekday
-case week
-case month
-case year
-```
-
-Use the `adjust(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date` function to change the date components.
-
-```Swift
-let atNoon = date.adjust(hour: 12, minute: 0, second: 0)
-```
-
-### Create Dates For...
-
-Use the `dateFor(_ type:DateForType) -> Date` function to create a new date for a specific occasion relative to the date.
-
-```Swift
-let date = now.dateFor(.startOfWeek)
-let nearestHour = now.dateFor(.nearestHour(hour:1))
-```
-The DateForType enum is used as a predetermined list of options.
-
-```Swift
-case startOfDay
-case endOfDay
-case startOfWeek
-case endOfWeek
-case startOfMonth
-case endOfMonth
-case tomorrow
-case yesterday
-case nearestHour
-case nearestMinute(minute:Int)
-case nearestHour(hour:Int)
-```
-
-### Time Since In...
-
-Use the `since(_ date:Date, in component:DateComponentType) -> Int64` function to retrieve the component interval value compared to another date.
-
-```Swift
-var num = date.since(now, in: .second)
-```
-
-The DateComponentType enum is used for the vlaue to be retrieved.
-
-```Swift
-case second
-case minute
-case hour
-case day
-case weekday
-case nthWeekday
-case week
-case month
-case year
-```
-
-
-### Extracting Components
-
-Use the `component(_ component:DateComponentType) -> Int? ` to get a specific component froma date.
-
-```Swift
-let minute = date.component(.minute) 
-```
-
-The DateComponentType enum is used for the vlaue to be retrieved.
-
-```Swift
-case second
-case minute
-case hour
-case day
-case weekday
-case nthWeekday
-case week
-case month
-case year
-```
-Related components to the date
-
-```Swift
-date.numberOfDaysInMonth()
-date.firstDayOfWeek()
-date.lastDayofWeek()
-```
-
 ## Requirements
 
 Language: Swift 5.0
@@ -416,10 +263,8 @@ Minimum: iOS 11, tvOS 12, watchOS 4, macOS 10.14
 
 ## Installation
 
-
-**Carthage** github "melvitax/DateHelper"   
-**Swift Package Manager** https://github.com/melvitax/DateHelper.git   
-**Cocoapods** pod 'AFDateHelper', '~> 4.4.1'   
+**Swift Package Manager** https://github.com/melvitax/DateHelper.git  
+**Carthage** github "melvitax/DateHelper"  
 **Manually**  Include DateHelper.swift in your project
 
 

@@ -27,6 +27,7 @@
 		65E6A7A61D8B46F7000FAA78 /* DateHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E6A7C51D8B481F000FAA78 /* DateHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		B0387D6725EDA6B6001F5FD5 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 			children = (
 				65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */,
 				65B7EA75197082AA0097E598 /* README.md */,
+				B082F12425EAF313003D8889 /* Documentation */,
 				65E6A7CD1D8B4959000FAA78 /* Sources */,
 				655AEB41192D42990053AD6C /* Frameworks */,
 				655AEB40192D42990053AD6C /* Products */,
@@ -98,6 +100,14 @@
 				65441F761ECF4A3400669834 /* Info.plist */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		B082F12425EAF313003D8889 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				B0387D6725EDA6B6001F5FD5 /* Playground.playground */,
+			);
+			path = Documentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
