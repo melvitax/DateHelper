@@ -20,7 +20,7 @@ Date().dateFor(.nearestHour(hour:2))
  `2. dateFor(_ type:calendar:)`
  */
 var calendar = Calendar(identifier: .gregorian)
-calendar.firstWeekday = 2
-Date().dateFor(.startOfWeek, calendar: calendar)
-
+calendar.firstWeekday = 2 // sets startOfWeek to Monday
+Date().dateFor(.startOfWeek, calendar: calendar).toString(format: .custom("E MMM d"))
+Date().dateFor(.endOfWeek, calendar: calendar).toString(format: .custom("E MMM d"))
 //: [Next](@next)
