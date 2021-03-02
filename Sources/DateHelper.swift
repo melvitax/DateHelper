@@ -41,6 +41,13 @@ public extension Date {
                 if string.hasSuffix("Z") {
                     string = string[..<string.index(string.endIndex, offsetBy: -1)].appending("GMT")
                 }
+            case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime, .isoYear,. isoDate, .isoYearMonth:
+                let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: locale)
+                guard let date = formatter.date(from: string) else {
+                    return nil
+                }
+                self.init(timeInterval: 0, since: date)
+                return
             default:
                 break
         }
@@ -52,7 +59,7 @@ public extension Date {
         guard let date = formatter.date(from: string) else {
             return nil
         }
-        self.init(timeInterval:0, since:date)
+        self.init(timeInterval: 0, since: date)
     }
     
     /*
@@ -122,7 +129,8 @@ public extension Date {
         case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime,
              .isoYear,. isoDate, .isoYearMonth:
             if #available(iOS 11.0, watchOS 3, tvOS 10, macOS 13, *) {
-                return formatIsoDate(format: format, timeZone: timeZone)
+                let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: useLocale)
+                return formatter.string(from: self)
             } else {
                 useLocale = Locale(identifier: "en_US_POSIX")
             }
@@ -130,32 +138,6 @@ public extension Date {
             break
         }
         let formatter = Date.cachedDateFormatters.cachedFormatter(format.stringFormat, timeZone: timeZone.timeZone, locale: useLocale)
-        return formatter.string(from: self)
-    }
-    
-    /// Converts to ISO format using the new API
-    @available(iOS 11.0, watchOS 3, tvOS 10, macOS 13, *)
-    func formatIsoDate(format: DateFormatType, timeZone: TimeZoneType = .local) -> String {
-        let formatter = ISO8601DateFormatter()
-        formatter.timeZone = timeZone.timeZone
-        
-        var options: ISO8601DateFormatter.Options = []
-        switch format {
-        case .isoDate:
-            options = [.withFullDate]
-        case .isoYearMonth:
-            options = [.withYear, .withMonth]
-        case .isoYear:
-            options = [.withYear]
-        case .isoDateTimeSec, .isoDateTime:
-            options = [.withInternetDateTime]
-        case .isoDateTimeMilliSec:
-            options = [.withInternetDateTime, .withFractionalSeconds]
-        default:
-            fatalError("Unimplemented format \(format)")
-        }
-        
-        formatter.formatOptions = options
         return formatter.string(from: self)
     }
     
@@ -621,7 +603,12 @@ public extension Date {
         return Calendar.current.dateComponents(Date.componentFlags(), from: fromDate)
     }
   
-    internal class concurrentFormatterCache {
+    internal class ConcurrentFormatterCache {
+        
+        private static let cachedISODateFormattersQueue = DispatchQueue(
+            label: "iso-date-formatter-queue",
+            attributes: .concurrent
+        )
         private static let cachedDateFormattersQueue = DispatchQueue(
             label: "date-formatter-queue",
             attributes: .concurrent
@@ -632,34 +619,75 @@ public extension Date {
             attributes: .concurrent
         )
         
+        private static var cachedISODateFormatters = [String: ISO8601DateFormatter]()
         private static var cachedDateFormatters = [String: DateFormatter]()
         private static var cachedNumberFormatter = NumberFormatter()
         
-        private func register(hashKey: String, formatter: DateFormatter) -> Void {
-            concurrentFormatterCache.cachedDateFormattersQueue.async(flags: .barrier) {
-                concurrentFormatterCache.cachedDateFormatters.updateValue(formatter, forKey: hashKey)
+        private func register(hashKey: String, formatter: ISO8601DateFormatter) -> Void {
+            ConcurrentFormatterCache.cachedISODateFormattersQueue.async(flags: .barrier) {
+                ConcurrentFormatterCache.cachedISODateFormatters.updateValue(formatter, forKey: hashKey)
             }
+        }
 
+        private func register(hashKey: String, formatter: DateFormatter) -> Void {
+            ConcurrentFormatterCache.cachedDateFormattersQueue.async(flags: .barrier) {
+                ConcurrentFormatterCache.cachedDateFormatters.updateValue(formatter, forKey: hashKey)
+            }
         }
         
+        private func retrieve(hashKeyForISO hashKey: String) -> ISO8601DateFormatter? {
+            let dateFormatter = ConcurrentFormatterCache.cachedISODateFormattersQueue.sync { () -> ISO8601DateFormatter? in
+                guard let result = ConcurrentFormatterCache.cachedISODateFormatters[hashKey] else { return nil }
+                
+                return result.copy() as? ISO8601DateFormatter
+            }
+            return dateFormatter
+        }
+
         private func retrieve(hashKey: String) -> DateFormatter? {
-            let dateFormatter = concurrentFormatterCache.cachedDateFormattersQueue.sync { () -> DateFormatter? in
-                guard let result = concurrentFormatterCache.cachedDateFormatters[hashKey] else { return nil }
+            let dateFormatter = ConcurrentFormatterCache.cachedDateFormattersQueue.sync { () -> DateFormatter? in
+                guard let result = ConcurrentFormatterCache.cachedDateFormatters[hashKey] else { return nil }
                 
                 return result.copy() as? DateFormatter
             }
-            
             return dateFormatter
         }
         
         private func retrieve() -> NumberFormatter {
-            let numberFormatter = concurrentFormatterCache.cachedNumberFormatterQueue.sync { () -> NumberFormatter in
-                
+            let numberFormatter = ConcurrentFormatterCache.cachedNumberFormatterQueue.sync { () -> NumberFormatter in
                 // Should always be NumberFormatter
-                return concurrentFormatterCache.cachedNumberFormatter.copy() as! NumberFormatter
+                return ConcurrentFormatterCache.cachedNumberFormatter.copy() as! NumberFormatter
             }
-            
             return numberFormatter
+        }
+        
+        public func cachedISOFormatter(_ format: DateFormatType, timeZone: TimeZoneType, locale: Locale) -> ISO8601DateFormatter {
+            
+            let hashKey = "\(format.stringFormat.hashValue)\(timeZone.timeZone.hashValue)\(locale.hashValue)"
+                
+            if Date.cachedDateFormatters.retrieve(hashKeyForISO: hashKey) == nil {
+                let formatter = ISO8601DateFormatter()
+                formatter.timeZone = timeZone.timeZone
+
+                var options: ISO8601DateFormatter.Options = []
+                switch format {
+                case .isoDate:
+                    options = [.withFullDate]
+                case .isoYearMonth:
+                    options = [.withYear, .withMonth]
+                case .isoYear:
+                    options = [.withYear, .withFractionalSeconds]
+                case .isoDateTimeSec, .isoDateTime:
+                    options = [.withInternetDateTime]
+                case .isoDateTimeMilliSec:
+                    options = [.withInternetDateTime, .withFractionalSeconds]
+                default:
+                    fatalError("Unimplemented format \(format)")
+                }
+                formatter.formatOptions = options
+                Date.cachedDateFormatters.register(hashKey: hashKey, formatter: formatter)
+            }
+            return Date.cachedDateFormatters.retrieve(hashKeyForISO: hashKey)!
         }
         
         public func cachedFormatter(_ format: String = DateFormatType.standard.stringFormat,
@@ -705,7 +733,7 @@ public extension Date {
     }
     
     /// A cached static array of DateFormatters so that thy are only created once.
-    private static var cachedDateFormatters = concurrentFormatterCache()
+    private static var cachedDateFormatters = ConcurrentFormatterCache()
     
     // MARK: - Intervals In Seconds
     internal static let minuteInSeconds:Double = 60
