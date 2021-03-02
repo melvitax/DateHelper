@@ -173,7 +173,9 @@ Date().dateFor(.endOfMonth)
 Date().dateFor(.tomorrow)
 Date().dateFor(.yesterday)
 Date().dateFor(.nearestMinute(minute:30))
-Date().dateFor(.nearestHour(hour:2))  
+Date().dateFor(.nearestHour(hour:2)) 
+Date().dateFor(.startOfYear)
+Date().dateFor(.endOfYear)
 ```
 
 ### Time since...  
