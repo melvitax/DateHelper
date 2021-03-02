@@ -27,5 +27,11 @@ Date().numberOfDaysInMonth()
 Date().firstDayOfWeek()
 Date().lastDayOfWeek()
 
+/*
+ if you specify a timeZone when creating a date, you need to use a time zone when converting it to string
+ */
+let date = Date(fromString:  "1500-01-01", format: .isoDate, timeZone: .utc)
+date?.toString(format: .isoDateTime, timeZone: .utc)
+
 //: [Next](@next)
 
