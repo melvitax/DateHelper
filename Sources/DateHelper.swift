@@ -501,6 +501,20 @@ public extension Date {
         case .nearestHour(let nearest):
             let hours = (component(.hour)! + nearest/2) / nearest * nearest
             return adjust(hour: hours, minute: 0, second: nil)
+        case .startOfYear:
+            let month = Date().component(.month)!-1
+            let day = Date().component(.day)!-1
+            return Date()
+                .adjust(.month, offset: -(month))
+                .adjust(.day, offset: -(day))
+                .adjust(hour: 0, minute: 0, second: 0)
+        case .endOfYear:
+            let month = Date().component(.month)!
+            let day = Date().component(.day)!
+            return Date()
+                .adjust(.month, offset: 12-month)
+                .adjust(.day, offset: 31-day)
+                .adjust(hour: 23, minute: 59, second: 59)
         }
     }
     
@@ -922,7 +936,7 @@ public enum DateComponentType {
 
 // The type of date that can be used for the dateFor function.
 public enum DateForType {
-    case startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, tomorrow, yesterday, nearestMinute(minute:Int), nearestHour(hour:Int)
+    case startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, tomorrow, yesterday, nearestMinute(minute:Int), nearestHour(hour:Int), startOfYear, endOfYear
 }
 
 // Convenience types for date to string conversion
