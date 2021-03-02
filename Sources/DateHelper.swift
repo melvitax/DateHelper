@@ -128,7 +128,7 @@ public extension Date {
             return String(format: format.stringFormat, nowMillis, offset)
         case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime,
              .isoYear,. isoDate, .isoYearMonth:
-            if #available(iOS 11.0, watchOS 3, tvOS 10, macOS 13, *) {
+            if #available(iOS 11.0, watchOS 4, tvOS 10, macOS 13, *) {
                 let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: useLocale)
                 return formatter.string(from: self)
             } else {
