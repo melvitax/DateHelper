@@ -22,7 +22,6 @@
 		65441F761ECF4A3400669834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65441F791ECF54F900669834 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
 		65B7EA75197082AA0097E598 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFDateHelper.podspec; sourceTree = "<group>"; };
 		65E6A7871D8B46AD000FAA78 /* DateHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E6A7A61D8B46F7000FAA78 /* DateHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E6A7C51D8B481F000FAA78 /* DateHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DateHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +64,6 @@
 		655AEB36192D42990053AD6C = {
 			isa = PBXGroup;
 			children = (
-				65DE9BBB1B3C639D00F66BEC /* AFDateHelper.podspec */,
 				65B7EA75197082AA0097E598 /* README.md */,
 				B082F12425EAF313003D8889 /* Documentation */,
 				65E6A7CD1D8B4959000FAA78 /* Sources */,
