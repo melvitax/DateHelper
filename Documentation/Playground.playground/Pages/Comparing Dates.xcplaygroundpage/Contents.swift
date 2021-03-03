@@ -2,7 +2,7 @@
 import DateHelper
 /*:
  # Comparing Dates
- Provides a way to check a date against another common scenarios like isToday, isNextWeek, is etc.
+ Provides common checks like isToday or isNextWeek. It can also check against another date like isSameDay or isEarlier.
  */
 let nowDate = Date()
 let nextHourDate = Date().adjust(.hour, offset: 1)

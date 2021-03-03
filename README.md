@@ -18,7 +18,7 @@ Provides two initializers to create a date from string.
 
 - **detectFromString:**  
 `init?(detectFromString string: String)`  
-Uses NSDataDetector to detect a date from natural language in a string. Similar to what Apple mail does on emails. This initializer is not as efficient as **fromString:format:** and should not be used in collections like lists.
+Uses NSDataDetector to detect a date from natural language in a string. It works similar to how Apple Mail detects dates. This initializer is not as efficient as **fromString:format:** and should not be used in collections like lists.
 
 ```Swift
 Date(detectFromString: "It happened on August 11 of 2009")
@@ -100,7 +100,7 @@ Date().toString(dateStyle: .full, timeStyle: .full)
 ```
 
 ### Compare Dates
-Provides a way to check a date against another common scenarios like isToday, isNextWeek, is etc.
+Provides common checks like isToday or isNextWeek. It can also check against another date like isSameDay or isEarlier.
 
 - **Quick Checks**  
  Checks date against common scenarios  
@@ -193,7 +193,7 @@ Date().since(secondDate, in: .week)
 Date().since(secondDate, in: .month)
 Date().since(secondDate, in: .year)  
 ```
-### Miscelanius
+### Miscellaneous
 **Setting the start day of the week**  
 
 ```Swift

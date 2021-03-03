@@ -7,7 +7,7 @@ import DateHelper
  
  `init?(detectFromString string: String)`
  
- Uses NSDataDetector to detect a date from natural language in a string. Similar to what Apple mail does on emails. This initializer is not as efficient as `fromString:format:` and should not be used in collections like lists.
+ Uses NSDataDetector to detect a date from natural language in a string. It works similar to how Apple Mail detects dates. This initializer is not as efficient as **fromString:format:** and should not be used in collections like lists.
  */
  Date(detectFromString: "It happened on August 11 of 2009")
  Date(detectFromString: "Tomorrow at 5:30 PM")
