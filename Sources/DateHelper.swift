@@ -42,12 +42,14 @@ public extension Date {
                     string = string[..<string.index(string.endIndex, offsetBy: -1)].appending("GMT")
                 }
             case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime, .isoYear,. isoDate, .isoYearMonth:
-                let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: locale)
-                guard let date = formatter.date(from: string) else {
-                    return nil
+                if #available(iOS 10.0, watchOS 4, tvOS 10, macOS 11, *) {
+                    let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: locale)
+                    guard let date = formatter.date(from: string) else {
+                        return nil
+                    }
+                    self.init(timeInterval: 0, since: date)
+                    return
                 }
-                self.init(timeInterval: 0, since: date)
-                return
             default:
                 break
         }
@@ -128,7 +130,7 @@ public extension Date {
             return String(format: format.stringFormat, nowMillis, offset)
         case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime,
              .isoYear,. isoDate, .isoYearMonth:
-            if #available(iOS 11.0, watchOS 4, tvOS 10, macOS 13, *) {
+            if #available(iOS 10.0, watchOS 4, tvOS 10, macOS 11, *) {
                 let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: useLocale)
                 return formatter.string(from: self)
             } else {
