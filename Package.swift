@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
@@ -13,8 +13,8 @@ import PackageDescription
 let package = Package(
     name: "DateHelper",
     platforms: [
-        .iOS(.v9),
-        .macOS(.v10_11),
+        .iOS(.v10),
+        .macOS(.v10_13),
         .tvOS(.v9),
         .watchOS(.v2)
     ],
