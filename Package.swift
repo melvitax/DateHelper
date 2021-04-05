@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.2
 //
 //  AFDateHelper.swift
 //  https://github.com/melvitax/DateHelper
