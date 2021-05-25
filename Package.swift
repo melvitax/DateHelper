@@ -24,7 +24,10 @@ let package = Package(
     targets: [
         .target(
             name: "DateHelper",
-            path: "Sources"
+            path: "Sources",
+            exclude: [
+                "Info.plist"
+            ]
         )
     ],
     swiftLanguageVersions: [.v5]
