@@ -16,7 +16,7 @@ let package = Package(
         .iOS(.v11),
         .macOS(.v10_13),
         .tvOS(.v9),
-        .watchOS(.v2)
+        .watchOS(.v4)
     ],
     products: [
         .library(name: "DateHelper", targets: ["DateHelper"])
