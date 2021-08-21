@@ -504,18 +504,14 @@ public extension Date {
             let hours = (component(.hour)! + nearest/2) / nearest * nearest
             return adjust(hour: hours, minute: 0, second: nil)
         case .startOfYear:
-            let month = Date().component(.month)!-1
-            let day = Date().component(.day)!-1
-            return Date()
-                .adjust(.month, offset: -(month))
-                .adjust(.day, offset: -(day))
+            let year = component(.year)!
+            let date = Date(fromString: "\(year)-01-01", format: .isoDate)!
+            return date
                 .adjust(hour: 0, minute: 0, second: 0)
         case .endOfYear:
-            let month = Date().component(.month)!
-            let day = Date().component(.day)!
-            return Date()
-                .adjust(.month, offset: 12-month)
-                .adjust(.day, offset: 31-day)
+            let year = component(.year)!
+            let date = Date(fromString: "\(year)-12-31", format: .isoDate)!
+            return date
                 .adjust(hour: 23, minute: 59, second: 59)
         }
     }
