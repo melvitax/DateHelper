@@ -1,26 +1,3 @@
-<<<<<<< HEAD
 .DS_Store
-*.swp
-*~.nib
-
-build/
-
-*.pbxuser
-*.perspective
-*.perspectivev3
-
-*.mode1v3
-*.mode2v3
-
-project.xcworkspace/
-xcuserdata
-=======
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control?
-#
-# Pods/
-
->>>>>>> 920e0fd8315bafeb029a22d2ea768b71317fabcb
+.build/
+.swiftpm/
