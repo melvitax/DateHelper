@@ -18,50 +18,49 @@ public extension Date {
         Creates a new Date based on a string of a specified format. Supports optional timezone and locale.
     */
     init?(fromString string: String, format:DateFormatType, timeZone: TimeZoneType = .local, locale: Locale = Foundation.Locale.current, isLenient: Bool = true) {
-        guard !string.isEmpty else {
-            return nil
-        }
+
+        guard !string.isEmpty else { return nil }
+
         var string = string
+
         switch format {
-            case .dotNet:
-                let pattern = "\\\\?/Date\\((\\d+)(([+-]\\d{2})(\\d{2}))?\\)\\\\?/"
-                let regex = try! NSRegularExpression(pattern: pattern)
-                guard let match = regex.firstMatch(in: string, range: NSRange(location: 0, length: string.utf16.count)) else {
-                    return nil
-                }
-                 #if swift(>=4.0)
+        case .dotNet:
+            let pattern = "\\\\?/Date\\((\\d+)(([+-]\\d{2})(\\d{2}))?\\)\\\\?/"
+            let regex = try? NSRegularExpression(pattern: pattern)
+            let range = NSRange(location: 0, length: string.utf16.count)
+            if let match = regex?.firstMatch(in: string, range: range) {
                 let dateString = (string as NSString).substring(with: match.range(at: 1))
-                #else
-                let dateString = (string as NSString).substring(with: match.rangeAt(1))
-                #endif
                 let interval = Double(dateString)! / 1000.0
                 self.init(timeIntervalSince1970: interval)
                 return
-            case .rss, .altRSS:
-                if string.hasSuffix("Z") {
-                    string = string[..<string.index(string.endIndex, offsetBy: -1)].appending("GMT")
-                }
-            case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime, .isoYear,. isoDate, .isoYearMonth:
-                if #available(iOS 10.0, watchOS 4, tvOS 10, macOS 11, *) {
-                    let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: locale)
-                    guard let date = formatter.date(from: string) else {
-                        return nil
-                    }
-                    self.init(timeInterval: 0, since: date)
-                    return
-                }
-            default:
-                break
+            } else {
+                return nil
+            }
+        case .rss, .altRSS:
+            if string.hasSuffix("Z") {
+                string = string[..<string.index(string.endIndex, offsetBy: -1)].appending("GMT")
+            }
+        case .isoDateTimeFull, .isoDateTime, .isoYear, . isoDate, .isoYearMonth:
+            let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: locale)
+            if let date = formatter.date(from: string) {
+                self.init(timeInterval: 0, since: date)
+                return
+            } else {
+                return nil
+            }
+        default:
+            break
         }
         let formatter = Date.cachedDateFormatters.cachedFormatter(
             format.stringFormat,
             timeZone: timeZone.timeZone,
             locale: locale, 
             isLenient: isLenient)
-        guard let date = formatter.date(from: string) else {
+        if let date = formatter.date(from: string) {
+            self.init(timeInterval: 0, since: date)
+        } else {
             return nil
         }
-        self.init(timeInterval: 0, since: date)
     }
     
     /*
@@ -128,8 +127,7 @@ public extension Date {
             let offset = Foundation.NSTimeZone.default.secondsFromGMT() / 3600
             let nowMillis = 1000 * self.timeIntervalSince1970
             return String(format: format.stringFormat, nowMillis, offset)
-        case .isoDateTimeMilliSec, .isoDateTimeSec, .isoDateTime,
-             .isoYear,. isoDate, .isoYearMonth:
+        case .isoDateTimeFull, .isoDateTime, .isoYear,. isoDate, .isoYearMonth:
             if #available(iOS 10.0, watchOS 4, tvOS 10, macOS 11, *) {
                 let formatter = Date.cachedDateFormatters.cachedISOFormatter(format, timeZone: timeZone, locale: useLocale)
                 return formatter.string(from: self)
@@ -683,15 +681,15 @@ public extension Date {
 
                 var options: ISO8601DateFormatter.Options = []
                 switch format {
-                case .isoDate:
-                    options = [.withFullDate]
-                case .isoYearMonth:
-                    options = [.withYear, .withMonth]
                 case .isoYear:
                     options = [.withYear, .withFractionalSeconds]
-                case .isoDateTimeSec, .isoDateTime:
+                case .isoYearMonth:
+                    options = [.withYear, .withMonth, .withDashSeparatorInDate]
+                case .isoDate:
+                    options = [.withFullDate]
+                case .isoDateTime:
                     options = [.withInternetDateTime]
-                case .isoDateTimeMilliSec:
+                case .isoDateTimeFull:
                     options = [.withInternetDateTime, .withFractionalSeconds]
                 default:
                     fatalError("Unimplemented format \(format)")
@@ -765,9 +763,8 @@ public extension Date {
  case isoYear: i.e. 1997
  case isoYearMonth: i.e. 1997-07
  case isoDate: i.e. 1997-07-16
- case isoDateTime: i.e. 1997-07-16T19:20+01:00
- case isoDateTimeSec: i.e. 1997-07-16T19:20:30+01:00
- case isoDateTimeMilliSec: i.e. 1997-07-16T19:20:30.45+01:00
+ case isoDateTime: i.e. 1997-07-16T19:20:30+01:00
+ case isoDateTimeFull: i.e. 1997-07-16T19:20:30.45+01:00
  case dotNet: i.e. "/Date(1268123281843)/"
  case rss: i.e. "Fri, 09 Sep 2011 15:26:08 +0200"
  case altRSS: i.e. "09 Sep 2011 15:26:08 +0200"
@@ -788,14 +785,11 @@ public enum DateFormatType {
     /// The ISO8601 formatted date "yyyy-MM-dd" i.e. 1997-07-16
     case isoDate
     
-    /// The ISO8601 formatted date and time "yyyy-MM-dd'T'HH:mmZ" i.e. 1997-07-16T19:20+01:00
+    /// The ISO8601 formatted date, time and sec "yyyy-MM-dd'T'HH:mm:ssZ" i.e. 1997-07-16T19:20:30+01:00
     case isoDateTime
     
-    /// The ISO8601 formatted date, time and sec "yyyy-MM-dd'T'HH:mm:ssZ" i.e. 1997-07-16T19:20:30+01:00
-    case isoDateTimeSec
-    
     /// The ISO8601 formatted date, time and millisec "yyyy-MM-dd'T'HH:mm:ss.SSSZ" i.e. 1997-07-16T19:20:30.45+01:00
-    case isoDateTimeMilliSec
+    case isoDateTimeFull
     
     /// The dotNet formatted date "/Date(%d%d)/" i.e. "/Date(1268123281843)/"
     case dotNet
@@ -820,9 +814,8 @@ public enum DateFormatType {
         case .isoYear: return "yyyy"
         case .isoYearMonth: return "yyyy-MM"
         case .isoDate: return "yyyy-MM-dd"
-        case .isoDateTime: return "yyyy-MM-dd'T'HH:mmZ"
-        case .isoDateTimeSec: return "yyyy-MM-dd'T'HH:mm:ssZ"
-        case .isoDateTimeMilliSec: return "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        case .isoDateTime: return "yyyy-MM-dd'T'HH:mm:ssZ"
+        case .isoDateTimeFull: return "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         case .dotNet: return "/Date(%d%f)/"
         case .rss: return "EEE, d MMM yyyy HH:mm:ss ZZZ"
         case .altRSS: return "d MMM yyyy HH:mm:ss ZZZ"
