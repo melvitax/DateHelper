@@ -21,7 +21,7 @@ A high performant Swift Date Extension for creating, comparing, or modifying dat
     - With combined date and time style: i.e. `.medium`
     - With individual date and time style: i.e. `.medium, .short`
 - **Modify Date**
-    - Offset date component: i.e. `.offset(.second, offset: 110)`
+    - Offset date component: i.e. `.offset(.second, value: 110)`
     - Adjust date component: i.e. `.adjust(hour: 12, minute: 0, second: 0)`
     - Adjust date to a predefined time: i.e. `.adjust(for: .startOfDay)`
 - **Compare Date**
@@ -156,23 +156,23 @@ Provides functions for adjusting or shifting dates
 ### Offset components
 
 ```swift 
-Date().offset(.second, offset: 10)
+Date().offset(.second, value: 10)
 "18:14:41" -> "18:14:51"
-Date().offset(.minute, offset: 10)
+Date().offset(.minute, value: 10)
 "18:14:41" -> "18:24:41"
-Date().offset(.hour, offset: 2)
+Date().offset(.hour, value: 2)
 "18:14:41" -> "20:14:41"
-Date().offset(.day, offset: 1)
+Date().offset(.day, value: 1)
 "2009-12-06" -> "2009-12-07"
-Date().offset(.weekday, offset: 2)
+Date().offset(.weekday, value: 2)
 "2009-12-06" -> "2009-16-06"
-Date().offset(.weekdayOrdinal, offset: 1)
+Date().offset(.weekdayOrdinal, value: 1)
 "2009-12-06" -> "2009-12-20"
-Date().offset(.week, offset: -2)
+Date().offset(.week, value: -2)
 "2009-12-06" ->  "2009-11-22"
-Date().offset(.month, offset: 2)
+Date().offset(.month, value: 2)
 "2009-12-06" -> "2010-02-06"
-Date().offset(.year, offset: -2)
+Date().offset(.year, value: -2)
 "2009-12-06" -> "2007-12-06"
 ```
 
