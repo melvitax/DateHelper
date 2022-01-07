@@ -1,0 +1,44 @@
+disabled_rules: # rule identifiers to exclude from running
+  - statement_position
+  - valid_ibinspectable
+  - fallthrough
+  - explicit_enum_raw_value
+  - nesting
+  - closure_parameter_position
+opt_in_rules:
+  - private_action
+  - private_outlet
+  - redundant_nil_coalescing
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
+  - empty_count
+  - explicit_enum_raw_value
+  - force_unwrapping
+  - implicit_return
+  - literal_expression_end_indentation
+  - unneeded_parentheses_in_closure_argument
+  - explicit_init
+  - redundant_type_annotation
+  - strong_iboutlet
+  - unused_import
+
+identifier_name:
+  min_length: 1
+
+line_length: 180
+
+custom_rules:
+  no_bylines:
+    name: "Bylines" # rule name. optional.
+    regex: "([Cc]reated by)" # matching pattern
+    match_kinds: # SyntaxKinds to match. optional.
+      - comment
+    message: "No bylines allowed in headers" # violation message. optional.
+    severity: warning # violation severity. optional.
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - NewsTests
+  - Pods
+  - News/cpc-dependencies

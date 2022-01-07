@@ -1,7 +1,7 @@
 import XCTest
 @testable import DateHelper
 
-final class DateHelperTests: XCTestCase {
+final class DateHelperFromStringTests: XCTestCase {
 
     // date from isoYear string
     func testDateFromIsoYearString() throws {
@@ -54,28 +54,51 @@ final class DateHelperTests: XCTestCase {
 
     // date from rss string
     func testDateFromRSSString() throws {
-        let date = Date(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .rss)
-        let offset = 2
-        let timeZone = TimeZone(secondsFromGMT: 60 * 60 * offset)
-        let comparison = Calendar.current.date(from: DateComponents(timeZone: timeZone, year: 2011, month: 09, day: 09, hour: 15, minute: 26, second: 08))
+        guard let date = Date(fromString: "Fri, 09 Sep 2011 15:26:08 +0200", format: .rss),
+            let timeZone = TimeZone(secondsFromGMT: 60 * 60 * 2),
+            let comparison = Calendar.current.date(from: DateComponents(timeZone: timeZone, year: 2011, month: 09, day: 09, hour: 15, minute: 26, second: 08)) else {
+                  return
+        }
         XCTAssertEqual(date, comparison)
     }
 
     // date from altRSS string
     func testDateFromAltRSSString() throws {
-        let date = Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .altRSS)
-        let offset = 2
-        let timeZone = TimeZone(secondsFromGMT: 60 * 60 * offset)
-        let comparison = Calendar.current.date(from: DateComponents(timeZone: timeZone, year: 2011, month: 09, day: 09, hour: 15, minute: 26, second: 08))
+        guard let date = Date(fromString: "09 Sep 2011 15:26:08 +0200", format: .altRSS),
+            let timeZone = TimeZone(secondsFromGMT: 60 * 60 * 2),
+            let comparison = Calendar.current.date(from: DateComponents(timeZone: timeZone, year: 2011, month: 09, day: 09, hour: 15, minute: 26, second: 08)) else {
+            return
+        }
         XCTAssertEqual(date, comparison)
     }
 
     // date from httpHeader string
     func testDateFromHttpHeaderString() throws {
-        let date = Date(fromString: "Wed, 01 03 2017 06:43:19 -0500", format: .httpHeader)
-        let offset = -5
-        let timeZone = TimeZone(secondsFromGMT: 60 * 60 * offset)
-        let comparison = Calendar.current.date(from: DateComponents(timeZone: timeZone, year: 2017, month: 03, day: 01, hour: 06, minute: 43, second: 19))
+        guard let date = Date(fromString: "Wed, 01 03 2017 06:43:19 -0500", format: .httpHeader),
+            let timeZone = TimeZone(secondsFromGMT: 60 * 60 * (-5)),
+            let comparison = Calendar.current.date(from: DateComponents(timeZone: timeZone, year: 2017, month: 03, day: 01, hour: 06, minute: 43, second: 19)) else {
+            return
+        }
+        XCTAssertEqual(date, comparison)
+    }
+    
+    // date from custom format string
+    func testDateFromCustomFormatString() throws {
+        guard let date = Date(fromString: "16 July 1972 6:12:00", format: .custom("dd MMM yyyy HH:mm:ss")),
+            let comparison = Calendar.current.date(from: DateComponents(year: 1972, month: 07, day: 16, hour: 06, minute: 12, second: 00)) else {
+            return
+        }
+        XCTAssertEqual(date, comparison)
+    }
+
+    // date from string using date detector
+    func testDateFromDetectorString() throws {
+        let date = Date(detectFromString: "Tomorrow at 5:30 PM")!
+        let calendar = Calendar.current
+        let today = Date()
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
+        let components = calendar.dateComponents(Date.componentFlags(), from: tomorrow)
+        let comparison = calendar.date(from: DateComponents(timeZone: TimeZone.current, year: components.year, month: components.month, day: components.day, hour: 17, minute: 30, second: 0))
         XCTAssertEqual(date, comparison)
     }
 }
