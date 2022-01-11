@@ -1,13 +1,13 @@
 //
 //  DateHelper.swift
-//  Version: 5.0
+//  Version: 5.0.1
 //  https://github.com/melvitax/DateHelper
 //
 
 import Foundation
 
 // swiftlint:disable file_length
-extension Date {
+public extension Date {
 
     // MARK: - Date from String
 
@@ -905,7 +905,7 @@ extension Date {
 
 extension Date.DateFormatType: Equatable {
     // swiftlint:disable:next operator_whitespace
-    static func ==(lhs: Date.DateFormatType, rhs: Date.DateFormatType) -> Bool {
+    public static func ==(lhs: Date.DateFormatType, rhs: Date.DateFormatType) -> Bool {
         switch (lhs, rhs) {
         case (.custom(let lhsString), .custom(let rhsString)):
             return lhsString == rhsString

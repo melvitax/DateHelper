@@ -1,4 +1,4 @@
-# DateHelper 5.0
+# DateHelper 5.0.1
 
 [![License](https://img.shields.io/badge/License-MIT-lightgrey)](https://github.com/melvitax/DateHelper/blob/master/LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20macOS-lightgrey)](https://github.com/melvitax/DateHelper)
