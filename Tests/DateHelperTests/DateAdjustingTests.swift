@@ -105,7 +105,7 @@ final class DateHelperAdjustingTests: XCTestCase {
     func testDateAdjustEndOfDay() throws {
         guard let original = Calendar.current.date(from: DateComponents(year: 2009, month: 12, day: 06, hour: 18, minute: 14, second: 41)),
               let adjusted = original.adjust(for: .endOfDay),
-              let comparison = Calendar.current.date(from: DateComponents(year: 2009, month: 12, day: 06, hour: 23, minute: 59, second: 59)) else {
+              let comparison = Calendar.current.date(from: DateComponents(year: 2009, month: 12, day: 06, hour: 23, minute: 59, second: 59, nanosecond: 999_000_000)) else {
           return
         }
         XCTAssertEqual(adjusted, comparison)

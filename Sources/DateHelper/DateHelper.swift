@@ -320,7 +320,7 @@ public extension Date {
         case .startOfDay:
             return adjust(hour: 0, minute: 0, second: 0)
         case .endOfDay:
-            return adjust(hour: 23, minute: 59, second: 59)
+            return adjust(hour: 23, minute: 59, second: 59, nanosecond: 999_000_000) // 23:59:59:999
         case .startOfWeek:
             return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear, .hour, .minute, .second, .nanosecond], from: self))
         case .endOfWeek:
