@@ -213,23 +213,27 @@ public extension Date {
     /// Compares dates to see if they are equal while ignoring time.
     // swiftlint:disable:next cyclomatic_complexity function_body_length
     func compare(_ comparison: DateComparisonType) -> Bool {
-        let time = self.timeIntervalSince1970
-        let now = Date().timeIntervalSince1970
-        let isPast = now - time > 0
-        let offset = isPast ? -1 : 1
         switch comparison {
         case .isToday:
             return compare(.isSameDay(as: Date()))
-        case .isTomorrow, .isYesterday:
-            if let comparison = Date().offset(.day, value: offset) {
+        case .isYesterday:
+            if let comparison = Date().offset(.day, value: -1) {
+                return compare(.isSameDay(as: comparison))
+            }
+        case .isTomorrow:
+            if let comparison = Date().offset(.day, value: 1) {
                 return compare(.isSameDay(as: comparison))
             }
         case .isSameDay(let date):
             return component(.year) == date.component(.year) && component(.month) == date.component(.month) && component(.day) == date.component(.day)
         case .isThisWeek:
             return self.compare(.isSameWeek(as: Date()))
-        case .isNextWeek, .isLastWeek:
-            if let comparison = Date().offset(.week, value: offset) {
+        case .isLastWeek:
+            if let comparison = Date().offset(.week, value: -1) {
+                return compare(.isSameWeek(as: comparison))
+            }
+        case .isNextWeek:
+            if let comparison = Date().offset(.week, value: 1) {
                 return compare(.isSameWeek(as: comparison))
             }
         case .isSameWeek(let date):
@@ -240,16 +244,24 @@ public extension Date {
             return abs(self.timeIntervalSince(date)) < DateComponentType.week.inSeconds
         case .isThisMonth:
             return self.compare(.isSameMonth(as: Date()))
-        case .isNextMonth, .isLastMonth:
-            if let comparison = Date().offset(.month, value: offset) {
+        case .isLastMonth:
+            if let comparison = Date().offset(.month, value: -1) {
+                return compare(.isSameMonth(as: comparison))
+            }
+        case .isNextMonth:
+            if let comparison = Date().offset(.month, value: 1) {
                 return compare(.isSameMonth(as: comparison))
             }
         case .isSameMonth(let date):
             return component(.year) == date.component(.year) && component(.month) == date.component(.month)
         case .isThisYear:
             return self.compare(.isSameYear(as: Date()))
-        case .isNextYear, .isLastYear:
-            if let comparison = Date().offset(.year, value: offset) {
+        case .isLastYear:
+            if let comparison = Date().offset(.year, value: -1) {
+                return compare(.isSameYear(as: comparison))
+            }
+        case .isNextYear:
+            if let comparison = Date().offset(.year, value: 1) {
                 return compare(.isSameYear(as: comparison))
             }
         case .isSameYear(let date):
