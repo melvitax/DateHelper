@@ -302,13 +302,14 @@ public extension Date {
     }
 
     /// Sets a new value to the specified component and returns as a new date
-    func adjust(hour: Int? = nil, minute: Int? = nil, second: Int? = nil, day: Int? = nil, month: Int? = nil) -> Date? {
+    func adjust(hour: Int? = nil, minute: Int? = nil, second: Int? = nil, nanosecond: Int? = nil, day: Int? = nil, month: Int? = nil) -> Date? {
         var comp = Date.components(self)
         comp.month = month ?? comp.month
         comp.day = day ?? comp.day
         comp.hour = hour ?? comp.hour
         comp.minute = minute ?? comp.minute
         comp.second = second ?? comp.second
+        comp.nanosecond = nanosecond ?? comp.nanosecond
         return Calendar.current.date(from: comp)
     }
 
@@ -320,7 +321,7 @@ public extension Date {
         case .startOfDay:
             return adjust(hour: 0, minute: 0, second: 0)
         case .endOfDay:
-            return adjust(hour: 23, minute: 59, second: 59)
+            return adjust(hour: 23, minute: 59, second: 59, nanosecond: 999_000_000) // 23:59:59:999
         case .startOfWeek:
             return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear, .hour, .minute, .second, .nanosecond], from: self))
         case .endOfWeek:
