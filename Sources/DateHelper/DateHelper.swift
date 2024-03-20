@@ -50,6 +50,7 @@ public extension Date {
            let formatter = Date.cachedDateFormatters.cachedFormatter(format.stringFormat, timeZone: zone, locale: locale, isLenient: isLenient),
             let date = formatter.date(from: string) {
             self.init(timeInterval: 0, since: date)
+            return
         }
         return nil
     }
