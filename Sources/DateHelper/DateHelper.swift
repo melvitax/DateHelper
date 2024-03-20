@@ -260,9 +260,9 @@ public extension Date {
         case .isInThePast:
             return self.compare(.isEarlier(than: Date()))
         case .isEarlier(let date):
-            return (self as NSDate).earlierDate(date) == self
+            return timeIntervalSince1970 < date.timeIntervalSince1970
         case .isLater(let date):
-            return (self as NSDate).laterDate(date) == self
+            return timeIntervalSince1970 > date.timeIntervalSince1970
         case .isWeekday:
             return !compare(.isWeekend)
         case .isWeekend:
