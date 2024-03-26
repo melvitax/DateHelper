@@ -82,6 +82,12 @@ public extension Date {
             if let day = component(.day) as NSNumber? {
                 return formatter?.string(from: day)
             }
+        case .month:
+            return self.toString(format: .custom("MMMM"))
+        case .shortMonth:
+            return self.toString(format: .custom("MMM"))
+        case .veryShortMonth:
+            return self.toString(format: .custom("MMMMM"))
         default:
             if let symbols = Date.cachedDateFormatters.cachedFormatter()?.symbols(for: style),
                 let weekday = component(.weekday) {
